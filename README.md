@@ -3,7 +3,19 @@ WARBB
 
 Warez-BB version of WAR Link checker
 
-### Custom file hosts (+131)
+### Custom new file hosts (+9)
+myupload  
+filebeam  
+upsto  
+hotfiles  
+aavg  
+megaload  
+oteupload  
+filebulk  
+uploadblast  
+
+
+### Custom obsolete file hosts (+131)
 
 Megashare  
 sharerun  
@@ -116,7 +128,7 @@ uploadr
 rapidfile  
 openupload  
 miniuploads  
-titanicshare
+titanicshare  
 sharelor  
 keepmyfile  
 sharebigfile  
@@ -128,7 +140,7 @@ bulletupload
 hellshare  
 glumbouploads  
 uploadlab  
-share.cx
+share.cx  
 uploaddot  
 megaftp  
 seeupload  
