@@ -2,7 +2,7 @@
 // @name			WarBB - Warez-BB Links Checker
 // @description		Automatically checks for dead links from various file hosting services.
 // @details			Based on popular W.A.R. Links Checker, this script automatically checks links from 250+ unique filehostings. For Firefox, Chrome, Safari. 
-// @version			1.2.3.9
+// @version			1.0.0
 // @license			Please do not modify yourself, contact authors with any problems
 // @author			DJ.Black.Ninja & thecodingdude / Original by dkitty
 // @include			http://*
