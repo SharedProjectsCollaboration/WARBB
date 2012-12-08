@@ -1,9 +1,22 @@
 WARBB
 =====
 
-Warez-BB version of WAR Link checker
+Warez-BB version of WAR Link checker. 
+Official userscript page located [here](http://userscripts.org/scripts/show/153759 "Official userscript page for WARBB")
 
-### Custom new file hosts (+9)
+### Custom fixes/changes (+8)
+
+extabit not checking dead links  
+extabit not recognized links  
+sendmyway not checking dead links  
+filekom dead links not checking  
+2shared document links  
+eyesfile dead link not checking  
+yunfile new domain name: yfdisk  
+gigasize link not picked up  
+
+
+### Custom new file hosts (+15)
 myupload  
 filebeam  
 upsto  
@@ -13,6 +26,12 @@ megaload
 oteupload  
 filebulk  
 uploadblast  
+gbmeister  
+filedwon  
+filemaze  
+uploadcore  
+filerio  
+filekom  
 
 
 ### Custom obsolete file hosts (+131)
