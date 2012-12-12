@@ -4,7 +4,28 @@ WARBB
 Warez-BB version of WAR Link checker. 
 Official userscript page located [here](http://userscripts.org/scripts/show/153759 "Official userscript page for WARBB")
 
-### Custom fixes/changes (+8)
+### Changelog
+
+## 1.0.1:
+
+Added: ifilehosting.net  
+Added: fileplaneta.com  
+Added: filenuke.com  
+Added: box.com  
+Added: odsiebie.pl  
+Added: nitrobits.com  
+Added: rnbload.com  
+Fixed: datafilehost.com not picked up link  
+Fixed: safelinking.net/p/ non existing links  
+Fixed: aavg.net alive links  
+Fixed: hotfile.com/file/ links  
+Fixed: hotfiles.ws (added api)  
+Added: ability to change the anonymizer, changed default to anonymz.com  
+Obsolete: filevelocity.com  
+
+## Version 1.0.0 (release):
+
+### Custom fixes/changes
 
 extabit not checking dead links  
 extabit not recognized links  
@@ -16,7 +37,7 @@ yunfile new domain name: yfdisk
 gigasize link not picked up  
 
 
-### Custom new file hosts (+15)
+### Custom new file hosts
 myupload  
 filebeam  
 upsto  
@@ -34,7 +55,7 @@ filerio
 filekom  
 
 
-### Custom obsolete file hosts (+131)
+### Custom obsolete file hosts
 
 Megashare  
 sharerun  
