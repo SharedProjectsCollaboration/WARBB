@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name			WarBB - Warez-BB Links Checker
 // @description		Automatically checks for dead links from various file hosting services.
-// @details			Based on popular W.A.R. Links Checker, this script automatically checks links from 250+ unique filehostings. For Firefox, Chrome, Safari. 
-// @version			1.0.0
+// @details			Based on popular W.A.R. Links Checker, this script automatically checks links from 380+ unique filehostings. For Firefox, Chrome, Safari. 
+// @version			1.0.1
 // @license			Please do not modify yourself, contact authors with any problems
 // @author			DJ.Black.Ninja & thecodingdude / Original by dkitty
 // @include			http://*
@@ -22,15 +22,16 @@
 // ==/UserScript==
 
 
+
 //separate alternative domains with "|" char (first name is considered being main)
 var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "4fastfile.com", "4shared.com", "adrive.com",
 "bayfiles.com", "bezvadata.cz", "bitshare.com", "burnupload.com|burnupload.ihiphop.com", "cobrashare.sk", "filebeam.com",
 "cramit.in|cramitin.net", "czshare.com", "dataport.cz", "datei.to|sharebase.to", "daten-hoster.de|filehosting.org|xtraupload.de",
 "divxden.com", "easy-share.com|crocko.com", "easybytez.com", "edisk.cz", "enigmashare.com", "erofly.cz", "euroshare.eu", "extabit.com",
 "eyesfile.net|eyesfile.com", "ezyfile.net", "fastshare.cz", "fiberupload.net", "file4sharing.com", "filefactory.com", "divshare.com",
-"fileflyer.com", "filerio.com|filekeen.com", "filemonster.net", "pigsonic.com", "nosupload.com", "fileking.co", "upsto.re",
+"fileflyer.com", "filerio.com|filekeen.com", "filemonster.net", "pigsonic.com", "nosupload.com", "fileking.co", "upsto.re", "box.com",
 "files.mail.ru", "files.to", "filepost.com|fp.io", "filesend.net", "filesflash.com", "upafile.com", "secureupload.eu", "aavg.net",
-"fileshare.in.ua", "filesmonster.com", "filestore.to", "filevelocity.com", "filezpro.com", "freakshare.net", "filedwon.com",
+"fileshare.in.ua", "filesmonster.com", "filestore.to", "filezpro.com", "freakshare.net", "filedwon.com",
 "free.fr", "free-uploading.com", "gamefront.com|filefront.com", "gettyfile.ru", "gigapeta.com", "gigasize.com", "gigaup.fr",
 "goldfile.eu", "good.com", "grupload.com", "hipfile.com", "hitfile.net", "hostuje.net", "uploadblast.com", "gbmeister.com",
 "hotfile.com", "hulkshare.com", "hyperfileshare.com", "filecloud.io|ifile.it", "ifolder.ru", "jumbofiles.com", "hotfiles.ws",
@@ -39,14 +40,14 @@ var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "
 "openfile.ru", "partage-facile.com", "putlocker.com", "ultramegabit.com", "limelinx.com", "squillion.com", "uload.to", "oteupload.com",
 "queenshare.com", "quickshare.cz", "rapidgator.net", "rapidshare.com", "rapidshare.ru", "daj.to", "demo.ovh.com", "depositfiles.com",
 "rapidupload.sk", "rarefile.net", "rayfile.com", "rghost.net", "sendmyway.com", "4savefile.com", "megaload.it", "filebulk.com",
-"sendspace.com", "sharecash.org", "share-links.biz", "share-now.net", "share-online.biz|egoshare.com",
-"share-rapid.com|sharerapid.cz|rapids.cz|share-credit.cz|share-central.cz|share-ms.cz|share-net.cz|srapid.cz",
-"shareflare.net", "slingfile.com", "sms4file.com", "solidfiles.com", "space4file.com", "speedfile.cz",
+"sendspace.com", "sharecash.org", "share-links.biz", "share-now.net", "share-online.biz|egoshare.com", "ifilehosting.net",
+"share-rapid.com|sharerapid.cz|rapids.cz|share-credit.cz|share-central.cz|share-ms.cz|share-net.cz|srapid.cz", "fileplaneta.com",
+"shareflare.net", "slingfile.com", "sms4file.com", "solidfiles.com", "space4file.com", "speedfile.cz", "filenuke.com",
 "speedshare.org", "stahovanizasms.cz", "syfiles.com", "tufiles.ru", "zippyshare.com", "ryushare.com", "rodfile.com", "wikiupload.com",
 "turboupload.com", "uloz.to|ulozto.cz|bagruj.cz|zachowajto.pl", "ulozisko.sk", "uloziste.com", "unibytes.com", "up-file.com",
-"upload-il.net|przeslij.net", "uploadbin.net", "uploaded.to|ul.to", "uploading.com", "uploadjet.net",
+"upload-il.net|przeslij.net", "uploadbin.net", "uploaded.to|ul.to", "uploading.com", "uploadjet.net", "odsiebie.pl", "rnbload.com",
 "uploadspace.pl", "upnito.sk", "uptobox.com", "usaupload.net", "veehd.com", "videobb.com", "videozer.com",
-"vip-file.com", "webshare.cz", "xdisk.cz", "yunfile.com|filemarkets.com|yfdisk.com", "ziddu.com",
+"vip-file.com", "webshare.cz", "xdisk.cz", "yunfile.com|filemarkets.com|yfdisk.com", "ziddu.com", "nitrobits.com",
 "flyfiles.net", "nowdownload.eu", "asfile.com", "prefiles.com", "axifile.com",
 "sharefiles.co", "amonshare.com", "uploadorb.com", "data.hu", "filestay.com",
 "filegag.com", "hulkfile.eu", "uptorch.com", "netkups.com", "vreer.com", "edoc.com", "upfile.biz",
@@ -124,7 +125,8 @@ var allObsoleteNames = ["uloz.cz", "storage.to", "iskladka.cz", "file-rack.com",
 "momupload.com", "yastorage.com", "sharedzilla.com", "simpleupload.net", "quicksharing.com", "buploads.com", "uploadhut.com", "orbitfiles.com", "midload.com",
 "savefile.info", "cocoshare.cc", "sharebase.de", "filehost.to", "hotelupload.com", "fileholding.com", "woofiles.com", "xuploading.com", "uploadchoice.com",
 "speedshare.us", "uploadville.com", "supasic.com", "uploadpalace.com", "uploadr.com", "rapidfile.fr", "openupload.com", "miniuploads.com", "titanicshare.com",
-"sharelor.com", "keepmyfile.com", "sharebigfile.com", "share.am", "sprintshare.com", "rapidupload.eu", "theonlinedatastorage.com", "ugotfile.com", "megaFTP.com",];
+"sharelor.com", "keepmyfile.com", "sharebigfile.com", "share.am", "sprintshare.com", "rapidupload.eu", "theonlinedatastorage.com", "ugotfile.com", "megaFTP.com",
+"filevelocity.com"];
 
 // GM_log(allHostNames.length);
 // GM_log(allContainerNames.length);
@@ -751,7 +753,7 @@ function displayTooltipInfo()
 		GM_setValue("Progress_box_background_color", Progress_box_background_color = GM_getValue("Progress_box_background_color", 'DimGray'));
 		GM_setValue("Progress_box_item_color", Progress_box_item_color = GM_getValue("Progress_box_item_color", '#FFFFCC'));
 		GM_setValue("Progress_box_refresh_rate", Progress_box_refresh_rate = GM_getValue("Progress_box_refresh_rate", 2000));
-		GM_setValue("Ref_anonymize_service", ANONYMIZE_SERVICE = GM_getValue("Ref_anonymize_service", "http://anonym.to/?"));
+		GM_setValue("Ref_anonymize_service", ANONYMIZE_SERVICE = GM_getValue("Ref_anonymize_service", "http://anonymz.com/?"));
 		GM_setValue("Debug_mode", DEBUG_MODE = GM_getValue("Debug_mode", false));
 		//hidden settings end
 
@@ -1662,7 +1664,7 @@ function displayTooltipInfo()
 		}
 		
 		var genType1 = [	"rodfile.com",		"downloadani.me",	"filezpro.com",		"eyesfile.net",
-							"ok2upload.com",	"rarefile.net",		"ovfile.com",		"filevelocity.com",
+							"ok2upload.com",	"rarefile.net",		"ovfile.com",
 							"goldfile.eu",		"space4file.com",	"vreer.com",		"uploadic.com",	
 							"ddlstorage.com", 	"filesabc.com",		"sharebeast.com",	"uploadbaz.com",
 							"sharebees.com",	"180upload.com",	"verzend.be",		"filesbb.com",
@@ -1670,7 +1672,8 @@ function displayTooltipInfo()
 							"4up.me",			"fileupup.com",		"share76.com",		"filemaze.ws",
 							"filebox.com",		"file4safe.com",	"filekom.com",		"upafile.com",
 							"idup.in",			"aieshare.com",		"novafile.com",		"longfiles.com",
-							"potload.com",		"rockdizfile.com",	"bitupload.com",	"filehost.ws"];
+							"potload.com",		"rockdizfile.com",	"bitupload.com",	"filehost.ws",
+							"odsiebie.pl"];
 						
 		var genType2 = [	"filegag.com",		"prefiles.com",		"queenshare.com", 	"coraldrive.net",
 							"lumfile.com",		"filesega.com",		"uploadblast.com",	"gbmeister.com",
@@ -1682,7 +1685,7 @@ function displayTooltipInfo()
 							"uload.to",			"filefolks.com",	"filedefend.com",	"venusfile.com",
 							"cyberlocker.ch",	"fileduct.net",		"upgrand.com",		"secureupload.eu",
 							"uploading4u.eu",	"grupload.com",		"filestrum.com",	"fileuplo.de",
-							"upaj.pl",			"sinhro.net",		"fileking.co"];
+							"upaj.pl",			"sinhro.net",		"fileking.co",		"hotfiles.ws"];
 		
 		//xfilesharing 1.0
 		function addGenericType1()
@@ -3810,7 +3813,7 @@ function displayTooltipInfo()
 			padding: 1px 10px;\
 			margin: 0px 0;display:inline-block;width:60em;\
 		}\
-		#inputColorLive, #hostSearchBox2, #hostSearchBox, #inputColorDead, #inputColorTemp, #inputColorCont, #selectAllButton, #selectNoneButton, #invertButton, #selectAllButton2, #selectNoneButton2, #invertButton2 {\
+		#inputColorLive, #hostSearchBox2, #hostSearchBox, #inputColorDead, #inputColorTemp, #inputColorCont, #selectAllButton, #selectNoneButton, #invertButton, #selectAllButton2, #selectNoneButton2, #invertButton2, #Anonymizer {\
 			color:black;\
 			border-style: solid;\
 			border-width: 1px;\
@@ -3909,6 +3912,9 @@ overflow:auto;\
 					<fieldset>\
 					<div id="sites"><input type="checkbox" id="Display_tooltip_info"> Display tooltip info</div><div id="bulk">EXPERIMENTAL</div><br><div id="configinfo">Note: File name, file size, error messages etc.</div><br>\
 					</fieldset>\
+					<fieldset>\
+					<div id="sites">Anonymizer<input type="text" id="Anonymizer"></div><br><div id="configinfo">Note: make sure to put the full base url in here, such as http://anonymz.com/?</div>\
+					</fieldset>\
 					</div>\
 				</div>\
 				<div id="tabs-4" class="warlc-ui-tab">\
@@ -3994,6 +4000,13 @@ overflow:auto;\
 						 .each(function(index, element){GM_setValue(this.id, true)});
 			$checked.prop("checked",false)
 						 .each(function(index, element){GM_setValue(this.id, false)});
+		}
+		
+		//Sets anonymizer setting
+		function changeAnonymizer()
+		{
+			var anonymizer = document.getElementById("Anonymizer");
+			GM_setValue("Ref_anonymize_service", anonymizer.value);
 		}
 
 		//Sets live links color
@@ -4161,6 +4174,9 @@ overflow:auto;\
 		$(".warlc-ui-select-invert").click(selectInvert).button();
 		
 		$(".warlc-ui-buttonset").buttonset();
+		
+		var anonymizer = document.getElementById("Anonymizer");
+		anonymizer.addEventListener('keyup', changeAnonymizer, false);
 		
 		var inColorLive = document.getElementById("inputColorLive");
 		inColorLive.addEventListener('keyup', changeColorLive, false);
@@ -4996,6 +5012,7 @@ function start(filterId)
 			addObsoleteHost("(?:MegaFTP|megaftp)\\.com","//a[contains(@href,'MegaFTP.com/') or contains(@href,'megaftp.com/')]");
 			addObsoleteHost("seeupload\\.com","//a[contains(@href,'seeupload.com/')]");
 			addObsoleteHost("rapidshare\\.com\/users\/\\w+","//a[contains(@href,'rapidshare.com/users/')]");
+			addObsoleteHost("filevelocity\\.com\/","//a[contains(@href,'filevelocity.com/')]");
 		}
 		//obsolete file hosts init end
 		
@@ -5036,8 +5053,8 @@ function start(filterId)
 			addFileHost(
 			"safelinking\\.net\/p\/\\w+",
 			'color:green;"',
-			'color:(?:red|orange);"',
-			'color:(?:grey|brown);"',
+			'color:(?:red|orange|brown);"|<p>This link does not exist.',
+			'color:grey;"',
 			"//a[contains(@href,'safelinking.net/p/')]",
 			true);
 		}
@@ -5714,6 +5731,14 @@ function start(filterId)
 			'optional--',
 			"//a[contains(@href,'hotfile.com/list')]"
 			);
+			
+			addFileHost(
+			"hotfile\\.com\/file\/\\w+",
+			'optional--',
+			'Not Found',
+			'optional--',
+			"//a[contains(@href,'hotfile.com/file/')]"
+			);
 		}
 
 		if (GM_getValue("Check_netload_dot_in_links", false)) //folders
@@ -5823,25 +5848,6 @@ function start(filterId)
 			'Soubor, který hledáte nenalezen',
 			'optional--',
 			"//a[contains(@href,'xdisk.cz/')]"
-			);
-		}
-
-		if (GM_getValue("Check_filerio_dot_com_links", false))
-		{
-			addFileHost(
-			"filekeen\\.com\/\\w+$",
-			'box-21">\\s+<h',
-			'box-21">\\s+<d|File has been removed',
-			'optional--',
-			"//a[(contains(@href,'filekeen.com')) and (string-length(@href) = 32)]"
-			);
-
-			addFileHost(
-			"filerio\\.(?:com|in)\/\\w+$",
-			'download1">',
-			'500px;text-align:left;">|File (?:has been removed|Not Found)',
-			'optional--',
-			"//a[(contains(@href,'filerio.')) and ((string-length(@href) = 31) or (string-length(@href) = 30))]"
 			);
 		}
 
@@ -6234,7 +6240,7 @@ function start(filterId)
 		if (GM_getValue("Check_datafilehost_dot_com_links", false))
 		{
 			addFileHost(
-			"datafilehost\\.com\/download-\\d+\\w+\\.html",
+			"datafilehost\\.com\/download-\\w+\\.html",
 			'dldtable">',
 			'does not exist\\.',
 			'optional--',
@@ -6772,17 +6778,6 @@ function start(filterId)
 			);
 		}
 		
-		if (GM_getValue("Check_hotfiles_dot_ws_links", false))
-		{
-			addFileHost(
-			"hotfiles\\.ws\/\\w+",
-			'<div id="titlu_mare"',
-			'File Not Found',
-			'optional--',
-			"//a[contains(@href,'hotfiles.ws/')]"
-			);
-		}
-		
 		if (GM_getValue("Check_adrive_dot_com_links", false))
 		{
 			addFileHost(
@@ -6798,7 +6793,7 @@ function start(filterId)
 		{
 			addFileHost(
 			"aavg\\.net\/\\w+",
-			'<div id="pay_modes"|<table class="file_slot"',
+			'<b>Payment methods:<\/b>',
 			'<b class="err"|File Not Found',
 			'optional--',
 			"//a[contains(@href,'aavg.net/')]"
@@ -6831,10 +6826,76 @@ function start(filterId)
 		{
 			addFileHost(
 			"filebulk\\.com\/\\w+",
-			'btn_download',
+			'<span id="countdown_str"',
 			'File Not Available',
 			'optional--',
 			"//a[contains(@href,'filebulk.com/')]"
+			);
+		}
+		
+		if (GM_getValue("Check_ifilehosting_dot_net_links", false))
+		{
+			addFileHost(
+			"ifilehosting\\.net\/download\\.php\\?id=\\w+",
+			'File name',
+			'Your requested file is not found',
+			'optional--',
+			"//a[contains(@href,'ifilehosting.net/download.php?id=')]"
+			);
+		}
+		
+		if (GM_getValue("Check_fileplaneta_dot_com_links", false))
+		{
+			addFileHost(
+			"fileplaneta\\.com\/\\w+",
+			'name="method_free"',
+			'File Not Found',
+			'optional--',
+			"//a[contains(@href,'fileplaneta.com/')]"
+			);
+		}
+		
+		if (GM_getValue("Check_filenuke_dot_com_links", false))
+		{
+			addFileHost(
+			"filenuke\\.com\/\\w+",
+			't_Download-file">',
+			'File Not Found',
+			'optional--',
+			"//a[contains(@href,'filenuke.com/')]"
+			);
+		}
+		
+		if (GM_getValue("Check_box_dot_com_links", false))
+		{
+			addFileHost(
+			"box\\.com\/(?:s|shared)\/\\w+",
+			'<div class="gallery"',
+			'<div class="error_message error_message_not_found"',
+			'optional--',
+			"//a[contains(@href,'box.com/s')]"
+			);
+		}
+		
+		if (GM_getValue("Check_nitrobits_dot_com_links", false))
+		{
+			addFileHost(
+			"nitrobits\\.com\/file\/\\w+",
+			'<div id="downloadButton">',
+			'The requested file was not found',
+			'optional--',
+			"//a[contains(@href,'nitrobits.com/file')]"
+			);
+		}
+		
+		if (GM_getValue("Check_rnbload_dot_com_links", false))
+		{
+			addFileHost(
+			"rnbload\\.com\/file\/\\d+\/\\w+",
+			'<div id="cubeDiv"',
+			'Your requested file is not found',
+			'optional--',
+			"//a[contains(@href,'rnbload.com/file/')]"
 			);
 		}
 	}
