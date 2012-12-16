@@ -6,6 +6,42 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.0.2:
+
+Obsolete: dopeshare.com  
+Obsolete: filethe.net  
+Obsolete: 6ybh-upload.com  
+Obsolete: zetshare.net  
+Obsolete: udic.co  
+Obsolete: coolfilehost.com  
+Obsolete: uploadables.com  
+Obsolete: filevegas.com  
+Obsolete: pcdesignfiles.hi2.ro  
+Obsolete: filessharefg.3x.ro  
+Obsolete: kitwit.info  
+Obsolete: neturl.info  
+Obsolete: megafilesharing.com  
+Obsolete: gfxheaven.co.uk  
+Obsolete: twinupload.com  
+Obsolete: linkrevenue.com  
+Obsolete: seed-share.com  
+Obsolete: mazzikatop.com  
+Obsolete: saba.mehargroup.org  
+Obsolete: themeyoou.com  
+Obsolete: do32.com  
+Obsolete: sharequickly.com  
+Obsolete: gfxshare.net  
+Obsolete: speeddsharing.info  
+Obsolete: downup.us.to  
+Obsolete: sharedl.com  
+Fixed: filesonic regex  
+Fixed: safelinking broken packages  
+Fixed: box.net  
+Fixed: censored folder links  
+Added: fileparadox.in  
+Added: 4share.ws  
+Added: ukfilehost.com
+
 ## 1.0.1:
 
 Added: ifilehosting.net  
