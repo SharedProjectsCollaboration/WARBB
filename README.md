@@ -6,6 +6,41 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.0.4 (26th December 2012):
+
+Added: Eyesfile.co/.com (eyesfile.net)  
+Added: Mixturecloud.com  
+Added: Miurl.es  
+Added: Brutalsha.re  
+Added: Filefront.com/gamefront.com  
+Added: Ability to select redirector service in config page, available redirectors: anonymz.com, anonym.to, blankrefer.com or no redirector. More can be added on request  
+Added: Autoupdate (using sizzlemctwizzle's Another Auto Updater Script)  
+
+
+Obsolete: weefile.com  
+Obsolete: mykupload.freei.me  
+Obsolete: share2u.net  
+Obsolete: appscene.org  
+Obsolete: filestock.net  
+Obsolete: youmirror.biz  
+Obsolete: projectcamelot.org  
+Obsolete: gigupload.com  
+Obsolete: fairyshare.com  
+
+Fixed: Gigasize.com/get/ not picked up  
+Fixed: 100shared.com, midupload.com and hostingbulk.com false results links because of api  
+Fixed: Load.to regex  
+Fixed: Safelinking unknown packages showing up as dead  
+Fixed: Safelinking direct links 404s now marked as dead (only firefox)  
+Fixed: Uploading.com parallel downloads/daily limit wrongfully showing as dead  
+Fixed: restfile.com wrongfully marked as obsolete, added .ca, .co, .cc  
+Fixed: Performance issues caused by serious memory leak due to safelinking.net direct links. Direct safelinking links will now retry 100 times if the service hasn't redirected anywhere, if no results they get marked as unresolved. This will only happen with Safelinking 404s for Chrome users.  
+
+Original WAR Changes included in new WarBB:  
+Added: ifile.ws  
+Fixed: ultramegabit.com account limitation and restricted files  
+Fixed: sendmyway.com (added api)
+
 ## 1.0.3 (20th December 2012):
 
 Added: 10upload.com (queenshare.com)  
