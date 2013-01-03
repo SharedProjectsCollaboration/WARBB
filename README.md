@@ -6,6 +6,57 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.0.5 (3rd January 2013):
+
+Added: easyfilesharing.info  
+Added: yourupload.com  
+
+Obsolete: savefile.com  
+Obsolete: upload.ps  
+Obsolete: divxcloud.com  
+Obsolete: editandshare.com  
+Obsolete: hostupload.net  
+Obsolete: fileshaker.com  
+Obsolete: youload.to  
+Obsolete: addat.hu  
+Obsolete: eyvx.com  
+Obsolete: FileDeck.net  
+Obsolete: filesnab.com  
+Obsolete: filetitle.com  
+Obsolete: ufliq.com  
+Obsolete: sharebeats.com  
+Obsolete: yotafile.com  
+Obsolete: xxlupload.com  
+Obsolete: your-filehosting.com  
+Obsolete: uploading.to  
+Obsolete: mummyfile.com  
+Obsolete: play-host.net  
+Obsolete: namipan.com  
+Obsolete: alldrives.ge/allshares.ge  
+Obsolete: uploadace.com  
+Obsolete: 7ups.net  
+Obsolete: buckshare.com  
+Obsolete: cokluupload.com  
+Obsolete: filefaster.com  
+Obsolete: divxme.com  
+Obsolete: rapidmedia.net  
+Obsolete: filerace.com  
+Obsolete: mdj.com  
+Obsolete: crocshare.com  
+Obsolete: movbay.org  
+Obsolete: migafile.com  
+Obsolete: dudupload.com  
+Obsolete: fileuploadx.de  
+Obsolete: fufox.net  
+Obsolete: sharefiles4u.net  
+Obsolete: fileor.com  
+Obsolete: filedove.com  
+Obsolete: wickedupload.com  
+Obsolete: miurl.es
+
+Fixed: 4share.ws dead links (added dead regex, wasn't added because no dead links found)  
+Fixed: uload.to regex  
+
 ## 1.0.4 (26th December 2012):
 
 Added: Eyesfile.co/.com (eyesfile.net)  
