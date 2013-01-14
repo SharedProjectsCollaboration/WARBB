@@ -6,6 +6,17 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.0.6 (14th January 2013):
+
+Added: Upload.tc  
+Added: Fileneo.com  
+Added: File-upload.net  
+Added: Fliiby.com  
+
+Obsolete: Sharpfile.com  
+
+Fixed: Uploadc.com alive links (added regex)
+
 ## 1.0.5 (3rd January 2013):
 
 Added: easyfilesharing.info  
