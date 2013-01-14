@@ -2,7 +2,7 @@
 // @name      WarBB - Warez-BB Links Checker
 // @description   Automatically checks for dead links from various file hosting services.
 // @details     Based on popular W.A.R. Links Checker, this script automatically checks links from 380+ unique filehostings. For Firefox, Chrome, Safari. 
-// @version     1.0.5
+// @version     1.0.6
 // @license     Please do not modify yourself, contact authors with any problems
 // @author      DJ.Black.Ninja & thecodingdude / Original by dkitty
 // @include     *warez-bb.org*
@@ -20,7 +20,7 @@
 // @usoscript   153759
 // ==/UserScript==
 
-var WarBB_version = "1.0.5"
+var WarBB_version = "1.0.6"
 
 //separate alternative domains with "|" char (first name is considered being main)
 var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "4fastfile.com", "4shared.com", "adrive.com",
@@ -43,14 +43,14 @@ var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "
 "share-rapid.com|sharerapid.cz|rapids.cz|share-credit.cz|share-central.cz|share-ms.cz|share-net.cz|srapid.cz", "fileplaneta.com", "midupload.com",
 "shareflare.net", "slingfile.com", "sms4file.com", "solidfiles.com", "space4file.com", "speedfile.cz", "filenuke.com", "fileparadox.in",
 "speedshare.org", "stahovanizasms.cz", "syfiles.com", "tufiles.ru", "zippyshare.com", "ryushare.com", "rodfile.com", "wikiupload.com",
-"uloz.to|ulozto.cz|bagruj.cz|zachowajto.pl", "ulozisko.sk", "uloziste.com", "unibytes.com", "up-file.com", "basicupload.com",
+"uloz.to|ulozto.cz|bagruj.cz|zachowajto.pl", "ulozisko.sk", "uloziste.com", "unibytes.com", "up-file.com", "basicupload.com", "fileneo.com",
 "upload-il.net|przeslij.net", "uploadbin.net", "uploaded.to|ul.to", "uploading.com", "uploadjet.net", "odsiebie.pl", "rnbload.com",
 "uploadspace.pl", "upnito.sk", "uptobox.com", "usaupload.net", "veehd.com", "videobb.com", "videozer.com", "uploads.bizhat.com", "filestock.ru",
 "vip-file.com", "webshare.cz", "xdisk.cz", "yunfile.com|filemarkets.com|yfdisk.com", "ziddu.com", "nitrobits.com", "mega-myfile.com",
 "flyfiles.net", "nowdownload.eu", "asfile.com", "prefiles.com", "axifile.com", "zalil.ru", "ortofiles.com", "netkozmos.com", "uploadc.com",
 "sharefiles.co", "amonshare.com", "uploadorb.com", "data.hu", "filestay.com", "upfile.in", "blitzfiles.com", "filesbowl.com", "freestorage.ro",
 "filegag.com", "hulkfile.eu", "uptorch.com", "netkups.com", "vreer.com", "edoc.com", "upfile.biz", "hulkload.com", "wizzupload.com",
-"uppit.com|up.ht", "peejeshare.com", "sharpfile.com", "ddlstorage.com", "downloadani.me", "filesabc.com", "hotuploading.com", "share.az",
+"uppit.com|up.ht", "peejeshare.com", "ddlstorage.com", "downloadani.me", "filesabc.com", "hotuploading.com", "share.az", "upload.tc",
 "sharebeast.com", "sharebees.com", "filemates.com", "180upload.com", "verzend.be", "asixfiles.com", "zomgupload.com", "mlfat4arab.com",
 "movreel.com", "4up.me", "extmatrix.com", "i-filez.com", "sendfiles.nl", "yourfilestore.com", "filebig.net", "fileupup.com", "sharesix.com",
 "sockshare.com", "share76.com", "filebox.com", "nekaka.com", "file4safe.com", "freeuploads.fr|uploa.dk", "tusfiles.net", "terabit.to",
@@ -65,7 +65,8 @@ var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "
 "filestrum.com", "fileuplo.de", "upaj.pl", "sinhro.net", "filedownloads.org", "egofiles.com", "filestore.com.ua", "uploadcore.com",
 "project-free-upload.com", "imzupload.com", "netuploaded.com", "multifilestorage.com", "hostingbulk.com", "speedy-share.com", "100shared.com",
 "xvidstage.com", "faststream.in", "vidbull.com", "igetfile.com", "rapidfileshare.net", "filebox.ro", "mixturecloud.com|mixturefile.com", "brutalsha.re",
-"filefront.com|gamefront.com", "restfile.ca|restfile.com|restfile.cc|restfile.co", "easyfilesharing.info", "yourupload.com"];
+"filefront.com|gamefront.com", "restfile.ca|restfile.com|restfile.cc|restfile.co", "easyfilesharing.info", "yourupload.com", "file-upload.net",
+"fliiby.com"];
 
 try
 {
@@ -1906,7 +1907,7 @@ function displayTooltipInfo()
       )       
     }
     
-    if (GM_getValue("Check_sharpfile_dot_com_links", false))
+    /*if (GM_getValue("Check_sharpfile_dot_com_links", false))
     { 
       addHost(
         "sharpfile", //hostname
@@ -1925,7 +1926,7 @@ function displayTooltipInfo()
         /orange'>http:\/\/(?:|www\.)sharpfile\.com\/\w+/g, //unavaregex
         null //function delegate
       )       
-    }
+    }*/
     
     if (GM_getValue("Check_billionuploads_dot_com_links", false))
     { 
@@ -5374,6 +5375,7 @@ function start(filterId)
       addObsoleteHost("filedove\\.com\/\\w+","//a[contains(@href,'filedove.com/')]");
       addObsoleteHost("wickedupload\\.com\/\\w+","//a[contains(@href,'wickedupload.com/')]");
       addObsoleteHost("miurl\\.es\/\\w+","//a[contains(@href,'miurl.es/')]");
+      addObsoleteHost("sharpfile\\.com\/\\w+","//a[contains(@href,'sharpfile.com/')]");
     }
     //obsolete file hosts init end
     
@@ -6334,8 +6336,8 @@ function start(filterId)
     {
       addFileHost(
       "(?:w\\d*\.|)(?:crocko|easy-share)\\.com\/\\w+",
-      'fz24">Download',
-      'msg-err"|the page you\'re looking for|1>400 Bad Request<',
+      'fz24">Download|td class="first">',
+      'msg-err"|the page you\'re looking for|1>400 Bad Request<|No files in this folder',
       'optional--',
       "//a[contains(@href,'easy-share.com') or contains(@href,'crocko.com')]"
       );
@@ -7360,7 +7362,7 @@ function start(filterId)
     {
       addFileHost(
       "uploadc\\.com\/\\w+",
-      'optional--',
+      'Stream or Download File',
       'File Not Found',
       'optional--',
       "//a[contains(@href,'uploadc.com/')]"
@@ -7452,6 +7454,50 @@ function start(filterId)
       '404',
       'optional--',
       "//a[contains(@href,'yourupload.com/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_upload_dot_tc_links", false))
+    {
+      addFileHost(
+      "upload\\.tc\/download\/\\d+\/\\w+",
+      '<div id="dl"',
+      'Error<\/b>',
+      'optional--',
+      "//a[contains(@href,'upload.tc/download/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_fileneo_dot_com_links", false))
+    {
+      addFileHost(
+      "fileneo\\.com\/\\w+",
+      'Download File<\/h3>',
+      'File not found',
+      'optional--',
+      "//a[contains(@href,'fileneo.com/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_file_dash_upload_dot_net_links", false))
+    {
+      addFileHost(
+      "(?:en|)file\\-upload\\.net\/download\\-\\d+\/\\w+",
+      'downbutton.gif',
+      'Datei existiert nicht!|File does not exist!',
+      'optional--',
+      "//a[contains(@href,'file-upload.net/download-')]"
+      );
+    }
+    
+    if (GM_getValue("Check_fliiby_dot_com_links", false))
+    {
+      addFileHost(
+      "fliiby\\.com\/file\/\\d+\/\\w+",
+      'file_panel">',
+      'Not Found<\/span>',
+      'optional--',
+      "//a[contains(@href,'fliiby.com/file/')]"
       );
     }
   }
