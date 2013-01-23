@@ -6,6 +6,60 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.0.7 (23rd January 2013):
+
+Added: Datacloud.to  
+Added: Filevice.com  
+Added: Cloudzer.net  
+Added: Eyesfile.org (eyesfile.net)  
+Added: Jumbofiles.org  
+Added: Filemac.com (filekom.com)  
+Added: Hotfiles.ws  
+Added: Ifile.ws  
+Added: File-speed.com  
+Added: Rapidapk.com  
+Added: Restfile.org (restfile.ca)  
+Added: Upshared.com  
+Added: Filecloud.ws  
+Added: Aa.vg (aavg.net)  
+Added: Ishare.bz  
+Added: Sfshare.se  
+Added: Filewe.com  
+Added: Upload.ee  
+Added: Filesmall.com  
+Added: Putshare.net  
+Added: Vidup.me  
+Added: Putme.org  
+
+Obsolete: Freefilehosting.ws  
+Obsolete: Uploadby.us  
+Obsolete: Kisalt.me  
+Obsolete: Wizzupload.com  
+Obsolete: Squillion.com  
+Obsolete: 37v.net  
+Obsolete: Xshar.net  
+Obsolete: Filemsg.com  
+Obsolete: Datafile.us  
+Obsolete: Smallfile.in  
+Obsolete: Space4upload.info  
+Obsolete: Nrgfile.com  
+Obsolete: Okah.com  
+Obsolete: Filemojo.com  
+Obsolete: Filerose.com  
+Obsolete: Mega.huevn.com  
+Obsolete: Hitfile.net (banned host)
+
+Fixed: Eyesfile.com/co/net not checking  
+Fixed: MF folders now marked as unresolved  
+Fixed: Cobrashare dead links  
+Fixed: Problem with restfile.ca and possibly other hosts causing other links (even some not checked by warBB) to be marked as dead  
+Fixed: Problem with certain hotfile links causing script to indicate every links with a 0 in it as dead.  
+Fixed: Filesbowl dead links  
+Fixed: Fileswap alive links  
+Fixed: Certain Share-online.biz links not checking  
+Fixed: Nitrobits.com (added api)  
+
+
 ## 1.0.6 (14th January 2013):
 
 Added: Upload.tc  
