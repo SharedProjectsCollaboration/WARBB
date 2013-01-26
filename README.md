@@ -6,6 +6,26 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.1 (26th January 2013)
+
+Added: Uplly.com  
+Added: Vidpe.com  
+Added: Bigupload.com  
+
+Obsolete: Filecloud.io / ifile.it (disallowed hosts)  
+Obsolete: Eroshare.in (disallowed host)  
+Obsolete: Useupload.com  
+Obsolete: Seedfile.com  
+Obsolete: Hatlimit.pl
+
+Fixed: Uploading.com slowness in checking (added bulk checking)  
+Fixed: Extabit.com slowness in checking (added bulkcheck for users with EB account, enable in config, disabled by default)  
+Fixed: Megashares.com reliability (added bulkcheck)  
+Fixed: 1fichier.com dead links  
+Fixed: VideoBB.com dead links  
+Fixed: Various safelinking.net direct links issues, including 404s (still doesn't work on chrome, most likely an issue with tampermonkey rather than WarBB)  
+
+
 ## 1.0.7 (23rd January 2013):
 
 Added: Datacloud.to  
