@@ -6,7 +6,68 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
-## 1.1 (26th January 2013)
+## 1.2.0
+
+Added: MEGA.co.nz! :D  
+Added: Hugefiles.net  
+Added: Ufox.com  
+Added: Clipshouse.com  
+Added: Keeplinks.me (direct link checking working, only deleted packages working)  
+Added: Dfiles.eu (depositfiles)  
+Added: Unlimitshare.com  
+Added: Share4web.com  
+Added: Uploadhero.co (uploadhero.com)  
+Added: Speedshare.eu  
+Added: Creafile.net  
+Added: Rapidstation.com  
+Added: Catshare.net  
+Added: Uploaders.be (filesbowl.com, dunno if related but they look almost the same)  
+Added: Drop.st  
+Added: Filesbomb.com  
+
+Obsolete: Ex.ua  
+Obsolete: Filespump.com  
+Obsolete: Byethost12.com  
+Obsolete: Filezzz.com  
+Obsolete: Filegetty.com  
+Obsolete: Uploadersite.com  
+Obsolete: Nfile.eu  
+Obsolete: Box4upload.com  
+Obsolete: Envirofile.org  
+Obsolete: Omxira.com  
+Obsolete: Evilshare.com  
+Obsolete: Sharehoster.de  
+Obsolete: Rapidoyun.com  
+Obsolete: Shareflare.net (banned host)  
+Obsolete: Filestrum.com  
+Obsolete: Monsteruploads.eu  
+Obsolete: Coraldrive.net  
+Obsolete: Files2k.eu  
+Obsolete: Hulkfile.eu (banned host)  
+Obsolete: Peeje.com  
+Obsolete: Kiwiload.com  
+Obsolete: Uploadjockey.com (banned host)  
+Obsolete: I-filez.com 
+
+Fixed: Hotfile.com/links/  
+Fixed: Display full links in safelinking direct links if "Display full links in containers" is enabled  
+Fixed: Fileflyer.com locked files marked as dead (premium only links)  
+Fixed: Filesend dead links  
+Fixed: Safelinking direct links sending wrong checking stats (i.e. dead links due to 404s not counted)  
+Fixed: Oteupload.com dead links  
+Fixed: Sendmyway.com links not checking  
+Fixed: HenchFile & BillionUploads capitalised links not checking  
+Fixed: Aa.vg not checking  
+Fixed: Nutfile not checking  
+Fixed: Sharebase.to alive links  
+Fixed: Asfile.com dead links  
+Fixed: Megaload.it dead links  
+Fixed: Rockdizfile.com  
+ 
+Tooltip info: Lots of filenames/errors added/fixed (too much to mention), Safelinking packages added (it's pretty cool, check it out! :D)  
+WarBB now runs on Safelinking.net and Keeplinks.me too (so you won't have to check package links manually)
+
+## 1.1.0 (26th January 2013)
 
 Added: Uplly.com  
 Added: Vidpe.com  
