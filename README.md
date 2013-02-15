@@ -6,6 +6,34 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.2.1
+
+Added: Epicshare.net  
+Added: Limelinx.com  
+Added: Novaup.com/novamov.com  
+Added: Filedropper.com  
+Added: Yourfiles.to  
+Added: Skydrive.live.com  
+Added: 4upfiles.com (4up.me)
+
+Obsolete: Mylordweb.com  
+Obsolete: Edoc.com  
+Obsolete: Milledrive.com/videos  
+Obsolete: Mooshare.net  
+Obsolete: Uploadbox.com  
+Obsolete: Aieshare.com  
+Obsolete: Filestock.ru  
+
+Fixed: Extabit links with "?upld=1" at the end not checking (API only)  
+Fixed: Keeplinks.me direct link issue caused by ssl  
+Fixed: Minor fixes for Mega, doesn't really change anything.  
+Fixed: Creafile.net  
+Fixed: Rapidstation.com  
+Fixed: 4up.me  
+Fixed: Hugefiles.net  
+
+Moved: keeplinks.me from hosts to containers
+
 ## 1.2.0
 
 Added: MEGA.co.nz! :D  
@@ -21,7 +49,7 @@ Added: Speedshare.eu
 Added: Creafile.net  
 Added: Rapidstation.com  
 Added: Catshare.net  
-Added: Uploaders.be (filesbowl.com, dunno if related but they look almost the same)  
+Added: Uploaders.be (filesbowl.com, unsure if related but they look almost the same)  
 Added: Drop.st  
 Added: Filesbomb.com  
 
