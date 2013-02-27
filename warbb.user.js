@@ -2,7 +2,7 @@
 // @name      WarBB - Warez-BB Links Checker
 // @description   Automatically checks for dead links from various file hosting services.
 // @details     Based on popular W.A.R. Links Checker, this script automatically checks links from 700+ unique filehostings. For Firefox, Chrome, Safari. 
-// @version     1.2.1
+// @version     1.3.0
 // @license     Please do not modify yourself, contact authors with any problems
 // @author      DJ.Black.Ninja & thecodingdude / Original by dkitty
 // @include     *warez-bb.org*
@@ -22,7 +22,7 @@
 // @usoscript   153759
 // ==/UserScript==
 
-var WarBB_version = "1.2.1";
+var WarBB_version = "1.3.0";
 
 //separate alternative domains with "|" char (first name is considered being main)
 var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "4fastfile.com", "4shared.com", "adrive.com",
@@ -31,10 +31,10 @@ var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "
 "divxden.com|vidxden.com|vidbux.com", "easy-share.com|crocko.com", "easybytez.com", "edisk.cz", "enigmashare.com", "erofly.cz", "euroshare.eu",
 "eyesfile.net|eyesfile.com|eyesfile.co|eyesfile.org", "ezyfile.net", "fastshare.cz", "fiberupload.net", "file4sharing.com", "filefactory.com",
 "fileflyer.com", "filerio.com|filekeen.com", "filemonster.net", "pigsonic.com", "nosupload.com", "fileking.co", "upsto.re", "box.com",
-"files.mail.ru", "files.to", "filepost.com|fp.io", "filesend.net", "filesflash.com", "upafile.com", "secureupload.eu", "aavg.net|aa.vg",
+"files.mail.ru", "files.to", "filepost.com|fp.io", "filesend.net", "filesflash.com", "upafile.com", "secureupload.eu", "aavg.net|aa.vg|downdone.com",
 "fileshare.in.ua", "filesmonster.com", "filestore.to", "filezpro.com", "freakshare.net", "filedwon.com", "4share.ws", "ukfilehost.com",
 "free.fr", "free-uploading.com", "gamefront.com|filefront.com", "gettyfile.ru", "gigapeta.com", "gigasize.com", "gigaup.fr", "videopremium.net",
-"goldfile.eu", "good.com", "grupload.com", "hipfile.com", "hostuje.net", "uploadblast.com", "gbmeister.com", "gbitfiles.com", "vidup.me",
+"goldfile.eu", "good.com", "grupload.com", "hipfile.com", "hostuje.net", "gbitfiles.com", "vidup.me",
 "hotfile.com", "hulkshare.com", "hyperfileshare.com", "ifolder.ru", "jumbofiles.com", "hotfiles.ws", "allmyvideos.net", "catshare.net",
 "leteckaposta.cz|sharegadget.com", "load.to", "loombo.com", "mediafire.com", "megafileupload.com", "megashares.com", "filemaze.ws", "sharerepo.com",
 "mojedata.sk", "movshare.net", "muchshare.net", "multishare.cz", "myupload.dk", "narod.ru|narod.yandex.ru", "netload.in", "ok2upload.com",
@@ -48,7 +48,7 @@ var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "
 "uloz.to|ulozto.cz|bagruj.cz|zachowajto.pl", "ulozisko.sk", "uloziste.com", "unibytes.com", "up-file.com", "basicupload.com", "fileneo.com",
 "upload-il.net|przeslij.net", "uploadbin.net", "uploaded.to|ul.to", "uploading.com", "uploadjet.net", "odsiebie.pl", "rnbload.com", "extabit.com",
 "uploadspace.pl", "upnito.sk", "uptobox.com", "usaupload.net", "veehd.com", "videobb.com", "videozer.com", "uploads.bizhat.com",
-"vip-file.com", "webshare.cz", "xdisk.cz", "yunfile.com|filemarkets.com|yfdisk.com", "ziddu.com", "nitrobits.com", "mega-myfile.com", "divshare.com",
+"vip-file.com", "webshare.cz", "xdisk.cz", "yunfile.com|filemarkets.com|yfdisk.com", "nitrobits.com", "mega-myfile.com", "divshare.com",
 "flyfiles.net", "nowdownload.eu", "asfile.com", "prefiles.com", "axifile.com", "zalil.ru", "ortofiles.com", "netkozmos.com", "uploadc.com|zalaa.com",
 "sharefiles.co", "amonshare.com", "uploadorb.com", "data.hu", "filestay.com", "upfile.in", "blitzfiles.com", "filesbowl.com", "freestorage.ro",
 "uptorch.com", "netkups.com", "vreer.com", "upfile.biz", "file-speed.com", "hulkload.com", "speedshare.eu", "putshare.com",
@@ -63,14 +63,14 @@ var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "
 "unextfiles.com", "stahovadlo.cz", "zooupload.com", "warserver.cz", "247upload.com", "datafilehost.com", "bitupload.com", "fileza.net",
 "fileprohost.com", "files.indowebster.com", "superload.cz", "mafiastorage.com", "zenload.com", "fileband.com", "miurl.es", "filesmall.com",
 "henchfile.com", "minus.com", "filesmelt.com", "hellupload.com", "packupload.com", "uploadingit.com", "stiahni.si", "filefolks.com", "ishare.bz",
-"filedefend.com", "sendspace.pl", "fastshare.org", "venusfile.com", "cyberlocker.ch", "filesector.cc", "fileduct.net", "upgrand.com", "putshare.net",
+"filedefend.com", "sendspace.pl", "fastshare.org", "cyberlocker.ch", "filesector.cc", "fileduct.net", "upgrand.com", "putshare.net",
 "fileuplo.de", "upaj.pl", "sinhro.net", "filedownloads.org", "egofiles.com", "filestore.com.ua", "uploadcore.com", "filecloud.ws", "filesbomb.com",
 "project-free-upload.com", "imzupload.com", "netuploaded.com", "multifilestorage.com", "hostingbulk.com", "speedy-share.com", "100shared.com",
 "xvidstage.com", "faststream.in", "vidbull.com", "igetfile.com", "rapidfileshare.net", "filebox.ro", "mixturecloud.com|mixturefile.com", "brutalsha.re",
 "filefront.com|gamefront.com", "restfile.ca|restfile.com|restfile.cc|restfile.co|restfile.org", "easyfilesharing.info", "yourupload.com", "file-upload.net",
 "fliiby.com", "datacloud.to", "cloudzer.net|clz.to", "filevice.com", "jumbofiles.org", "hotfiles.co", "ifile.ws", "rapidapk.com", "upshared.com", "vidpe.com",
 "upload.ee", "putme.org", "uplly.com", "bigupload.com", "hugefiles.net", "mega.co.nz", "unlimitshare.com", "share4web.com", "uploaders.be", "epicshare.net",
-"limelinx.com", "novaup.com|novamov.com", "filedropper.com", "yourfiles.to", "skydrive.live.com"];
+"limelinx.com", "novaup.com|novamov.com", "filedropper.com", "yourfiles.to", "skydrive.live.com", "uploadboy.com", "uploking.com"];
 
 try
 {
@@ -94,8 +94,7 @@ catch (e)
 }
 
 //separate alternative domains with "|" char (first name is considered being main)
-var allContainerNames = ["linkcrypt.ws", "linksave.in", "linkto.net", "madlink.sk", "multiload.cz", "keeplinks.me",
-"mirrorcreator.com", "ncrypt.in", "redi.re", "relink.us", "safelinking.net", "theloo.katt.it", "bit.ly"];
+var allContainerNames = ["keeplinks.me", "safelinking.net"];
 
 //separate alternative domains with "|" char (first name is considered being main)
 var allObsoleteNames = ["uloz.cz", "storage.to", "iskladka.cz", "file-rack.com", "fast-load.net", "subory.sk", "bigandfree.com",
@@ -148,8 +147,8 @@ var allObsoleteNames = ["uloz.cz", "storage.to", "iskladka.cz", "file-rack.com",
 "uploadby.us", "kisalt.me", "wizzupload.com", "squillion.com", "37v.net", "xshar.net", "filemsg.com", "datafile.us", "smallfile.in", "space4upload.info", "nrgfile.com",
 "okah.com", "filemojo.com", "filerose.com", "mega.huevn.com", "hitfile.net", "filecloud.io|ifile.it", "ex.ua", "filespump.com", "byethost12.com", "filezzz.com",
 "uploadersite.com", "filegetty.com", "nfile.eu", "box4upload.com", "envirofile.org", "omxira.com", "evilshare.com", "sharehoster.de", "rapidoyun.com", "shareflare.net",
-"monsteruploads.eu", "coraldrive.net", "files2k.eu", "kiwiload.com", "uploadjockey.com", "i-filez.com", "mylordweb.com", "edoc.com", "mooshare.net",
-"uploadbox.com", "aieshare.com", "filestock.ru", "filegag.com", "sharpfile.com"];
+"monsteruploads.eu", "coraldrive.net", "files2k.eu", "kiwiload.com", "uploadjockey.com", "i-filez.com", "mylordweb.com", "edoc.com", "mooshare.net", "rapidshare.de",
+"uploadbox.com", "aieshare.com", "filestock.ru", "filegag.com", "sharpfile.com", "uploadblast.com", "gbmeister.com", "ziddu.com", "db-rap.com", "venusfile.com"];
 
 // GM_log(allHostNames.length);
 // GM_log(allContainerNames.length);
@@ -929,20 +928,9 @@ function displayTooltipInfo()
   function processContainers()
   {
     var redirectorTypes = { "HTTP_302": 0, 
-                "INNER_LINK": 1, 
-                "THELOO_KATT_IT": 2,
-                "CING_BE": 3,
-                "ADF_LY": 4};
+                "INNER_LINK": 1};
     
-    var cMultiloadTotal = 0;
-    var cMultiloadProcessed = 0;
-
-    var cMirrorcreatorComTotal = 0;
-    var cMirrorcreatorComProcessed = 0;
-
     var hostRestrictionRegex = "";
-    var multiloadComRestriction = "";
-    var multiloadComRestrictionRegex;
 
     //
     //HANDLING REDIRECTORS START
@@ -981,9 +969,6 @@ function displayTooltipInfo()
           {
           case redirectorTypes.HTTP_302:      processRedirectorLink(redirectorsSnapshot.snapshotItem(linkIdx), redirIdx); break;
           case redirectorTypes.INNER_LINK:    processRedirectorLinkEx(redirectorsSnapshot.snapshotItem(linkIdx), redirIdx); break;
-          case redirectorTypes.THELOO_KATT_IT:  processThelooKattItLink(redirectorsSnapshot.snapshotItem(linkIdx), redirIdx); break;
-          case redirectorTypes.CING_BE:     processCingBeLink(redirectorsSnapshot.snapshotItem(linkIdx), redirIdx); break;
-          case redirectorTypes.ADF_LY:      processAdfLyLink(redirectorsSnapshot.snapshotItem(linkIdx), redirIdx); break;
           default:
           }
         }
@@ -991,7 +976,7 @@ function displayTooltipInfo()
       //
     }
 
-    //HTTP_302
+    //HTTP_302 (Safelinking.net & keeplinks.me direct)
     var tries = 0;
     function processRedirectorLink(link, redirectorId)
     {
@@ -1007,9 +992,13 @@ function displayTooltipInfo()
         },
         onload: function(result) {
           if (result.status == 404) {
+            if (result.finalUrl.match(/skydrive\.live\.com/)) { return; } 
+            else {
             link.className = 'adead_link';
             redirectors[redirectorId].cProcessed++;
             cLinksProcessed++; cLinksDead++;
+            console.log(result);
+            }
           } else if (result.finalUrl.replace("https", "http") == link.href || result.finalUrl == link.href) // service hasn't redirected anywhere
           {
             if (result.status == 404) {
@@ -1050,7 +1039,7 @@ function displayTooltipInfo()
       });
     }
     
-    //INNER_LINK
+    //INNER_LINK (Hotfile.com/links/)
     function processRedirectorLinkEx(link, redirectorId)
     {
       link.className = 'container_link';
@@ -1073,562 +1062,8 @@ function displayTooltipInfo()
         }       
       });
     }
-    
-    //theloo.katt.it (wrapped safelinking.net)
-    function processThelooKattItLink(link, redirectorId)
-    {
-      link.className = 'container_link';
-          
-      GM_xmlhttpRequest({
-        method: 'GET',
-        url: link.href,
-        headers: {
-          'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
-          'Accept': 'text/xml',
-          'Referer': ""
-        },
-        onload: function(result) {
-          link.href = result.responseText.match(redirectors[redirectorId].innerLinkRegex)[1];
-          
-          redirectors[redirectorId].cProcessed++;
-          
-          
-          //the inner links are safelinking.net links, so lets proceed with it
-          if (GM_getValue("Check_safelinking_dot_net_links", false))
-          {
-            processRedirectorLink(link, 0);
-          }
-        }         
-      });
-    }
-    
-    //cing.be (application/x-www-form-urlencoded)
-    function processCingBeLink(link, redirectorId)
-    {
-      link.className = 'container_link';
-          
-      GM_xmlhttpRequest({
-        method: 'GET',
-        url: link.href,
-        headers: {
-          'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
-          'Accept': 'text/xml',
-          'Referer': ""
-        },
-        onload: function(result) {
-          var f_s = result.responseText.match(/f_s" value="(\w+)">/);
-          
-          if (f_s != null)
-          {
-            GM_xmlhttpRequest({
-              method: 'POST',
-              url: link.href,
-              headers: {
-                'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
-                'Accept': 'text/xml',
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Referer': ""
-              },
-              data: 'f_s=' + f_s[1],
-              onload: function(result) {
-                link.href = result.finalUrl;
-                
-                redirectors[redirectorId].cProcessed++;
-          
-                if (redirectors[redirectorId].cProcessed >= redirectors[redirectorId].cTotal)
-                  checkLinks('container_link');
-              }         
-            });         
-          }
-          else
-          {
-            redirectors[redirectorId].cProcessed++;
-          
-            if (redirectors[redirectorId].cProcessed >= redirectors[redirectorId].cTotal)
-              checkLinks('container_link');
-          }
-        }
-      });     
-    }
-    
-    //adf.ly (adf.ly/go innerLink, locking mechanism)
-    function processAdfLyLink(link, redirectorId)
-    {
-      link.className = 'container_link';
-          
-      GM_xmlhttpRequest({
-        method: 'GET',
-        url: link.href,
-        headers: {
-          'User-agent': 'Mozilla/4.0',
-          'Accept': 'text/xml',
-          'Referer': ""
-        },
-        onload: function(result) {
-        
-          if (result.finalUrl.match('/locked/'))
-          {
-            var delay = result.responseText.match(/countdown">(\d+)</)[1];
-            // GM_log(result.finalUrl + 'is locked. Repeating the request in ' + delay + 's.');
-            // setTimeout(function(){processAdfLyLink(link, redirectorId);}, delay * 1000);
-          }
-          else
-          {
-            // GM_log('Processing... ' + link.href);
-            // GM_log('Found...' + result.responseText.match(/\/go\/(\w+\/\w+)/)[1]);
-            
-            var directLink = 'http://adf.ly' + result.responseText.match(/(\/go\/\w+\/\w+)/)[1];
-            
-            var logToken = result.responseText.match(/flashy_(\w+)/)[1];
-            var users = result.responseText.match(/user=\d+&user2=\d+/);
-            
-            //confirm advert
-            GM_xmlhttpRequest(
-            {
-            method: 'POST',
-            url: 'http://adf.ly/l.php',
-            headers: {
-              'User-agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko/20100101 Firefox/13.0',
-              'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-              'Referer': link.href
-            },
-            data: users + '&lt=' + logToken,
-            onload: function(result) {
-              
-              //retrieve final url from .../go/... link
-              GM_xmlhttpRequest({
-              method: 'GET',
-              url: directLink,
-              headers: {
-                'User-agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko/20100101 Firefox/13.0',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Referer': link.href
-              },
-              onload: function(result) {
-              
-                link.href = result.finalUrl;
-                
-                redirectors[redirectorId].cProcessed++;
-              
-                if (redirectors[redirectorId].cProcessed >= redirectors[redirectorId].cTotal)
-                  checkLinks('container_link');
-              }
-              });
-            }         
-            });           
-          }     
-        }         
-      });
-      
-      function proceedOK()
-      {
-      }
-    }
-    
-    //MULTILOAD.CZ START
-    if (GM_getValue("Check_multiload_dot_cz_links", false))
-    {
-      var mlRegex = 'multiload\\.cz\/stahnout\/\\d+\/';
-      var mlXpath = "//a[contains(@href,'http://www.multiload.cz/stahnout')]";
-
-      hostRestrictionRegex = 'Upload se nezdařil|limit exceeded|probíhá reupload|';
-
-      if (GM_getValue("Check_rapidshare_dot_com_links", false))
-        hostRestrictionRegex += 'rapidshare\\.com|';
-      if (GM_getValue("Check_hellshare_dot_com_links", false))
-        hostRestrictionRegex += 'hellshare|';
-      if (GM_getValue("Check_share_dash_rapid_dot_com_links", false))
-        hostRestrictionRegex += 'share-rapid\\.com|';
-      if (GM_getValue("Check_quickshare_dot_cz_links", false))
-        hostRestrictionRegex += 'quickshare\\.cz|';
-      if (GM_getValue("Check_czshare_dot_com_links", false))
-        hostRestrictionRegex += 'czshare\\.com|';
-      if (GM_getValue("Check_uloz_dot_to_links", false))
-        hostRestrictionRegex += 'uloz\\.to|';
-      if (GM_getValue("Check_filefactory_dot_com_links", false))
-        hostRestrictionRegex += 'filefactory\\.com|';
-      if (GM_getValue("Check_hellspy_dot_com_links", false))
-        hostRestrictionRegex += 'hellspy|';
-      if (GM_getValue("Check_multishare_dot_cz_links", false))
-        hostRestrictionRegex += 'multishare\\.cz|';
-
-      hostRestrictionRegex = hostRestrictionRegex.replace(/\|$/, "");
-
-      linkify(mlRegex);
-
-      var mlSnapshot = document.evaluate(mlXpath, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
-      var mlCount = mlSnapshot.snapshotLength;
-
-      if (mlCount > 0)
-      {
-        cMultiloadTotal += mlCount;
-
-        mlIdx = mlCount - 1;
-        do
-        {
-          processMultiloadLink(mlSnapshot.snapshotItem(mlIdx));
-        }
-        while(mlIdx--)
-      }
-    }
-    //MULTILOAD.CZ END
-
-
-
-    function processMultiloadLink(mlLink)
-    {
-      GM_xmlhttpRequest({
-        method: 'GET',
-        url: mlLink.href,
-        headers: {
-          'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
-          'Accept': 'text/xml',
-          'Referer': ""
-        },
-        onload: function(result) {
-          var res = result.responseText;
-
-          var innerBlockRegex = /<p class="manager-linky">(?:.|\s)+?<\/p>/g;
-          var innerLinksRegex = /(?:Upload se nezdařil \((?:chyba serveru|chybné přihlašovací údaje)\)\. <|>https?:\/\/(?:.|\s)+?<|Právě probíhá reupload, buďte trpěliví\.\.\.<)/g;
-          var innerLinkRegex = /((?:Upload se nezdařil.+|https?:\/\/(?:.|\s)+|Právě probíhá reupload, buďte trpěliví\.\.\.))</; 
-          var mlRestrictionRegex = new RegExp(hostRestrictionRegex,"g"); //what links should be displayed
-
-          var blocks; // blocks of links
-          var blockIdx;
-
-          mlLink.className = '';
-
-          if (result.status == 503) //service temporarily unavailable, repeat request in one second
-          {
-            setTimeout(function(){ processMultiloadLink(mlLink); }, 1000);
-            return;
-          }
-
-          blocks = res.match(innerBlockRegex);
-
-          if (blocks == null) //no links found, cancel further processing
-          {
-            mlLink.parentNode.appendChild(document.createTextNode(' | Požadovaný soubor neexistuje.'));
-            cMultiloadProcessed++;
-            if (cMultiloadTotal <= cMultiloadProcessed)
-            {
-              startBulkCheck('container_link');
-              start('container_link');
-            }
-            return;
-          }
-
-          blockIdx = blocks.length;
-
-          if (Display_full_links_in_link_containers)
-          {
-            var ulElm = document.createElement('ul');
-            ulElm.className = 'container_list'; //CSS smaller font, padding, margin, square style
-
-            while(blockIdx--)
-            {
-              if (blocks[blockIdx].match(mlRestrictionRegex) == null)
-              {
-                continue;
-              }
-
-              var innerLinks = blocks[blockIdx].match(innerLinksRegex);
-
-              var linkIdx = innerLinks.length;
-              while (linkIdx--)
-              {
-                var innerLink = innerLinks[linkIdx].match(innerLinkRegex)[1];
-
-                var liElm = document.createElement('li');
-
-                if (innerLink.match(/Upload se nezdařil|limit exceeded|probíhá reupload/))
-                {
-                  liElm.appendChild(document.createTextNode(innerLink));
-                }
-                else
-                {
-                  var aElm = document.createElement('a');
-                  aElm.innerHTML = innerLink;
-                  aElm.href = innerLink;
-                  aElm.className = 'container_link';
-
-                  liElm.appendChild(aElm);
-                }
-
-                ulElm.appendChild(liElm);
-                cLinksTotal++;
-              }
-            }
-
-            mlLink.parentNode.appendChild(ulElm);
-          }
-          else //compact view
-          {
-            mlLink.parentNode.appendChild(document.createTextNode("|"));
-
-            while(blockIdx--)
-            {
-              if (blocks[blockIdx].match(mlRestrictionRegex) == null)
-              {
-                continue;
-              }
-
-              var innerLinks = blocks[blockIdx].match(innerLinksRegex);
-
-              var linkIdx = innerLinks.length;
-              while (linkIdx--)
-              {
-                var innerLink = innerLinks[linkIdx].match(innerLinkRegex)[1];
-
-                if (innerLink.match(/Upload se nezdařil|limit exceeded|probíhá reupload/))
-                {
-                  mlLink.parentNode.appendChild(document.createTextNode("----"));
-                }
-                else
-                {
-                  var aElm = document.createElement('a');
-
-                  var hostName = innerLink.match(/rapidshare|quickshare|hellshare|filefactory|uloz\.to|multishare|hellspy|share\-rapid|czshare/);
-
-                  //abbreviate host name
-                  switch(hostName + ""){
-
-                    case 'rapidshare': aElm.innerHTML = 'RS'; break;
-                    case 'quickshare': aElm.innerHTML = 'QS'; break;
-                    case 'hellshare': aElm.innerHTML = 'HS'; break;
-                    case 'filefactory': aElm.innerHTML = 'FF'; break;
-                    case 'uloz.to': aElm.innerHTML = 'UT'; break;
-                    case 'multishare': aElm.innerHTML = 'MS'; break;
-                    case 'hellspy': aElm.innerHTML = 'hs'; break;
-                    case 'share-rapid': aElm.innerHTML = 'SR'; break;
-                    case 'czshare': aElm.innerHTML = 'CS'; break;
-                    default: aElm.innerHTML = 'xx';
-
-                  }
-
-                  aElm.href = innerLink;
-                  aElm.className = 'container_link';
-
-                  mlLink.parentNode.appendChild(aElm);
-                  cLinksTotal++;
-                }
-              }
-
-              mlLink.parentNode.appendChild(document.createTextNode("|")); //blocks delimiter
-
-            }
-          }
-
-          cMultiloadProcessed++;
-          if (cMultiloadTotal == cMultiloadProcessed) //start check when all ml links have been processed
-          {
-            if (Do_not_linkify_DL_links)
-            {
-              delinkifySnapshot(mlSnapshot);
-            }
-            
-            startBulkCheck('container_link');
-            start('container_link');
-          }
-        }
-      });
-    }
-
-
-    if (GM_getValue("Check_mirrorcreator_dot_com_links", false))
-    {
-      var mcRegex = 'mirrorcreator\\.com/files/(\\w+)';
-      var mcXpath = "//a[contains(@href,'mirrorcreator.com/files')]";
-      
-      var mcShortHostNames = 
-         '?? RS MU ES DF Zs FF ?? SS ?? Ba NL LT MF MS ZS UL 2S ZI HF ST UP GF ?? UB Fr IF fs X7 UG ?? TB FS EB LB EU ?? OR ?? ?? DL EY ?? FK FH US BS WU FP PL FJ CR JF SM Ms Ff GU';
-        // 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56
-        //??????      depositfiles sendspace  load.to     ul.to       storage.to  uploadbox   x7.to       fileserve   ??????      duckload    filehook    filepost    jumbofiles  glumbouploads
-        //   rapidshare  zshare      ??????      mediafire   2shared     uploading   freakshare  ugotfile    extabit     oron        eyvx       uploadstation putlocker  sendmyway
-        //      megaupload  filefactory badongo     megashare   ziddu       gamefront   ifile       ??????      letitbit    ??????      ??????      bitshare    filejungle  megashares
-        //         easy-share  ??????      netload     zippyshare  hotfile     ??????      filesonic   turbobit    enterupload ??????      filekeen    wupload     crocko      fileflyer
-
-      linkify(mcRegex);
-
-      var mcSnapshot = document.evaluate(mcXpath, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
-      var mcCount = mcSnapshot.snapshotLength;
-
-      cMirrorcreatorComTotal = mcCount;
-
-      if (mcCount > 0)
-      {
-        mcShortHostNames = mcShortHostNames.split(' ');
-        mcIdx = mcCount;
-        while(mcIdx--)
-          processMirrorcreatorLink(mcSnapshot.snapshotItem(mcIdx));
-      }
-
-    }
-    //MIRRORCREATOR.CZ END
-
-
-    //mirrorcreator.com checking works like this:
-    //The base URL is http://www.mirrorcreator.com/files/XXXXXXXX/filename_links
-    //the actual list of mirrors is at http://www.mirrorcreator.com/status.php?uid=XXXXXXXX
-    //the list contains links in the form of (http://www.mirrorcreator.com)/redirect/XXXXXXXX/1
-    //these redirector links are extracted with mcLinkBlockRegex and the pages loaded
-    //they contain the actual filehost links, which are extracted with mcHostRegex and displayed in a container list
-    function processMirrorcreatorLink(mcLink)
-    {
-      var mcURL = mcLink.href.match(mcRegex);
-      if(!mcURL || !mcURL[1]) return;
-      mcURL = 'http://www.mirrorcreator.com/status.php?uid=' + mcURL[1]; //link correction
-      GM_xmlhttpRequest({
-        method: 'GET',
-        url: mcURL,
-        headers: {
-          'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
-          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*'+'/*;q=0.8',
-          'Referer': ""
-        },
-        onload: function(mcLinkResult) {
-          var mcLinkRes = mcLinkResult.responseText;
-
-          var mcLinkBlockRegex = /(\/redirect\/\w+\/(\d+))/gi;
-          var mcHostRegex = /<div id="redirectlink">.*?<a href="([^"]+)"/;
-
-          var mcRedirectors;
-          var mcHostURLs = [], mcRedirectorIDs = [], mcHostsFound = 0, mcHostsRetrieved = 0, mcHostsToProcess = 0;
-          
-          var m = mcLinkRes.match(mcLinkBlockRegex);
-          
-          if (m)
-            mcHostsFound = m.length;
-          else
-          { //no files inside container
-            processMirrorcreatorFoundHosts(mcLink, []);
-            return;
-          }
-
-          var mcRedirectorURL, idx, timedOut = false;
-
-          var gmxhrFunc = function(mcRedirectorURL){ //Tampermonkey doesn't know neither this.url or result.finalUrl
-            GM_xmlhttpRequest({
-              method: 'GET',
-              url: mcRedirectorURL,
-              headers: {
-                'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*'+'/*;q=0.8',
-                'Referer': ""
-              },
-              onload: function(mcHostResult) {
-                if (timedOut) return; //too late, the list is already displayed
-                var mcHostRes = mcHostResult.responseText;
-                var mcHost = mcHostRes.match(mcHostRegex);
-                idx = mcHostURLs.indexOf(mcRedirectorURL);
-                if (mcHost && idx!=-1)
-                {
-                  mcHostURLs[idx] = mcHost[1].replace(/^\s+|\s+$/g, '');
-                  mcHostsRetrieved++;
-                  mcHostsToProcess++;
-                  if (mcHostsFound == mcHostsRetrieved) //this is the last one!
-                  {
-                    processMirrorcreatorFoundHosts(mcLink, mcHostURLs, mcRedirectorIDs);
-                    mcHostsToProcess = 0;
-                  }
-                }
-              } //end of onload: function
-            }); //end of GM_xmlhttpRequest call
-          };//end of var gmxhrFunc
-
-          while (mcRedirectors = mcLinkBlockRegex.exec(mcLinkRes))
-          {  //load individual redirector pages
-            mcRedirectorURL = 'http://www.mirrorcreator.com' + mcRedirectors[1];
-            mcHostURLs.push(mcRedirectorURL);
-            mcRedirectorIDs.push(mcRedirectors[2]);
-            gmxhrFunc(mcRedirectorURL);
-          } //end of while block
-
-          setTimeout(function(){ //in case the last page fails to load and call the function
-              timedOut = true;
-              if (mcHostsToProcess)
-                processMirrorcreatorFoundHosts(mcLink, mcHostURLs);
-            }, 60000);
-
-        } //end of onload function
-      }); //end of GM_xmlhttpRequest call
-    } //end of function processMirrorcreatorLink
-
-
-    function processMirrorcreatorFoundHosts(mcLink, mcHostURLs, mcRedirectorIDs)
-    {
-      var aEl, liEl, docFrag;
-      var hostName, mcRedirectorID, trimFilename = false;
-      
-      var i = mcHostURLs.length;
-      if (i == 0)
-      {
-        trimFilename = true;
-        mcLink.parentNode.insertBefore(document.createTextNode(' | No files inside container'), mcLink.nextSibling);
-      }
-      else
-      {
-        if (Display_full_links_in_link_containers)
-        { //full view
-          var wrapperEl = document.createElement('span');
-          wrapperEl.style.display = 'block';
-          var ulistEl = document.createElement('ul');
-          ulistEl.className = 'container_list';
-          while (i--)
-          {
-            liEl = document.createElement('li');
-            aEl = document.createElement('a');
-            aEl.appendChild(document.createTextNode(mcHostURLs[i]));
-            aEl.href = mcHostURLs[i];
-            aEl.className = 'container_link';
-            liEl.appendChild(aEl);
-            ulistEl.appendChild(liEl);
-          }
-          wrapperEl.appendChild(ulistEl);
-          mcLink.parentNode.replaceChild(wrapperEl, mcLink);
-          wrapperEl.insertBefore(mcLink, wrapperEl.firstChild);
-        }
-        else 
-        { //compact view
-          trimFilename = true;
-          docFrag = document.createDocumentFragment();
-          docFrag.appendChild(document.createTextNode(' |'));
-          while (i--)
-          {
-            mcRedirectorID = mcRedirectorIDs[i];
-            hostName = mcHostURLs[i];
-            if (mcRedirectorID > mcShortHostNames.length-1 || mcShortHostNames[mcRedirectorID] == '??')
-              hostName = hostName.replace(/https?:\/\/(?:www\.)?([-0-9a-z]+(?:\.[-0-9a-z]+)?)\.[a-z]+\/.*/i, '$1').toUpperCase();
-            else
-              hostName = mcShortHostNames[mcRedirectorID];
-              
-            aEl = document.createElement('a');
-            aEl.href = mcHostURLs[i];
-            aEl.className = 'container_link';
-            aEl.appendChild(document.createTextNode(hostName));
-            docFrag.appendChild(aEl);
-            docFrag.appendChild(document.createTextNode('|'));
-          }
-          mcLink.parentNode.insertBefore(docFrag, mcLink.nextSibling);
-        } //end of else block
-      } //end of else block
-      
-      mcLink.className = '';
-      if (trimFilename)
-        mcLink.firstChild.nodeValue = mcLink.firstChild.nodeValue.replace(/(https?:\/\/[^\/]+\/files\/\w+\/).+/, '$1...');
-      
-      cMirrorcreatorComProcessed++;
-      if (cMirrorcreatorComProcessed == cMirrorcreatorComTotal) //start check when all mc links have been processed
-      {
-        if (Do_not_linkify_DL_links)
-          delinkifySnapshot(mcSnapshot);
-        startBulkCheck('container_link');
-        start('container_link');
-      }
-    } //end of function processMirrorcreatorFoundHosts
 
     containers_processed = true;
-
 
     function initRedirectors()
     {
@@ -1664,15 +1099,6 @@ function displayTooltipInfo()
         null);
       }
       
-      if (GM_getValue("Check_linkto_dot_net_links", false))
-      {
-        addRedirector(
-        'linkto\\.net\/\\?\\w+\\.\\d+',
-        "//a[contains(@href,'linkto.net/?')]",
-        redirectorTypes.INNER_LINK,
-        /<iframe id="iframe" name="iframe"  src="(.+?)\s*" frameborder="0"/);
-      }
-      
       if (GM_getValue("Check_hotfile_dot_com_links", false))
       {
         addRedirector(
@@ -1680,51 +1106,6 @@ function displayTooltipInfo()
         "//a[contains(@href,'hotfile.com/links/')]",
         redirectorTypes.INNER_LINK,
         /id="url" class="textfield" value="(.+?)" onfocus/);
-      }
-      
-      if (GM_getValue("Check_theloo_dot_katt_dot_it_links", false))
-      {
-        addRedirector(
-        '(?:the)?loo\\.katt\\.it\/\\w+',
-        "//a[contains(@href,'loo.katt.it/')]",
-        redirectorTypes.THELOO_KATT_IT,
-        /Proceed to URL - <a href="(.+?)">/);
-      }
-      
-      if (GM_getValue("Check_madlink_dot_sk_links", false))
-      {
-        addRedirector(
-        'madlink\\.sk\/\\w+',
-        "//a[contains(@href,'madlink.sk/')]",
-        redirectorTypes.INNER_LINK,
-        /name="url" value="(.+?)\s*"\/>/);
-      }
-      
-      /*if (GM_getValue("Check_adf_dot_ly_links", false))
-      {
-        addRedirector(
-        '(?:adf\\.ly|[u9]\\.bb|[qj]\\.gs)\/\\w+',
-        "//a[contains(@href,'adf.ly/') or contains(@href,'u.bb/') or contains(@href,'9.bb/') or contains(@href,'q.gs/') or contains(@href,'j.gs/')]",
-        redirectorTypes.ADF_LY,
-        null);
-      }*/
-      
-      if (GM_getValue("Check_redi_dot_re_links", false))
-      {
-        addRedirector(
-        'redi\\.re\/\\w+',
-        "//a[contains(@href,'redi.re/')]",
-        redirectorTypes.HTTP_302,
-        null);
-      }
-      
-      if (GM_getValue("Check_bit_dot_ly_links", false))
-      {
-        addRedirector(
-        'bit\\.ly\/\\w+',
-        "//a[contains(@href,'bit.ly/')]",
-        redirectorTypes.HTTP_302,
-        null);
       }
 
     }
@@ -1834,13 +1215,13 @@ function displayTooltipInfo()
               "share.az",     "imzupload.com",  "allmyvideos.net"];
             
     var genType2 = [  "prefiles.com",   "upfile.in",    "ufox.com",
-              "lumfile.com",    "filesega.com",   "uploadblast.com",  "gbmeister.com",
+              "lumfile.com",    "filesega.com",
               "filestay.com",   "4savefile.com",  "daj.to",     "filesbomb.com",
               "upfile.biz",   "kupload.org",    "filedwon.com",   "tusfiles.net",
               "uploadjet.net",  "zooupload.com",  "247upload.com",  "vidup.me",
               "fileza.net",     "fileprohost.com",  "filemates.com",  "sharefilehost.com",
               "amonshare.com",  "filewe.com",   "filedownloads.org",
-              "filefolks.com",  "filedefend.com", "venusfile.com",  "file-speed.com",
+              "filefolks.com",  "filedefend.com", "file-speed.com",
               "cyberlocker.ch", "fileduct.net",   "upgrand.com",    "secureupload.eu",
               "uploading4u.eu", "grupload.com",   "fileuplo.de",    "rockdizfile.com",
               "upaj.pl",      "sinhro.net",   "fileking.co",    "hotfiles.ws",
@@ -1851,7 +1232,7 @@ function displayTooltipInfo()
               "saarie.com",   "netuploaded.com",  "igetfile.com",   "project-free-upload.com",
               "brutalsha.re",   "ifile.ws",     "vidbull.com",    "filecloud.ws",
               "putme.org",    "vidpe.com",    "uplly.com",    "sendmyway.com",
-              "unlimitshare.com", "speedshare.eu"];
+              "unlimitshare.com", "speedshare.eu",  "uploadboy.com"];
     
     //xfilesharing 1.0
     function addGenericType1()
@@ -2641,20 +2022,20 @@ function displayTooltipInfo()
     if (GM_getValue("Check_aavg_dot_net_links", false))
     {
       addHost(
-        "aavg,aa", //hostname
-        "(?:aavg\\.net|aa\\.vg)\/\\w+", //linkregex
-        "//a[contains(@href,'aavg.net/') or contains(@href,'aa.vg/')]", //xpath
+        "aavg,aa,downdone", //hostname
+        "(?:aavg\\.net|aa\\.vg|downdone\\.com)\/\\w+", //linkregex
+        "//a[contains(@href,'aavg.net/') or contains(@href,'aa.vg/') or contains(@href,'downdone.com/')]", //xpath
         null, //blocksize
         null, //corrmatch
         null, //corrreplwhat
         null, //corrreplwith
         null, //separator
-        'http://aavg.net/?op=checkfiles',
+        'http://downdone.com/?op=checkfiles',
         'op=checkfiles&process=Check+URLs&list=',
-        /(aa(?:|\.)vg(?:|\.net)\/\w+)/,
-        /aa(?:|\.)vg(?:|\.net)\/\w+.*?<\/td>\s*<td style=\"color:green;\">/g, //liveregex
-        /aa(?:|\.)vg(?:|\.net)\/\w+.*?<\/td>\s*<td style=\"color:red;\">/g, //deadregex
-        /aa(?:|\.)vg(?:|\.net)\/\w+.*?<\/td>\s*<td style=\"color:orange;\">/g, //unavaregex
+        /((?:aa\.vg|aavg\.net|downdone\.com)\/\w+)/,
+        /(?:aa\.vg|aavg\.net|downdone\.com)\/\w+.*?<\/td>\s*<td style=\"color:green;\">/g, //liveregex
+        /(?:aa\.vg|aavg\.net|downdone\.com)\/\w+.*?<\/td>\s*<td style=\"color:red;\">/g, //deadregex
+        /(?:aa\.vg|aavg\.net|downdone\.com)\/\w+.*?<\/td>\s*<td style=\"color:orange;\">/g, //unavaregex
         null //function delegate
       )
     }
@@ -2812,7 +2193,7 @@ function displayTooltipInfo()
       {
         addHost(
           "uploading",
-          "http:\/\/(?:www\\.|)uploading\\.com\/\\w+",
+          "http:\/\/(?:www\\.|)uploading\\.com\/files\/\\w+",
           "//a[contains(@href,'/uploading.com/') or contains(@href,'www.uploading.com')]",
           500, //blocksize
           null, //corrmatch
@@ -2900,7 +2281,7 @@ function displayTooltipInfo()
       {
         addHost(
           "4up,4upfiles",
-          "4up(?:files)?\\.(?:me|com)\/\\w+",
+          "(?:4upfiles\\.com|4up\\.me)\/\\w+",
           "//a[contains(@href,'4up.me/') or contains(@href,'4upfiles.com/')]",
           null, //blocksize
           null, //corrmatch
@@ -2915,6 +2296,27 @@ function displayTooltipInfo()
           /4up(?:files)?\.(?:com|me)\/\w+.*?<\/td>\s*<td style=\"color:orange;\">/g, //unavaregex
           null //function delegate
         )
+      }
+      
+      if (GM_getValue("Check_fileparadox_dot_in_links", false))
+      { 
+        addHost(
+          "fileparadox", //hostname
+          "fileparadox\\.in\/\\w+", //linkregex
+          "//a[contains(@href,'fileparadox.in/')]", //xpath
+          null, //blocksize
+          null, //corrmatch
+          null, //corrreplwhat
+          null, //corrreplwhit
+          null, //separator
+          "https://fileparadox.in/?op=checkfiles", //api url
+          "op=checkfiles&process=Check+URLs&list=", //postdata
+          /(fileparadox\.in\/\w+)/, //linkregex
+          /fileparadox\.in\/\w+.*?<\/td><td style="color:green;">/g, //liveregex
+          /fileparadox\.in\/\w+.*?<\/td><td style="color:red;">/g, //deadregex
+          /fileparadox\.in\/\w+.*?<\/td><td style="color:orange;">/g, //unavaregex
+          null //function delegate
+        )       
       }
       
     /////////////////////////////
@@ -3673,6 +3075,7 @@ function displayTooltipInfo()
       }
       
       $links.removeClass().addClass(resultStatus);
+      if (ANONYMIZE_SERVICE == "NoRed") { ANONYMIZE_SERVICE = ""; }
       $links.each(function() {
         this.href = ANONYMIZE_SERVICE + $(this).attr("href");
       });
@@ -4333,10 +3736,10 @@ overflow:auto;\
           </fieldset>\
           <fieldset>\
           <div id="sites">Anonymizer<select id="redirector">\
-          <option value=1>anonymz.com</option>\
-          <option value=2>anonym.to</option>\
-          <option value=3>blankrefer.com</option>\
-          <option value=0>No redirector</option></select></div>\
+          <option value="http://anonymz.com/?" id="http://anonymz.com/?">anonymz.com</option>\
+          <option value="http://anonym.to/?" id="http://anonym.to/?">anonym.to</option>\
+          <option value="http://blankrefer.com/?" id="http://blankrefer.com/?">blankrefer.com</option>\
+          <option value="" id="NoRed">No redirector</option></select></div>\
           </fieldset>\
           </div>\
         </div>\
@@ -4429,19 +3832,16 @@ overflow:auto;\
     //Sets anonymizer setting
     function changeAnonymizer()
     {
-      var anonymizer = document.getElementById("redirector").value;
-      var anonService = "";
-      if (anonymizer == 0) {
-        anonService = "";
-      } else if (anonymizer == 1) {
-        anonService = "http://anonymz.com/?";
-      } else if (anonymizer == 2) {
-        anonService = "http://anonym.to/?";
-      } else if (anonymizer == 3) {
-        anonService = "http://blankrefer.com/?";
-      }
-      GM_setValue("Ref_anonymize_service", anonService);
+      var redir = document.getElementById("redirector").value;
+      if (redir == "") { redir = "NoRed"; }
+      GM_setValue("Ref_anonymize_service", redir);
+      document.getElementById(redir).selected=true;
     }
+    
+    //Sets selected redirector option
+    var redir = GM_getValue("Ref_anonymize_service");
+    if (redir == "") { redir = "NoRed"; }
+    document.getElementById(redir).selected=true;
 
     //Sets live links color
     function changeColorLive()
@@ -5091,6 +4491,7 @@ function start(filterId)
   function displayTheCheckedLink(link, resultStatus)
   {
     link.className = resultStatus;
+    if (ANONYMIZE_SERVICE == "NoRed") { ANONYMIZE_SERVICE = ""; }
     link.href = ANONYMIZE_SERVICE + link.href;
     
     if (Display_tooltip_info)
@@ -5341,7 +4742,7 @@ function start(filterId)
       addObsoleteHost("filedino\\.com\/\\w+","//a[contains(@href,'filedino.com/')]");
       addObsoleteHost("shareupload\\.com\/\\w+","//a[contains(@href,'shareupload.com/')]");
       addObsoleteHost("wolfshare\\.com\/\\w+","//a[contains(@href,'wolfshare.com/')]");
-      addObsoleteHost("(?:http:\/\/|www\\.|download\\.(?:cz\\.|en\\.|sk\\.|))\~(?:\\s|)(?:d|D)isallowed(?:\\.|)(?:\\s|)\~","//a[contains(@href,'~') and contains(@href,'isallowed')]");
+      addObsoleteHost("(?:http:\/\/|www\\.|download\\.(?:cz\\.|en\\.|sk\\.|))\~\\s?(?:[dD]is|Not\\s)[aA]llowed\\.?\\s?\~","//a[contains(@href,'~') and contains(@href,'isallowed') or contains(@href,'Allowed')]");
       addObsoleteHost("4bytez\\.com\/\\w+","//a[contains(@href,'4bytez.com/')]");
       addObsoleteHost("anonstream\\.com\/\\w+","//a[contains(@href,'anonstream.com/')]");
       addObsoleteHost("batshare\\.com\/\\w+","//a[contains(@href,'batshare.com/')]");
@@ -5607,6 +5008,12 @@ function start(filterId)
       addObsoleteHost("uploadbox\\.com\/\\w+","//a[contains(@href,'uploadbox.com/')]");
       addObsoleteHost("aieshare\\.com\/\\w+","//a[contains(@href,'aieshare.com/')]");
       addObsoleteHost("filegag\\.com\/\\w+","//a[contains(@href,'filegag.com/')]");
+      addObsoleteHost("uploadblast\\.com\/\\w+","//a[contains(@href,'uploadblast.com/')]");
+      addObsoleteHost("ziddu\\.com\/\\w+","//a[contains(@href,'ziddu.com/')]");
+      addObsoleteHost("gbmeister\\.com\/\\w+","//a[contains(@href,'gbmeister.com/')]");
+      addObsoleteHost("db\\-rap\\.com\/do\\.php\\?id=\\d+","//a[contains(@href,'db-rap.com/')]");
+      addObsoleteHost("rapidshare\\.de\/\\w+","//a[contains(@href,'rapidshare.de/')]");
+      addObsoleteHost("venusfile\\.com\/\\w+","//a[contains(@href,'venusfile.com/')]");
     }
     //obsolete file hosts init end
     
@@ -6473,11 +5880,11 @@ function start(filterId)
     if (GM_getValue("Check_peejeshare_dot_com_links", false))
     {
       addFileHost(
-      "peejeshare\\.com\/files\/\\d+",
-      'div id="download">|red;">All download slots',
+      "peejeshare\\.com\/(?:files|storage)\/\\d+",
+      'div id="download">|red;">All download slots|Create Download Link"',
       'red;">The file you requested',
       'red;">This file is password',
-      "//a[contains(@href,'peejeshare.com/files')]"
+      "//a[contains(@href,'peejeshare.com/')]"
       );
     }
 
@@ -6668,17 +6075,6 @@ function start(filterId)
       );
     }
 
-    if (GM_getValue("Check_netload_dot_in_links", false)) //folders
-    {
-      addFileHost(
-      "netfolder\\.in\/\\w+",
-      'list" value="http',
-      'InPage_Error">|list" value=""',
-      'optional--',
-      "//a[contains(@href,'netfolder.in')]"
-      );
-    }
-
     if (GM_getValue("Check_share_dash_rapid_dot_com_links", false)) //folders
     {
       addFileHost(
@@ -6834,17 +6230,6 @@ function start(filterId)
       );
     }
 
-    if (GM_getValue("Check_rapidshare_dot_com_links", false))
-    {
-      addFileHost(
-      "rapidshare\\.de\/files",
-      'Choose download-type',
-      'alert|not found',
-      'optional--',
-      "//a[contains(@href,'rapidshare.de/files/')]"
-      );
-    }
-
     if (GM_getValue("Check_rayfile_dot_com_links", false))
     {
       addFileHost(
@@ -6919,17 +6304,6 @@ function start(filterId)
       'File not found|is not valid',
       'optional--',
       "//a[contains(@href,'2shared.com/file/') or contains (@href,'2shared.com/video/') or contains(@href,'2shared.com/document/')]"
-      );
-    }
-
-    if (GM_getValue("Check_ziddu_dot_com_links", false))
-    {
-      addFileHost(
-      'ziddu\\.com\/download',
-      'downloadfilelinkicon',
-      'fontfamilyverdana error',
-      'optional--',
-      "//a[contains(@href,'ziddu.com/download')]"
       );
     }
     
@@ -7396,17 +6770,6 @@ function start(filterId)
       );
     }
     
-    if (GM_getValue("Check_fileparadox_dot_in_links", false)) 
-    {
-      addFileHost(
-      "fileparadox\\.in\/\\w+",
-      '<h2>Download File',
-      'No such file with this filename|File Not Found',
-      'optional--',
-      "//a[contains(@href,'fileparadox.in/')]"
-      );
-    }
-    
     if (GM_getValue("Check_4share_dot_ws_links", false))
     {
       addFileHost(
@@ -7753,7 +7116,7 @@ function start(filterId)
       addFileHost(
       "hugefiles\\.net\/\\w+",
       'download-file-btn">',
-      'File Not found<\/h2>|removed by administrator<\/h3>',
+      'File Not [fF]ound|removed by administrator<\/h3>',
       'optional--',
       "//a[contains(@href,'hugefiles.net/')]"
       );
@@ -7910,6 +7273,17 @@ function start(filterId)
       'steps\.png',
       'optional--',
       "//a[contains(@href,'filedropper.com/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_uploking_dot_com_links", false))
+    {
+      addFileHost(
+      "uploking\\.com\/file\/\\w+",
+      'slowdownload\.png',
+      'searchtarget"',
+      'optional--',
+      "//a[contains(@href,'uploking.com/file/')]"
       );
     }
   }
