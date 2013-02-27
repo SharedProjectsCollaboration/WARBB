@@ -6,6 +6,29 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.3.0
+
+Added: Uploadboy.com  
+Added: Downdone.com (aavg.net)  
+Fixed: Peejeshare.com/storage links  
+Fixed: Peejeshare.com alive links  
+Fixed: Img4up.com (image host) picked up as 4up.me  
+Fixed: Aavg.net/aa.vg links  
+Fixed: Altered disallowed regex  
+Fixed: Issues with skydrive behind safelinking.net/d/  
+Fixed: Hugefiles.net, again...  
+Fixed: Fileparadox.in (added bulk check)  
+Obsolete: Uploadblast.com (disallowed)  
+Obsolete: Ziddu.com (disallowed)  
+Obsolete: Gbmeister.com  
+Obsolete: Db-rap.com  
+Obsolete: Rapidshare.de  
+Obsolete: Venusfile.com  
+  
+Redirector settings now show the selected service by default  
+  
+Removed all unused containers (disallowed third party links (bitly, mirrorcreator, ncrypt, etc...), leaving just safelinking and keeplinks).
+
 ## 1.2.1
 
 Added: Epicshare.net  
