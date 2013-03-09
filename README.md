@@ -6,10 +6,80 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
-## 1.3.0
+## 1.4.0 (9th March 2013)
+
+Added: Dizzcloud.com  
+Added: Fileplanet.com.ua (fileplaneta.com)  
+Added: Filehost.ro  
+Added: Sharedbit.net  
+Added: Westfiles.com  
+Added: Mijnbestand.nl  
+Added: Ultrashare.net  
+Added: Dosya.tc  
+Added: Exfile.ru  
+Added: Fileshare.ro  
+Added: Fshare.vn  
+Added: Wikifortio.com  
+Added: Wyslijto.pl  
+Added: Kiwi6.com  
+Added: Localhostr.com  
+Added: Hostfil.es  
+Added: Remixshare.com  
+Added: Aimini.net  
+Added: Hidemyass.com  
+Added: Tinyupload.com  
+Added: Gigabase.com  
+Added: Trainbit.com  
+Added: Videobam.com  
+Added: Hyperfileshare.com  
+Added: Ge.tt  
+Added: Donevideo.com  
+Added: Uploads.ws  
+Added: Mightyupload.com  
+Added: Zefile.com  
+Added: 1st-files.com  
+Added: Keep2share.cc  
+Added: 4up.im (4upfiles.com)  
+Added: Bitload.it  
+Added: Cloud-up.be  
+Added: Fiberstorage.net  
+Added: Filesony.com  
+Added: Uploadhunt.com  
+
+Obsolete: Sharesystems.de  
+Obsolete: Flameupload.com  
+Obsolete: Upload.lu  
+Obsolete: Tm.gwn.ru  
+Obsolete: Syl.me  
+Obsolete: Fast-sharing.com  
+Obsolete: ~ Forbidden ~ censor added to disallowed hosts  
+Obsolete: Various censors added seperately, can be enabled in the config  
+
+Fixed: Asfile.com's "File is not exist" links (lol)  
+Fixed: Uploads.bizhat.com alive links  
+Fixed: Uploadingit.com/d/ links  
+Fixed: Videozer.com/embed/ links  
+Fixed: Ultramegabit.com deleted files  
+Fixed: Uploking.com alive links  
+Fixed: Mixturecloud.com/media/ links  
+Fixed: Mixturecloud.com alive links  
+Fixed: Jumbofiles.org links  
+Fixed: Rapidgator.net new type of links  
+Fixed: Hostuje.net dead links  
+Fixed: Extabit.com/go/ links (API)  
+
+## 1.3.0 (February 27th 2013)
 
 Added: Uploadboy.com  
 Added: Downdone.com (aavg.net)  
+
+Obsolete: Uploadblast.com (disallowed)  
+Obsolete: Ziddu.com (disallowed)  
+Obsolete: Gbmeister.com  
+Obsolete: Db-rap.com  
+Obsolete: Rapidshare.de  
+Obsolete: Venusfile.com  
+
 Fixed: Peejeshare.com/storage links  
 Fixed: Peejeshare.com alive links  
 Fixed: Img4up.com (image host) picked up as 4up.me  
@@ -18,18 +88,13 @@ Fixed: Altered disallowed regex
 Fixed: Issues with skydrive behind safelinking.net/d/  
 Fixed: Hugefiles.net, again...  
 Fixed: Fileparadox.in (added bulk check)  
-Obsolete: Uploadblast.com (disallowed)  
-Obsolete: Ziddu.com (disallowed)  
-Obsolete: Gbmeister.com  
-Obsolete: Db-rap.com  
-Obsolete: Rapidshare.de  
-Obsolete: Venusfile.com  
+
   
 Redirector settings now show the selected service by default  
   
 Removed all unused containers (disallowed third party links (bitly, mirrorcreator, ncrypt, etc...), leaving just safelinking and keeplinks).
 
-## 1.2.1
+## 1.2.1 (February 15th 2013)
 
 Added: Epicshare.net  
 Added: Limelinx.com  
@@ -57,7 +122,7 @@ Fixed: Hugefiles.net
 
 Moved: keeplinks.me from hosts to containers
 
-## 1.2.0
+## 1.2.0 (February 3rd 2013)
 
 Added: MEGA.co.nz! :D  
 Added: Hugefiles.net  
