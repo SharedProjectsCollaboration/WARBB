@@ -6,6 +6,148 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.5.0 (1st April 2013)
+
+Added: Restfile.ws (restfile.ca)  
+Added: Junocloud.me  
+Added: Tusfiles.com (tusfiles.net)  
+Added: Filewinds.com  
+Added: Disk.karelia.pro  
+Added: 1-clickshare.com  
+Added: Boomupload.net  
+Added: Flashdrive.it  
+Added: Fileopic.com  
+Added: Fastupload.ro  
+Added: Fujifile.me  
+Added: Howfile.com  
+Added: Free.fr  
+Added: Superupl.com  
+Added: Failai.lt  
+Added: Fileden.com  
+Added: Allbox4.com  
+Added: File4go.com  
+Added: Firerapid.net  
+Added: Almmyz.com  
+Added: Kongsifile.com  
+Added: Hostinoo.com  
+Added: Fileprohost.me  
+Added: Movdivx.com  
+Added: Pandamemo.com  
+Added: Youwatch.org  
+Added: Spicyfile.com  
+Added: Sube.me  
+Added: Files2upload.net  
+Added: Banashare.com  
+Added: Vidto.me  
+Added: Hyshare.com  
+Added: Filezy.net  
+Added: Arabloads.com  
+Added: Allmyfiles.ca  
+Added: 98file.com  
+Added: Davvas.com  
+Added: Filesline.com  
+Added: Filexb.com  
+Added: Megacache.net  
+Added: Ezzfile.it  
+Added: Sanshare.com  
+Added: Sendfile.su  
+Added: Usaupload.net  
+Added: Hu.lk (hulkshare.com)  
+Added: Gorillavid.in  
+Added: Akafile.com  
+Added: Todayfile.com  
+Added: Files4up.com  
+Added: Lafiles.com  
+Added: Medofire.com  
+Added: Anonfiles.com  
+Added: Upitus.net  
+Added: Restfile.bz  
+
+Obsolete: Netfolder.in (disallowed)  
+Obsolete: Ifilehosting.net  
+Obsolete: Multiupload.com (disallowed)  
+Obsolete: Muchshare.net (disallowed)  
+Obsolete: Filepanda.com  
+Obsolete: Fileqube.com  
+Obsolete: Upshare.eu  
+Obsolete: Turbo-share.com  
+Obsolete: Uploadit.ws  
+Obsolete: Gups.in  
+Obsolete: Downupload.com (disabled sharing)  
+Obsolete: Downloadng.info  
+Obsolete: Littleurl.net  
+Obsolete: Rlslog.in  
+Obsolete: Alexupload.com  
+Obsolete: Faramovie4.com  
+Obsolete: Dude.ir  
+Obsolete: Dosyakaydet.com  
+Obsolete: Share-rapid.com (disallowed)  
+Obsolete: Filescube.com  
+Obsolete: Down.uc.ae  
+Obsolete: Filebrella.com  
+Obsolete: Filerobo.com  
+Obsolete: Nnload.com  
+Obsolete: Jamber.info  
+Obsolete: Guizmodl.net  
+Obsolete: Interupload.com  
+Obsolete: Peejeshare.com (disallowed)  
+Obsolete: Speed-download.com  
+Obsolete: Uploadtornado.com  
+Obsolete: Upshare.net  
+Obsolete: Fastyurl.info  
+Obsolete: Ufile.eu (disallowed)  
+Obsolete: Flameload.com  
+Obsolete: Filevo.com  
+Obsolete: Bgdox.com  
+Obsolete: Grupload.com  
+Obsolete: Vip-file.com (disallowed)  
+Obsolete: Sms4file.com (disallowed)  
+Obsolete: Solidfile.com  
+Obsolete: Gator175.hostgator.com  
+Obsolete: 20g.info  
+Obsolete: Purples.byethost3.com   
+Obsolete: Tvshack.net  
+Obsolete: Eufiles.net  
+Obsolete: Rs-layer.com  
+Obsolete: Share.gulli.com  
+Obsolete: Archiv.to  
+
+Fixed: Restfile.ca links  
+Fixed: Sockshare.com dead links  
+Fixed: Oteupload.com reliability & speed (added bulk check)  
+Fixed: Uploaded.net reliability & speed (added API)  
+Fixed: Cloudzer.net reliability & speed (added API)  
+Fixed: Extabit.com deleted by abuse links (API)  
+Fixed: Rapidstation.com (switched to bulk check)  
+Fixed: Creafile.net links  
+Fixed: Hipfile.com dead links  
+Fixed: Bigupload.com link regex  
+Fixed: Wikiupload.com dead links  
+Fixed: Fliiby.com 403 pages  
+Fixed: Hostuje.net alive links  
+Fixed: Potload.com links  
+Fixed: Speedshare.org alive links  
+Fixed: Warserver.cz alive links  
+Fixed: Stiahni.si alive links  
+Fixed: Megaupload.com obsolete regex  
+Fixed: Hotfile.com/get/ links  
+Fixed: Fastshare.cz dead links  
+Fixed: Hulkshare.com DMCA links  
+Fixed: Mega.co.nz banned user links  
+Fixed: Gamefront extra servers  
+Fixed: Share-online.biz/?d= links  
+Fixed: Restfile links  
+Fixed: Box.com dead links  
+Fixed: 1fichier.com longer links  
+Fixed: Rnbload.com/download.php?id= links  
+Fixed: Hugefiles.net (added bulk check)  
+Fixed: Sube.me  
+
+  
+Removed obsolete hosts checkbox from Containers tab.  
+Backend code changes
+
+
 ## 1.4.0 (9th March 2013)
 
 Added: Dizzcloud.com  
