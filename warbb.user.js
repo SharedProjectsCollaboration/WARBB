@@ -2,7 +2,7 @@
 // @name      WarBB - Warez-BB Links Checker
 // @description   Automatically checks for dead links from various file hosting services.
 // @details     Based on popular W.A.R. Links Checker, this script automatically checks links from 700+ unique filehostings. For Firefox, Chrome, Safari. 
-// @version     1.4.0
+// @version     1.5.0
 // @license     Please do not modify yourself, contact authors with any problems
 // @author      iKickback & thecodingdude / Original by dkitty
 // @include     *warez-bb.org*
@@ -22,7 +22,7 @@
 // @usoscript   153759
 // ==/UserScript==
 
-var WarBB_version = "1.4.0";
+var WarBB_version = "1.5.0";
 
 //separate alternative domains with "|" char (first name is considered being main)
 var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "4fastfile.com", "4shared.com", "adrive.com",
@@ -34,47 +34,51 @@ var allHostNames = ["1fichier.com|dl4free.com", "2download.de", "2shared.com", "
 "files.mail.ru", "files.to", "filepost.com|fp.io", "filesend.net", "filesflash.com", "upafile.com", "secureupload.eu", "aavg.net|aa.vg|downdone.com",
 "fileshare.in.ua", "filesmonster.com", "filestore.to", "filezpro.com", "freakshare.net", "filedwon.com", "4share.ws", "ukfilehost.com",
 "free.fr", "free-uploading.com", "gamefront.com|filefront.com", "gettyfile.ru", "gigapeta.com", "gigasize.com", "gigaup.fr", "videopremium.net",
-"goldfile.eu", "good.com", "grupload.com", "hipfile.com", "hostuje.net", "gbitfiles.com", "vidup.me", "dizzcloud.com", "filehost.ro",
-"hotfile.com", "hulkshare.com", "hyperfileshare.com", "ifolder.ru", "jumbofiles.com", "hotfiles.ws", "allmyvideos.net", "catshare.net",
+"goldfile.eu", "good.com", "hipfile.com", "hostuje.net", "gbitfiles.com", "vidup.me", "dizzcloud.com", "filehost.ro", "gorillavid.in",
+"hotfile.com", "hulkshare.com|hu.lk", "ifolder.ru", "jumbofiles.com", "hotfiles.ws", "allmyvideos.net", "catshare.net",
 "leteckaposta.cz|sharegadget.com", "load.to", "loombo.com", "mediafire.com", "megafileupload.com", "megashares.com", "filemaze.ws", "sharerepo.com",
-"mojedata.sk", "movshare.net", "muchshare.net", "multishare.cz", "myupload.dk", "narod.ru|narod.yandex.ru", "netload.in", "ok2upload.com",
+"mojedata.sk", "movshare.net", "multishare.cz", "myupload.dk", "narod.ru|narod.yandex.ru", "netload.in", "ok2upload.com",
 "openfile.ru", "partage-facile.com", "putlocker.com", "ultramegabit.com", "limelinx.com", "uload.to", "oteupload.com", "sfshare.se", "filewe.com",
 "queenshare.com|10upload.com", "quickshare.cz", "rapidgator.net", "rapidshare.com", "rapidshare.ru", "daj.to", "demo.ovh.com", "depositfiles.com|dfiles.eu",
 "rapidupload.sk", "rarefile.net", "rayfile.com", "rghost.net", "sendmyway.com", "4savefile.com", "megaload.it", "filebulk.com", "videozed.net",
-"sendspace.com", "sharecash.org", "share-links.biz", "share-now.net", "share-online.biz|egoshare.com", "ifilehosting.net", "sharingmaster.com",
-"share-rapid.com|sharerapid.cz|rapids.cz|share-credit.cz|share-central.cz|share-ms.cz|share-net.cz|srapid.cz", "fileplaneta.com", "midupload.com",
-"slingfile.com", "sms4file.com", "solidfiles.com", "space4file.com", "speedfile.cz", "filenuke.com", "fileparadox.in", "creafile.net", "rapidstation.com",
+"sendspace.com", "sharecash.org", "share-links.biz", "share-now.net", "share-online.biz|egoshare.com", "sharingmaster.com", "fileplaneta.com", "midupload.com",
+"slingfile.com", "solidfiles.com", "space4file.com", "speedfile.cz", "filenuke.com", "fileparadox.in", "creafile.net", "rapidstation.com",
 "speedshare.org", "stahovanizasms.cz", "syfiles.com", "tufiles.ru", "zippyshare.com", "ryushare.com", "rodfile.com", "wikiupload.com",
 "uloz.to|ulozto.cz|bagruj.cz|zachowajto.pl", "ulozisko.sk", "uloziste.com", "unibytes.com", "up-file.com", "basicupload.com", "fileneo.com",
 "upload-il.net|przeslij.net", "uploadbin.net", "uploaded.to|ul.to", "uploading.com", "uploadjet.net", "rnbload.com", "extabit.com",
 "uploadspace.pl", "upnito.sk", "uptobox.com", "usaupload.net", "veehd.com", "videobb.com", "videozer.com", "uploads.bizhat.com",
-"vip-file.com", "webshare.cz", "xdisk.cz", "yunfile.com|filemarkets.com|yfdisk.com", "nitrobits.com", "mega-myfile.com", "divshare.com",
+"webshare.cz", "xdisk.cz", "yunfile.com|filemarkets.com|yfdisk.com", "nitrobits.com", "mega-myfile.com", "divshare.com",
 "flyfiles.net", "nowdownload.eu", "asfile.com", "prefiles.com", "axifile.com", "zalil.ru", "ortofiles.com", "netkozmos.com", "uploadc.com|zalaa.com",
 "sharefiles.co", "amonshare.com", "uploadorb.com", "data.hu", "filestay.com", "upfile.in", "blitzfiles.com", "filesbowl.com", "freestorage.ro",
 "uptorch.com", "netkups.com", "vreer.com", "upfile.biz", "file-speed.com", "hulkload.com", "speedshare.eu", "putshare.com", "sharedbit.net",
-"uppit.com|up.ht", "peejeshare.com", "ddlstorage.com", "downloadani.me", "filesabc.com", "hotuploading.com", "share.az", "upload.tc",
+"uppit.com|up.ht", "ddlstorage.com", "downloadani.me", "filesabc.com", "hotuploading.com", "share.az", "upload.tc",
 "sharebeast.com", "sharebees.com", "filemates.com", "180upload.com", "verzend.be", "asixfiles.com", "zomgupload.com", "mlfat4arab.com",
 "movreel.com", "4up.me|4upfiles.com", "extmatrix.com", "sendfiles.nl", "yourfilestore.com", "filebig.net", "fileupup.com", "sharesix.com", "hulkfile.eu",
 "sockshare.com", "share76.com", "filebox.com", "nekaka.com", "file4safe.com", "freeuploads.fr|uploa.dk", "tusfiles.net", "terabit.to",
 "kupload.org", "filekom.com|filemac.com", "idup.in", "bitbonus.com", "speedvid.tv", "ufox.com", "clipshouse.com", "drop.st",
 "luckyshare.net", "uploadic.com", "fileswap.com", "potload.com", "clouds.to", "billionuploads.com", "rockdizfile.com", "exclusivefaile.com",
-"filehost.ws", "filesbb.com", "maxshare.pl", "myvdrive.com", "filesin.com", "novafile.com", "longfiles.com", "albafile.com", "saarie.com",
-"lumfile.com", "toucansharing.com", "filesega.com", "uploadhero.com|uploadhero.co", "uploadbaz.com", "bubblefiles.com", "expressleech.com",
+"filesbb.com", "maxshare.pl", "myvdrive.com", "filesin.com", "novafile.com", "longfiles.com", "albafile.com", "saarie.com",
+"lumfile.com", "toucansharing.com", "filesega.com", "uploadhero.com|uploadhero.co", "uploadbaz.com", "expressleech.com",
 "unextfiles.com", "stahovadlo.cz", "zooupload.com", "warserver.cz", "247upload.com", "datafilehost.com", "bitupload.com", "fileza.net",
 "fileprohost.com", "files.indowebster.com", "superload.cz", "mafiastorage.com", "zenload.com", "fileband.com", "miurl.es", "filesmall.com",
 "henchfile.com", "minus.com", "filesmelt.com", "hellupload.com", "packupload.com", "uploadingit.com", "stiahni.si", "filefolks.com", "ishare.bz",
-"filedefend.com", "sendspace.pl", "fastshare.org", "cyberlocker.ch", "filesector.cc", "fileduct.net", "upgrand.com", "putshare.net",
+"filedefend.com", "sendspace.pl", "fastshare.org", "cyberlocker.ch", "filesector.cc", "fileduct.net", "putshare.net",
 "fileuplo.de", "upaj.pl", "sinhro.net", "filedownloads.org", "egofiles.com", "filestore.com.ua", "uploadcore.com", "filecloud.ws", "filesbomb.com",
 "project-free-upload.com", "imzupload.com", "netuploaded.com", "multifilestorage.com", "hostingbulk.com", "speedy-share.com", "100shared.com",
 "xvidstage.com", "faststream.in", "vidbull.com", "igetfile.com", "rapidfileshare.net", "filebox.ro", "mixturecloud.com|mixturefile.com", "brutalsha.re",
-"filefront.com|gamefront.com", "restfile.ca|restfile.com|restfile.cc|restfile.co|restfile.org", "easyfilesharing.info", "yourupload.com", "file-upload.net",
+"filefront.com|gamefront.com", "restfile.ca|restfile.com|restfile.cc|restfile.co|restfile.org|restfile.ws", "easyfilesharing.info", "yourupload.com", "file-upload.net",
 "fliiby.com", "datacloud.to", "cloudzer.net|clz.to", "filevice.com", "jumbofiles.org", "hotfiles.co", "ifile.ws", "rapidapk.com", "upshared.com", "vidpe.com",
 "upload.ee", "putme.org", "uplly.com", "bigupload.com", "hugefiles.net", "mega.co.nz", "unlimitshare.com", "share4web.com", "uploaders.be", "epicshare.net",
-"limelinx.com", "novaup.com|novamov.com", "filedropper.com", "yourfiles.to", "skydrive.live.com", "uploadboy.com", "uploking.com", "westfiles.com",
+"novaup.com|novamov.com", "filedropper.com", "yourfiles.to", "skydrive.live.com", "uploadboy.com", "uploking.com", "westfiles.com",
 "mijnbestand.nl", "ultrashare.net", "uploadur.com", "dosya.tc", "exfile.ru", "fileshare.ro", "fshare.vn", "wikifortio.com", "wyslijto.pl", "kiwi6.com",
 "localhostr.com|lh.rs", "hostfil.es", "remixshare.com", "aimini.net", "hidemyass.com", "tinyupload.com", "gigabase.com", "trainbit.com", "videobam.com",
 "hyperfileshare.com", "uploads.ws", "ge.tt", "donevideo.com", "mightyupload.com", "megafiles.se", "zefile.com", "1st-files.com", "keep2share.cc",
-"bitload.it", "cloud-up.be", "fiberstorage.net", "filesony.com", "uploadhunt.com"];
+"bitload.it", "cloud-up.be", "fiberstorage.net", "filesony.com", "uploadhunt.com", "junocloud.me", "filewinds.com", "karelia.pro", "boomupload.net",
+"1-clickshare.com", "flashdrive.it", "fileopic.com", "fastupload.ro", "fujifile.me", "howfile.com", "superupl.com", "fileden.com", "allbox4.com", "failai.lt",
+"file4go.com", "firerapid.net", "almmyz.com", "kongsifile.com", "hostinoo.com", "fileprohost.me", "movdivx.com", "pandamemo.com", "youwatch.org", "spicyfile.com",
+"sube.me", "files2upload.net", "banashare.com", "vidto.me", "hyshare.com", "filezy.net", "arabloads.com", "allmyfiles.ca", "98file.com", "davvas.com", "filesline.com",
+"filexb.com", "megacache.net", "ezzfile.it", "sanshare.com", "sendfile.su", "akafile.com", "todayfile.com", "lafiles.com", "files4up.com", "medofire.com",
+"usaupload.net", "anonfiles.com", "upitus.net"];
 
 try
 {
@@ -105,10 +109,10 @@ var allObsoleteNames = ["uloz.cz", "storage.to", "iskladka.cz", "file-rack.com",
 "fileop.com", "mujsoubor.cz", "sendfile.to", "superfastfile.com", "quickyshare.com", "duckload.com", "uploadstore.net", "meinupload.com",
 "dualshare.com", "2xupload.to|2xupload.de", "oxedion.com", "uploadline.com", "dll.bz", "movieshare.in", "milledrive.com", "quickupload.net",
 "safelink.in", "metadivx.com", "divxlink.com", "uploadrack.com", "teradepot.com", "dataup.to", "upit.to", "driveway.com", "eatlime.com",
-"a2zuploads.com", "friendlyfiles.net", "flyfile.us", "speedyshare.com", "uploadspace.eu", "keepfile.com", "piggyshare.com", "share.cx",
+"a2zuploads.com", "friendlyfiles.net", "flyfile.us", "speedyshare.com|speedy.sh", "uploadspace.eu", "keepfile.com", "piggyshare.com", "share.cx",
 "filecrown.com", "6giga.com", "uploadjockey.com", "bluehost.to", "filegu.ru", "filebase.to", "up-file.com", "ezyfile.net", "xvideos.com",
 "filebling.com", "loaded.it", "uploadcell.com", "uploadshare.cz", "mangoshare.com", "filestab.com", "crazyupload.com", "gaiafile.com",
-"sharejunky.com", "fileho.com", "bigandfree.com", "bigfile.in", "bigshare.eu", "dahosting.org", "digisofts.net", "file4save.com", "uploaddot.com",
+"sharejunky.com", "fileho.com", "bigfile.in", "bigshare.eu", "dahosting.org", "digisofts.net", "file4save.com", "uploaddot.com",
 "filechip.com", "filescloud.com", "saveqube.com", "turboshare.de", "z-upload.com", "youshare.com", "jiffyupload.com", "gigeshare.com",
 "datenklo.net", "upload.dj", "loadfiles.in", "upit.to", "dsfileshare.com", "sharesimple.net", "4files.net", "letitbit.net", "turbobit.net",
 "odsiebie.com", "filenavi.com", "3oof.com", "meshwaar.com", "maxupload.com", "share.cx", "atserver.eu", "hellshare.com", "uploadlab.com",
@@ -153,14 +157,15 @@ var allObsoleteNames = ["uloz.cz", "storage.to", "iskladka.cz", "file-rack.com",
 "uploadersite.com", "filegetty.com", "nfile.eu", "box4upload.com", "envirofile.org", "omxira.com", "evilshare.com", "sharehoster.de", "rapidoyun.com", "shareflare.net",
 "monsteruploads.eu", "coraldrive.net", "files2k.eu", "kiwiload.com", "uploadjockey.com", "i-filez.com", "mylordweb.com", "edoc.com", "mooshare.net", "rapidshare.de",
 "uploadbox.com", "aieshare.com", "filestock.ru", "filegag.com", "sharpfile.com", "uploadblast.com", "gbmeister.com", "ziddu.com", "db-rap.com", "venusfile.com",
-"sharesystems.de", "flameupload.com", "upload.lu", "tm.gwn.ru", "odsiebie.pl", "syl.me", "fast-sharing.com"];
-
-// GM_log(allHostNames.length);
-// GM_log(allContainerNames.length);
-// GM_log(allObsoleteNames.length);
+"sharesystems.de", "flameupload.com", "upload.lu", "tm.gwn.ru", "odsiebie.pl", "syl.me", "fast-sharing.com", "ifilehosting.net", "filehost.ws", "netfolder.in",
+"bubblefiles.com", "muchshare.net", "upgrand.com", "multiupload.com", "fileqube.com", "upshare.eu", "turbo-share.com", "uploadit.ws", "gups.in", "alexupload.com",
+"littleurl.net", "rlslog.in", "faramovie4.com", "dude.ir", "dosyakaydet.com", "filescube.com", "down.uc.ae", "filebrella.com", "filerobo.com", "nnload.com",
+"jamber.info", "guizmodl.net", "interupload.com", "peejeshare.com|peeje.com", "speed-download.com", "uploadtornado.com", "upshare.net", "fastyurl.info",
+"ufile.eu", "flameload.com", "filevo.com", "bgdox.com", "grupload.com", "vip-file.com", "sms4file.com", "solidfile.com", "20g.info", "purples.byethost3.com",
+"tvshack.net", "eufiles.net", "rs-layer.com", "archiv.to", "share.gulli.com"];
 
 //start autoupdater
-var AnotherAutoUpdater = {
+var update = {
  id: '153759',
  days: 1,
  name: 'WarBB - Warez-BB Links Checker',
@@ -170,7 +175,7 @@ var AnotherAutoUpdater = {
     GM_xmlhttpRequest({
       method: 'GET',
     url: 'https://userscripts.org/scripts/source/'+this.id+'.meta.js',
-    onload: function(xpr) {AnotherAutoUpdater.compare(xpr,response);}
+    onload: function(xpr) {update.compare(xpr,response);}
       });
   },
  compare: function(xpr,response) {
@@ -190,7 +195,7 @@ var AnotherAutoUpdater = {
     } else if ( (this.xversion) && (+this.xversion > +this.version) ) {
       if(confirm('Do you want to turn off auto updating for this script?')) {
   GM_setValue('updated_'+this.id, 'off');
-  GM_registerMenuCommand("Auto Update "+this.name, function(){GM_setValue('updated_'+this.id, new Date().getTime()+''); AnotherAutoUpdater.call(true);});
+  GM_registerMenuCommand("Auto Update "+this.name, function(){GM_setValue('updated_'+this.id, new Date().getTime()+''); update.call(true);});
   alert('Automatic updates can be re-enabled for this script from the User Script Commands submenu.');
       } else {
   GM_setValue('updated_'+this.id, this.time+'');
@@ -200,19 +205,18 @@ var AnotherAutoUpdater = {
       GM_setValue('updated_'+this.id, this.time+'');
     }
   },
-  check: function() {
+  init: function() {
     if (GM_getValue('updated_'+this.id, 0) == "off")
-      GM_registerMenuCommand("Enable "+this.name+" updates", function(){GM_setValue('updated_'+this.id, new Date().getTime()+'');AnotherAutoUpdater.call(true)});
+      GM_registerMenuCommand("Enable "+this.name+" updates", function(){GM_setValue('updated_'+this.id, new Date().getTime()+'');update.call(true)});
     else {
       if (+this.time > (+GM_getValue('updated_'+this.id, 0) + 1000*60*60*24*this.days)) {
         GM_setValue('updated_'+this.id, this.time+'');
         this.call();
       }
-      GM_registerMenuCommand("Check "+this.name+" for updates", function(){GM_setValue('updated_'+this.id, new Date().getTime()+'');AnotherAutoUpdater.call(true)});
+      GM_registerMenuCommand("Check "+this.name+" for updates", function(){GM_setValue('updated_'+this.id, new Date().getTime()+'');update.call(true)});
     }
   }
 };
-if (self.location == top.location && typeof GM_xmlhttpRequest != 'undefined') AnotherAutoUpdater.check();
 //end autoupdater
 
 var firstRun = GM_getValue("First_run", true);
@@ -438,6 +442,7 @@ function add_WARLC_style()
 
     GM_addStyle(".alive_link {background:transparent url(" + alive_link_png + ") no-repeat scroll 100% 50%;padding-right:15px;" + live_color_css + black_background_css + "}");
     GM_addStyle(".adead_link {background:transparent url(" + adead_link_png + ") no-repeat scroll 100% 50%;padding-right:15px;" + dead_color_css + black_background_css + line_through_css + "}");
+    GM_addStyle(".obsolete_link {background:transparent url(" + adead_link_png + ") no-repeat scroll 100% 50%;padding-right:15px;" + dead_color_css + black_background_css + line_through_css + "}");
     GM_addStyle(".unava_link {background:transparent url(" + unava_link_png + ") no-repeat scroll 100% 50%;padding-right:15px;" + unava_color_css + black_background_css + "}");
     GM_addStyle(".processing_link {background:transparent url(" + processing_link_gif + ") no-repeat scroll 100% 50%;padding-right:15px;" + container_color_css + black_background_css + "}");
     GM_addStyle(".container_link {background:transparent url(" + processing_link_gif + ") no-repeat scroll 100% 50%;padding-right:15px;" + container_color_css + black_background_css + "}");
@@ -919,6 +924,7 @@ function displayTooltipInfo()
         switch (thisLink.className){
         case "alive_link": spanElm.addEventListener("mouseover", displayTooltipInfo, false); break
         case "adead_link": spanElm.addEventListener("mouseover", displayTooltipError, false); break;
+        case "obsolete_link": spanElm.addEventListener("mouseover", displayTooltipError, false); break;
         case "unava_link": //reserved
         default: 
         }
@@ -1203,30 +1209,30 @@ function displayTooltipInfo()
       
     }
     
-    var genType1 = [  "rodfile.com",    "downloadani.me", "filezpro.com",
+    var genType1 = [  "rodfile.com",    "downloadani.me", "filezpro.com",   "failai.lt",
               "ok2upload.com",  "rarefile.net",   "ovfile.com",   "faststream.in",
               "goldfile.eu",    "space4file.com", "vreer.com",    "uploadic.com", 
               "ddlstorage.com",   "filesabc.com",   "sharebeast.com", "uploadbaz.com",
               "sharebees.com",  "180upload.com",  "verzend.be",   "filesbb.com",
               "asixfiles.com",  "zomgupload.com", "mlfat4arab.com", "movreel.com",
-              "fileupup.com",   "share76.com",    "filemaze.ws",
-              "filebox.com",    "file4safe.com",  "upafile.com",    "rapidapk.com",
-              "idup.in",      "novafile.com",   "longfiles.com",
-              "potload.com",    "bitupload.com",  "filehost.ws",
-              "fileband.com",   "speedvid.tv",    "sharerepo.com",
-              "putshare.com",   "freestorage.ro", "sfshare.se",
-              "share.az",     "imzupload.com",  "allmyvideos.net"];
+              "fileupup.com",   "share76.com",    "filemaze.ws",    "allbox4.com",
+              "file4safe.com",  "upafile.com",    "rapidapk.com",   "davvas.com",
+              "idup.in",      "novafile.com",   "longfiles.com",  "youwatch.org",
+              "bitupload.com",  "fileband.com",   "speedvid.tv",    "sharerepo.com",
+              "putshare.com",   "freestorage.ro", "sfshare.se",   "share.az",
+              "imzupload.com",  "allmyvideos.net",  "movdivx.com",    "gorillavid.in",
+              "banashare.com",  "vidto.me",     "filesline.com",  "upitus.net"];
             
     var genType2 = [  "prefiles.com",   "upfile.in",    "ufox.com",     "donevideo.com",
               "lumfile.com",    "filesega.com",   "mightyupload.com", "megafiles.se",
               "filestay.com",   "4savefile.com",  "daj.to",     "filesbomb.com",
-              "upfile.biz",   "kupload.org",    "filedwon.com",   "tusfiles.net",
+              "upfile.biz",   "kupload.org",    "filedwon.com",   "filewinds.com",
               "uploadjet.net",  "zooupload.com",  "247upload.com",  "vidup.me",
-              "fileza.net",     "fileprohost.com",  "filemates.com",  "sharefilehost.com",
+              "fileza.net",     "filemates.com",  "arabloads.com",  "sharefilehost.com",
               "amonshare.com",  "filewe.com",   "zefile.com",   "filedownloads.org",
               "filefolks.com",  "filedefend.com", "file-speed.com", "1st-files.com",
-              "cyberlocker.ch", "fileduct.net",   "upgrand.com",    "secureupload.eu",
-              "uploading4u.eu", "grupload.com",   "fileuplo.de",    "rockdizfile.com",
+              "cyberlocker.ch", "fileduct.net",   "secureupload.eu",  "superupl.com",
+              "uploading4u.eu", "fileuplo.de",    "rockdizfile.com",  "akafile.com",
               "upaj.pl",      "sinhro.net",   "fileking.co",    "hotfiles.ws",
               "ortofiles.com",  "blitzfiles.com", "hulkload.com",   "sharingmaster.com",
               "albafile.com",   "expressleech.com", "upshared.com",   "multifilestorage.com",
@@ -1234,9 +1240,15 @@ function displayTooltipInfo()
               "videozed.net",   "basicupload.com",  "sharesix.com",   "rapidfileshare.net",
               "saarie.com",   "netuploaded.com",  "igetfile.com",   "project-free-upload.com",
               "brutalsha.re",   "ifile.ws",     "vidbull.com",    "filecloud.ws",
-              "putme.org",    "vidpe.com",    "uplly.com",    "sendmyway.com",
+              "putme.org",    "uplly.com",    "sendmyway.com",  "creafile.net",
               "unlimitshare.com", "speedshare.eu",  "uploadboy.com",  "bitload.it",
-              "fiberstorage.net", "filesony.com",   "uploadhunt.com"];
+              "fiberstorage.net", "filesony.com",   "uploadhunt.com", "firerapid.net",
+              "epicshare.net",  "clouds.to",    "boomupload.net", "fujifile.me",
+              "fileopic.com",   "almmyz.com",   "kongsifile.com", "allmyfiles.ca",
+              "pandamemo.com",  "spicyfile.com",  "hugefiles.net",  "98file.com",
+              "files2upload.net", "hyshare.com",    "filezy.net",   "filexb.com",
+              "megacache.net",  "ezzfile.it",   "todayfile.com",  "lafiles.com",
+              "megaload.it"];
     
     //xfilesharing 1.0
     function addGenericType1()
@@ -1293,9 +1305,9 @@ function displayTooltipInfo()
             "http://www." + genType2[i] + "/?op=checkfiles", //api url
             "op=checkfiles&process=Check+URLs&list=", //postdata
             new RegExp("(" + regexSafe + "\/\\w+)",""), //linkregex
-            new RegExp(regexSafe + "\/\\w+.*?<\/td>\\s*<td style=\"color:green;\">","g"), //liveregex
-            new RegExp(regexSafe + "\/\\w+.*?<\/td>\\s*<td style=\"color:red;\">","g"), //deadregex
-            new RegExp(regexSafe + "\/\\w+.*?<\/td>\\s*<td style=\"color:orange;\">","g"), //unavaregex
+            new RegExp(regexSafe + "\/\\w+.*?<\/td>\\s*<td style=\"color:green;","g"), //liveregex
+            new RegExp(regexSafe + "\/\\w+.*?<\/td>\\s*<td style=\"color:red;","g"), //deadregex
+            new RegExp(regexSafe + "\/\\w+.*?<\/td>\\s*<td style=\"color:orange;","g"), //unavaregex
             null //function delegate
           )
         }
@@ -1360,9 +1372,9 @@ function displayTooltipInfo()
         null, //corrreplwhat
         null, //corrreplwith
         null, //separator
-        "http://www.myvdrive.com/Public/linkchecker#", //api url
+        "http://www.myvdrive.com/Public/linkchecker", //api url
         "links=", //postdata
-        /(?:fileserving|myvdrive)\.com\/(files\/\w+)/, //linkregex
+        /(?:fileserving|myvdrive)\.com\/(files\/[\w-]+)/, //linkregex
         /icon_file_check_valid"><\/span>\s*http:\/\/www\.(?:fileserving|myvdrive)\.com\/files\/[\w-]+/g, //liveregex
         /icon_file_check_(?:removed|notvalid)"><\/span>\s*http:\/\/www\.(?:fileserving|myvdrive)\.com\/files\/[\w-]+/g, //deadregex
         null, //unavaregex
@@ -1598,27 +1610,6 @@ function displayTooltipInfo()
         /"ne"\/>\s*<\/td>\s*<td>\s*http:\/\/.+/g,
         null,
         null //function delegate
-      )     
-    }
-    
-    if (GM_getValue("Check_share_dash_rapid_dot_com_links", false))
-    {     
-      addHost(
-        "sharerapid,share-rapid,rapids,share-credit,share-central,share-ms,share-net,srapid", //hostname
-        "(?:share-?rapid|rapids|share-credit|share-central|share\\-ms|share\\-net|srapid)\.(?:com|cz|sk|biz|net|info|eu)\/stahuj\/\\w+", //linkregex
-        "//a[contains(@href,'share-rapid.') or contains(@href,'sharerapid.') or contains(@href,'rapids.') or contains(@href,'share-ms.') or contains(@href,'share-credit.') or contains(@href,'share-central.') or contains(@href,'share-net.') or contains(@href,'srapid.')]", //xpath
-        null, //blocksize
-        null, //corrmatch
-        /\?(?:(?:dealer_id|ddlr)=\d+|)/, //corrreplwhat
-        "", //corrreplwith
-        null, //separator
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        sharerapidBulkCheck //function delegate
       )     
     }
     
@@ -1859,10 +1850,10 @@ function displayTooltipInfo()
     {     
       addHost(
         "share-online,egoshare", //hostname
-        "(?:share-online\\.biz|egoshare\\.com)\/(?:dl\/|download\\.php\\?id=)\\w+", //linkregex
+        "(?:share-online\\.biz|egoshare\\.com)\/(?:dl\/|download\\.php\\?id=|\\?d=)\\w+", //linkregex
         "//a[contains(@href,'share-online.biz') or contains(@href,'egoshare.com')]", //xpath
         100, //blocksize
-        /http:\/\/(?:www\.|)(?:share-online\.biz|egoshare\.com)\/d(?:l\/|ownload\.php\?id=)(?:\d{1}\/|)(\w+)/, //corrmatch
+        /http:\/\/(?:www\.|)(?:share-online\.biz|egoshare\.com)\/(?:d(?:l\/|ownload\.php\?id=)|\?d=)(?:\d{1}\/|)(\w+)/, //corrmatch
         null, //corrreplwhat
         null, //corrreplwith
         "\n", //separator
@@ -2076,7 +2067,7 @@ function displayTooltipInfo()
         null, //corrmatch
         null, //corrreplwhat
         null, //corrreplwith
-        "\n", //separator
+        null, //separator
         'http://www.eyesfile.org/checkfiles.html',
         'op=checkfiles&process=Check+URLs&list=',
         /(eyesfile\.(?:co(?:m|)|net|org)\/\w+)/,
@@ -2091,19 +2082,19 @@ function displayTooltipInfo()
     { 
       addHost(
         "restfile", //hostname
-        "restfile\\.(?:c(?:o|a|c|om)|org)\/\\w+", //linkregex
-        "//a[contains(@href,'restfile.c') or contains(@href,'restfile.org/')]", //xpath
+        "restfile\\.(?:\\w{2}|com)\/\\w+", //linkregex
+        "//a[contains(@href,'restfile.')]", //xpath
         null, //blocksize
         null, //corrmatch
         null, //corrreplwhat
         null, //corrreplwith
         null, //separator
-        "http://www.restfile.ca/?op=checkfiles", //api url
+        "http://www.restfile.bz/?op=checkfiles", //api url
         "op=checkfiles&process=Check+URLs&list=", //postdata
-        /(restfile\.\w+)/, //linkregex
-        /green'>http:\/\/(?:|www\.)restfile\.\w+/g, //liveregex
-        /red'>http:\/\/(?:|www\.)restfile\.\w+/g, //deadregex
-        /orange'>http:\/\/(?:|www\.)restfile\.\w+/g, //unavaregex
+        /(restfile\.\w{2,3}\/\w+)/, //linkregex
+        /green'>http:\/\/(?:|www\.)restfile\.\w{2,3}\/\w+/g, //liveregex
+        /red'>http:\/\/(?:|www\.)restfile\.\w{2,3}\/\w+/g, //deadregex
+        /orange'>http:\/\/(?:|www\.)restfile\.\w{2,3}\/\w+/g, //unavaregex
         null //function delegate
       )       
     }
@@ -2229,7 +2220,7 @@ function displayTooltipInfo()
           "url=",
           /extabit.com\/(?:file\/|)(\w+)/,
           /extabit.com\/(?:file\/|)\w+.*?">\w+.*?<\/a><\/td>\s*<td class="status"><span class="status_green">OK<\/span>/g,
-          /extabit.com\/(?:file\/|)\w+.*?">\w+.*?<\/a><\/td>\s*<td class="status"><span class="status_red">(?:Removed|Deleted)<\/span>/g,
+          /extabit.com\/(?:file\/|)\w+.*?">\w+.*?<\/a><\/td>\s*<td class="status"><span class="status_red">(?:Removed|Deleted)/g,
           /extabit.com\/(?:file\/|)\w+.*?">\w+.*?<\/a><\/td>\s*<td class="status"><span class="status_red">Unavailable<\/span>/g,
           null
         )
@@ -2344,6 +2335,237 @@ function displayTooltipInfo()
         )
       }
       
+      if (GM_getValue("Check_oteupload_dot_com_links", false))
+      {
+        addHost(
+          "oteupload",
+          "oteupload\\.com\/\\w+",
+          "//a[contains(@href,'oteupload.com/')]",
+          null,
+          /(https?:\/\/(?:www\.)?oteupload\.com\/\w+)/,
+          null,
+          null,
+          null,
+          "https://www.oteupload.com/link-checker.php",
+          "op=checkfiles&process=Check+URLs&list=",
+          /(oteupload\.com\/\w+)/,
+          /oteupload\.com\/\w+.*?<\/td><td style="color:green;">/g,
+          /oteupload\.com\/\w+.*?<\/td><td style="color:red;">/g,
+          /oteupload\.com\/\w+.*?<\/td><td style="color:orange;">/g,
+          null //function delegate
+        )
+      }
+      
+      if (GM_getValue("Check_uploaded_dot_to_links", false))
+      {
+        addHost(
+          "uploaded,ul",
+          '(?:uploaded\\.(?:to|net)\/(?:.id|file|folder|410|404|))|ul\\.to\/\\w+',
+          "//a[contains(@href,'uploaded.net/') or contains(@href,'uploaded.to/') or contains(@href,'ul.to/')]",
+          100000,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          uploadedBulkCheck
+        )
+      }
+      
+      if (GM_getValue("Check_cloudzer_dot_net_links", false))
+      {
+        addHost(
+          "cloudzer,clz",
+          '(?:cloudzer\\.net\/(?:file|\\d+)|clz\\.to)\/\\w+',
+          "//a[contains(@href,'cloudzer.net/') or contains(@href,'clz.to/')]",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          cloudzerBulkCheck
+        )
+      }
+      
+      if (GM_getValue("Check_tusfiles_dot_net_links", false))
+      {     
+        addHost(
+          "tusfiles", //hostname
+          "tusfiles\\.(?:com|net)\/\\w+", //linkregex
+          "//a[contains(@href,'tusfiles.com/') or contains(@href,'tusfiles.net/')]", //xpath
+          null, //blocksize
+          /(http:\/\/(?:www\.|)tusfiles\.(?:com|net)\/\w+)/, //corrmatch
+          null, //corrreplwhat
+          null, //corrreplwith
+          null, //separator
+          'http://tusfiles.com/?op=checkfiles',
+          'op=checkfiles&process=Check+URLs&list=',
+          /(tusfiles\.(?:net|com)\/\w+)/,
+          /tusfiles\.(?:net|com)\/\w+.*?<\/td>\s*<td style="color:green;">/g, //liveregex
+          /tusfiles\.(?:net|com)\/\w+.*?<\/td>\s*<td style="color:red;">/g, //deadregex
+          /tusfiles\.(?:net|com)\/\w+.*?<\/td>\s*<td style="color:orange;">/g, //unavaregex
+          null //function delegate
+        )     
+      }
+      
+      if (GM_getValue("Check_junocloud_dot_me_links", false))
+      {
+        addHost(
+          "junocloud",
+          "junocloud\\.me\/\\w+",
+          "//a[contains(@href,'junocloud.me/')]",
+          null,
+          null,
+          null,
+          null,
+          null,
+          "http://junocloud.me/checkfiles.html",
+          "op=checkfiles&process=Check+URLs&list=",
+          /(junocloud\.me\/\w+)/,
+          /junocloud\.me\/\w+.*?<span style="color: green;/g,
+          /junocloud\.me\/\w+.*?<span style="color: red;/g,
+          /junocloud\.me\/\w+.*?<span style="color: orange;/g,
+          null //function delegate
+        )
+      }
+      
+      if (GM_getValue("Check_flashdrive_dot_it_links", false))
+      {
+        addHost(
+          "flashdrive",
+          "flashdrive\\.it\/\\w+",
+          "//a[contains(@href,'flashdrive.it/')]",
+          null,
+          null,
+          null,
+          null,
+          null,
+          "http://flashdrive.it/?op=checkfiles",
+          "op=checkfiles&process=Check+URLs&list=",
+          /(flashdrive\.it\/\w+)/,
+          /flashdrive\.it\/\w+.*?<\/td><td style="color:green;">/g,
+          /flashdrive\.it\/\w+.*?<\/td><td style="color:red;">/g,
+          /flashdrive\.it\/\w+.*?<\/td><td style="color:orange;">/g,
+          null //function delegate
+        )
+      }
+      
+      if (GM_getValue("Check_rapidstation_dot_com_links", false))
+      {
+        addHost(
+          "rapidstation",
+          "rapidstation\\.com\/\\w+",
+          "//a[contains(@href,'rapidstation.com/')]",
+          null,
+          null,
+          null,
+          null,
+          null,
+          "http://rapidstation.com/?op=checkfiles",
+          "op=checkfiles&process=Check+URLs&list=",
+          /(rapidstation\.com\/\w+)/,
+          /rapidstation\.com\/\w+.*?<\/td><td style="color:green;">/g,
+          /rapidstation\.com\/\w+.*?<\/td><td style="color:red;">/g,
+          /rapidstation\.com\/\w+.*?<\/td><td style="color:orange;">/g,
+          null //function delegate
+        )
+      }
+      
+      if (GM_getValue("Check_fileprohost_dot_com_links", false))
+      {
+        addHost(
+          "fileprohost",
+          "fileprohost\\.(?:com|me)\/\\w+",
+          "//a[contains(@href,'fileprohost.me/') or contains(@href,'fileprohost.com/')]",
+          null, //blocksize
+          null, //corrmatch
+          null, //corrreplwhat
+          null, //corrreplwith
+          null, //separator
+          "http://www.fileprohost.me/?op=checkfiles", //api url
+          "op=checkfiles&process=Check+URLs&list=", //postdata
+          /(fileprohost\.(?:me|com)\/\w+)/, //linkregex
+          /fileprohost\.(?:me|com)\/\w+.*?<\/td>\s*<td style=\"color:green;\">/g, //liveregex
+          /fileprohost\.(?:me|com)\/\w+.*?<\/td>\s*<td style=\"color:red;\">/g, //deadregex
+          /fileprohost\.(?:me|com)\/\w+.*?<\/td>\s*<td style=\"color:orange;\">/g, //unavaregex
+          null //function delegate
+        )
+      }
+      
+      if (GM_getValue("Check_potload_dot_com_links", false))
+      {
+        addHost(
+          "potload",
+          "potload\\.com\/\\w+",
+          "//a[contains(@href,'potload.com/')]",
+          null,
+          null,
+          null,
+          null,
+          null,
+          "http://potload.com/?op=checkfiles",
+          "op=checkfiles&process=Check+URLs&list=",
+          /(potload\.com\/\w+)/,
+          /potload\.com\/\w+.*?<\/td><td style="color:green;">/g,
+          /potload\.com\/\w+.*?<\/td><td style="color:red;">/g,
+          /potload\.com\/\w+.*?<\/td><td style="color:orange;">/g,
+          null //function delegate
+        )
+      }
+      
+      if (GM_getValue("Check_sube_dot_me_links", false))
+      {
+        addHost(
+          "sube",
+          "sube\\.me\/\\w+",
+          "//a[contains(@href,'sube.me/')]",
+          null,
+          null,
+          null,
+          null,
+          null,
+          "http://sube.me/?op=checkfiles",
+          "op=checkfiles&process=Check+URLs&list=",
+          /(sube\.me\/\w+)/,
+          /sube\.me\/\w+.*?<\/td><td style="color:green;">/g,
+          /sube\.me\/\w+.*?<\/td><td style="color:red;">/g,
+          /sube\.me\/\w+.*?<\/td><td style="color:orange;">/g,
+          null //function delegate
+        )
+      }
+      
+      if (GM_getValue("Check_filewinds_dot_com_links", false))
+      {
+        addHost(
+          "filewinds",
+          "filewinds\\.com\/\\w+",
+          "//a[contains(@href,'filewinds.com/')]",
+          null,
+          null,
+          null,
+          null,
+          null,
+          "http://filewinds.com/?op=checkfiles",
+          "op=checkfiles&process=Check+URLs&list=",
+          /(filewinds\.com\/\w+)/,
+          /filewinds\.com\/\w+.*?<\/td><td style="color:green;">/g,
+          /filewinds\.com\/\w+.*?<\/td><td style="color:red;">/g,
+          /filewinds\.com\/\w+.*?<\/td><td style="color:orange;">/g,
+          null //function delegate
+        )
+      }
+      
     /////////////////////////////
     // Common function delegate to send links to get checked by host linkchecker
     /////////////////////////////
@@ -2441,6 +2663,117 @@ function displayTooltipInfo()
     
     //specialized bulkchecking handlers follow
     
+    function uploadedBulkCheck()
+    {
+      var arr = this.links[0].split("\r\n");
+      var data = "apikey=lhF2IeeprweDfu9ccWlxXVVypA5nA3EL";
+      
+      for (var i=0;i<arr.length;i++)
+      {
+        arr[i] = arr[i].match(/(?:uploaded\.(?:to|net)\/(?:file\/|\?id=)|ul\.to\/)(\w+)/)[1];
+        data += "&id_"+i+"="+arr[i]; 
+      }
+      
+      GM_xmlhttpRequest(
+        {
+          method: "POST",
+          url: "http://uploaded.net/api/filemultiple",
+          data: data,
+          headers: {
+            'User-agent': 'Mozilla/4.0 [en] (Windows NT 6.0; U)',
+            'Content-type': 'application/x-www-form-urlencoded',
+            'Referer': ""
+          },
+          onload: function (result)
+          {
+            var res = result.responseText;
+            
+            var i;
+            
+            var livelinks = res.match(/online,\w+,/g);
+            var deadlinks = res.match(/offline,\w+,/g);
+            
+            if (livelinks)
+            {
+              var i = livelinks.length - 1;
+              do
+              {
+                livelinks[i] = livelinks[i].match(/,(\w+),/)[1];
+              }
+              while (i--);
+              DisplayTheCheckedLinks(livelinks, 'alive_link');
+            }
+            
+            if (deadlinks)
+            {
+              var i = deadlinks.length - 1;
+              do
+              {
+                deadlinks[i] = deadlinks[i].match(/,(\w+),/)[1];
+              }
+              while (i--);
+              DisplayTheCheckedLinks(deadlinks, 'adead_link');
+            }
+          }
+        });
+    }
+    
+    function cloudzerBulkCheck()
+    {
+      var arr = this.links[0].split("\r\n");
+      var data = "apikey=mai1EN4Zieghey1QueGie7fei4eeh5ne";
+      
+      for (var i=0;i<arr.length;i++)
+      {
+        arr[i] = arr[i].match(/https?:\/\/(?:www\.)?(?:cloudzer\.net|clz\.to)\/(?:file)?\/?(\w+)/)[1];
+        data += "&id_"+i+"="+arr[i]; 
+      }
+      
+      GM_xmlhttpRequest(
+        {
+          method: "POST",
+          url: "http://cloudzer.net/api/filemultiple",
+          data: data,
+          headers: {
+            'User-agent': 'Mozilla/4.0 [en] (Windows NT 6.0; U)',
+            'Content-type': 'application/x-www-form-urlencoded',
+            'Referer': ""
+          },
+          onload: function (result)
+          {
+            var res = result.responseText;
+            //console.log(res);
+            
+            var i;
+            
+            var livelinks = res.match(/online,\w+,/g);
+            var deadlinks = res.match(/offline,\w+,/g);
+            
+            if (livelinks)
+            {
+              var i = livelinks.length - 1;
+              do
+              {
+                livelinks[i] = livelinks[i].match(/,(\w+),/)[1];
+              }
+              while (i--);
+              DisplayTheCheckedLinks(livelinks, 'alive_link');
+            }
+            
+            if (deadlinks)
+            {
+              var i = deadlinks.length - 1;
+              do
+              {
+                deadlinks[i] = deadlinks[i].match(/,(\w+),/)[1];
+              }
+              while (i--);
+              DisplayTheCheckedLinks(deadlinks, 'adead_link');
+            }
+          }
+        });
+    }
+    
     function megaBulkCheck()
     {
       var arr = this.links[0].split("\r\n");
@@ -2470,7 +2803,7 @@ function displayTooltipInfo()
           {
             var res = $.parseJSON(result.responseText.match(/\[(.+?)\]/)[1]);
             
-            if ((typeof res == "number" && (res == -9 || res == -16)) || res.d) {
+            if ((typeof res == "number" && (res == -9 || res == -16 || res == -6)) || res.d) {
               DisplayTheCheckedLinks([id], 'adead_link');
             } else if (res.e == "ETEMPUNAVAIL") {
               DisplayTheCheckedLinks([id], 'unava_link');
@@ -2632,6 +2965,7 @@ function displayTooltipInfo()
 
             var i;
             var rsRegex = /(fileid|\d{5,}),/;
+            var fileRegex = /\d{5,},(.*?),\d+/;
 
             var livelinks = res.match(/\d{5,},.*?,\d+,\w*,(?:1|3|51),/g);
             var deadlinks = res.match(/\d{5,},.*?,\d+,\w*,(?:0|4|5|59),/g)
@@ -2649,18 +2983,54 @@ function displayTooltipInfo()
             }
             if (livelinks)
             {
+              //var filenames = [];
               i = livelinks.length - 1;
               do
               {
+                //filenames[i] = livelinks[i].match(fileRegex)[1];
                 livelinks[i] = livelinks[i].match(rsRegex)[1];
+                //recheckLink(livelinks[i], filenames[i]);
               }
               while (i--);
+              
               DisplayTheCheckedLinks(livelinks, 'alive_link');
             }
           }
         });
       }
       while (rsBlock--);
+      
+      function recheckLink(link, file)
+      {
+        url = "https://rapidshare.com/files/" + link + "/" + file;
+        GM_xmlhttpRequest(
+        {
+          method: 'GET',
+          url: url,
+          headers: {
+            'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Charset': 'windows-1250,utf-8;q=0.7,*;q=0.7',
+            'Referer': ""
+          },
+          onload: function (result)
+          {
+            var res = result.responseText;
+
+            if (res.match(/ERROR: (?:Download permission denied by uploader\. \(0b67c2f5\)|This file can't be downloaded, because it has been deleted by the owner\. \(30e16ccf\))/))
+            {
+              DisplayTheCheckedLinks([link], 'adead_link');
+              return;
+            } else {
+              DisplayTheCheckedLinks([link], 'alive_link');
+            }
+          },
+          onerror: function ()
+          {
+            displayTheCheckedLink(link, 'unava_link');
+          }
+        });
+      }
     }
     
     function hotfileBulkCheck()
@@ -2863,145 +3233,6 @@ function displayTooltipInfo()
         });
       }
     }
-          
-    function megashareBulkCheck()
-    {
-      var arr = this.links[0].split("\r\n");
-      var i = arr.length;
-      
-      while(i--)
-      { 
-        postRequest(arr[i]);        
-      }
-      
-      function postRequest(msLink)
-      {
-        GM_xmlhttpRequest(
-        {
-          method: "GET",
-          url: msLink,
-          headers: {
-            'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Referer': ""
-          },
-          onload: function (result)
-          {
-            var prZVal = result.responseText.match(/name="(\d+prZVal)" value="(\d+)">/);
-            var btn3Name = result.responseText.match(/src="images\/dwn-btn3\.gif" name="(.+?)"/);
-            
-            if ((prZVal == null) || (btn3Name == null))
-            {
-              return;
-            }           
-            
-            GM_xmlhttpRequest(
-            {
-              method: "POST",
-              url: msLink,
-              headers: {
-                'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Referer': ""
-              },
-              data: prZVal[1] + "=" + prZVal[2] + '&' + btn3Name[1] + '.x=1&' + btn3Name[1] + '.y=1',
-              onload: function (result)
-              {
-                var res = result.responseText;              
-              
-                if (res.match(/<div id="err">/))
-                {
-                  DisplayTheCheckedLinks([msLink.match(/\.com(\/\d+)/)[1]], 'adead_link');
-                }
-                else
-                {
-                  DisplayTheCheckedLinks([msLink.match(/\.com(\/\d+)/)[1]], 'alive_link');
-                }
-              }
-            });
-          }
-        });
-      }
-    }
-    
-    function sharerapidBulkCheck()
-    {
-      var blockIdx = this.links.length;
-      while (blockIdx--)
-      {
-        processSharerapidBlock(this.links[blockIdx]);
-      }
-
-      function processSharerapidBlock(linksBlock)
-      {
-        //submit urlencoded links to get checked by linkchecking service
-        GM_xmlhttpRequest(
-        {
-          method: 'POST',
-          url: 'http://share-rapid.com/checkfiles.php',
-          headers: {
-            'User-agent': 'share-rapid downloader',
-            'Content-type': 'multipart/form-data; boundary=--------102411171045063',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Referer': ""
-          },
-          data: '----------102411171045063\r\nContent-Disposition: form-data; name="files"\r\n\r\n' + linksBlock + '\r\n----------102411171045063--',
-          onload: function (result)
-          {
-            var res = result.responseText.replace(/\\\//g, '/');
-            var linksArray = linksBlock.split('\r\n');
-
-            var liveRegex = /error":false}/;
-            var deadRegex = /error":true,"msg":"Not/;
-            var unavaRegex = /error":true,"msg":"Service/;
-            var entryRegex = /\{"error.+}/g;
-
-            var livelinks = new Array();
-            var deadlinks = new Array();
-            var unavalinks = new Array();
-
-            var entries = res.match(entryRegex);
-            var entriesLen = entries.length;
-
-            for(var entryIdx = 0; entryIdx < entriesLen; entryIdx++)
-            {
-              if (entries[entryIdx].match('error":false') != null)
-              {
-                livelinks.push(linksArray[entryIdx]);
-                continue;
-              }
-
-              if (entries[entryIdx].match('error":true,"msg":"Not') != null)
-              {
-                deadlinks.push(linksArray[entryIdx]);
-                continue;
-              }
-
-              if (entries[entryIdx].match('error":true,"msg":"Service') != null)
-              {
-                unavalinks.push(linksArray[entryIdx]);
-              }
-            }
-
-            if (livelinks.length > 0)
-            {
-              DisplayTheCheckedLinks(livelinks, 'alive_link');
-            }
-
-            if (deadlinks.length > 0)
-            {
-              DisplayTheCheckedLinks(deadlinks, 'adead_link');
-            }
-
-            if (unavalinks.length > 0)
-            {
-              DisplayTheCheckedLinks(unavalinks, 'unava_link');
-            }
-
-          }
-        });
-      }
-    }
     
     function ncryptBulkCheck()
     {
@@ -3083,7 +3314,7 @@ function displayTooltipInfo()
     /**
      * Displays check result
      * @param {Array} Array of links or link fragments.
-     * @param {String} Check result status -> ['alive_link'|'adead_link'|'unava_link']
+     * @param {String} Check result status -> ['alive_link'|'adead_link'|'unava_link'|'obsolete_link']
      */
     function DisplayTheCheckedLinks(links, resultStatus)
     {
@@ -3107,13 +3338,16 @@ function displayTooltipInfo()
       
       switch(resultStatus)
       {
-        case "alive_link":  cLinksAlive += $links.length; 
-                  if (Display_tooltip_info) $links.mouseover(displayTooltipInfo);
-                  break;
-        case "adead_link":  cLinksDead += $links.length; 
-                  if (Display_tooltip_info) $links.mouseover(displayTooltipError);
-                  break;
-        case "unava_link":  cLinksUnava += $links.length; break;
+        case "alive_link":    cLinksAlive += $links.length; 
+                    if (Display_tooltip_info) $links.mouseover(displayTooltipInfo);
+                    break;
+        case "adead_link":    cLinksDead += $links.length; 
+                    if (Display_tooltip_info) $links.mouseover(displayTooltipError);
+                    break;
+        case "obsolete_link": cLinksDead += $links.length;
+                    if (Display_tooltip_info) $links.mouseover(displayTooltipError);
+                    break;
+        case "unava_link":    cLinksUnava += $links.length; break;
         default: 
       }   
       
@@ -3161,7 +3395,7 @@ function displayTooltipInfo()
     }     
     else
     {
-      xpathAll = xpathAll.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link')) and (");
+      xpathAll = xpathAll.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link' and @class!='obsolete_link')) and (");
     }
     
     // GM_log(filterId);
@@ -3222,6 +3456,7 @@ function displayTooltipInfo()
       //links match corrections
       if (host.corrMatch != null)
       {
+        //console.log(host.corrMatch)
         var idx = arr.length;
         while (idx--)
         {
@@ -3810,6 +4045,7 @@ overflow:auto;\
     buildSettings();
     buildSitelist("", allHostNames, elmHostList);
     buildSitelist("", allContainerNames, elmContainerList);
+    appendObsolete("", allObsoleteNames, elmHostList);
       
     if (DEBUG_MODE)
     {
@@ -3949,14 +4185,14 @@ overflow:auto;\
           {
             if (result.status != 200)
             {
-              GM_log(cb.nextSibling.textContent + ' --- status: [' + result.status + '] ' + result.statusText + ', final url: ' + result.finalUrl);
+              console.log(cb.nextSibling.textContent + ' --- status: [' + result.status + '] ' + result.statusText + ', final url: ' + result.finalUrl);
             }
           },
           onerror: function (result)
           {
             if (result.status != 200)
             {
-              GM_log(cb.nextSibling.textContent + ' --- status: [' + result.status + '] ' + result.statusText + ', final url: ' + result.finalUrl);  
+              console.log(cb.nextSibling.textContent + ' --- status: [' + result.status + '] ' + result.statusText + ', final url: ' + result.finalUrl);  
             }
           }
         });
@@ -4008,31 +4244,35 @@ overflow:auto;\
       });
       
       $targetNode.append("<hr>");
-      
-      //obsolete hosts checkbox
+    }
+    
+    //obsolete hosts checkbox
+    function appendObsolete(search, siteNames, targetNode) {
+      var $targetNode = $(targetNode);
+      var searchRegex = new RegExp("\\|?([\\w\\.-]*" + search.replace(/\./g,"\\.").replace(/-/g, "\\-") + "[\\w\\.-]*)\\|?", "i");
       $targetNode.append('<input type="checkbox" id="Obsolete_file_hosts" /><label for="Obsolete_file_hosts">Obsolete file hosts</label>');   
       $("#Obsolete_file_hosts").prop("checked", GM_getValue("Obsolete_file_hosts", false))
                   .change(changeConfiguration);
       
-      $targetNode.append('<br />');
+                $targetNode.append('<br />');
       
       var foundName = "";
-      $.each(allObsoleteNames, function(i, site){
-        if (foundName = allObsoleteNames[i].match(searchRegex))
+      $.each(siteNames, function(i, site){
+        if (foundName = siteNames[i].match(searchRegex))
         {
           $targetNode.append('<div id="note">' + foundName[1] + '</div>');
         }
       })
-      
-      // if (elmSpan.children.length == 1) // no matches
-      // {
-        // elmSpan.innerHTML = "";
-        // elmSpan.appendChild(document.createTextNode('No matches'));
-      // }
     }
+      
+    // if (elmSpan.children.length == 1) // no matches
+    // {
+      // elmSpan.innerHTML = "";
+      // elmSpan.appendChild(document.createTextNode('No matches'));
+    // }
     
     var hostSearchBox = document.getElementById("hostSearchBox");
-    hostSearchBox.addEventListener('keyup', function(){buildSitelist(hostSearchBox.value, allHostNames, elmHostList);}, false);   
+    hostSearchBox.addEventListener('keyup', function(){buildSitelist(hostSearchBox.value, allHostNames, elmHostList); appendObsolete(hostSearchBox.value, allObsoleteNames, elmHostList);}, false);   
     
     var hostSearchBox2 = document.getElementById("hostSearchBox2");
     hostSearchBox2.addEventListener('keyup', function(){buildSitelist(hostSearchBox2.value, allContainerNames, elmContainerList);}, false);   
@@ -4156,10 +4396,10 @@ function start(filterId)
   }
   else
   {
-    totalxpath = totalxpath.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link')) and (");
-    totalxpathcoded = totalxpathcoded.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link')) and (");
-    totalxpathobsolete = totalxpathobsolete.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link')) and (");
-    totalxpathheadersonly = totalxpathheadersonly.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link')) and (");
+    totalxpath = totalxpath.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link' and @class!='obsolete_link')) and (");
+    totalxpathcoded = totalxpathcoded.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link' and @class!='obsolete_link')) and (");
+    totalxpathobsolete = totalxpathobsolete.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link' and @class!='obsolete_link')) and (");
+    totalxpathheadersonly = totalxpathheadersonly.replace(/\[/, "[((not(@class)) or (@class!='alive_link' and @class!='adead_link' and @class!='unava_link' and @class!='obsolete_link')) and (");
   }
   
   linkify(totalourls);
@@ -4261,7 +4501,7 @@ function start(filterId)
   if (filehostObsoleteLen > 0)
   {
     var obsoletelinks = document.evaluate(totalxpathobsolete, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
-
+    
     var obsoleteLink;
 
     //check links
@@ -4283,7 +4523,7 @@ function start(filterId)
           obsoleteLink.warlc_error = 'Cause of error: <b>Obsolete filehosting.</b>';
         }
         
-        displayTheCheckedLink(obsoleteLink, 'adead_link');
+        displayTheCheckedLink(obsoleteLink, 'obsolete_link');
       }
     }
   }
@@ -4534,6 +4774,7 @@ function start(filterId)
       switch (resultStatus){
       case "alive_link": link.addEventListener("mouseover", displayTooltipInfo, false); break
       case "adead_link": link.addEventListener("mouseover", displayTooltipError, false); break;
+      case "obsolete_link": link.addEventListener("mouseover", displayTooltipError, false); break;
       case "unava_link": //reserved
       default: 
       }
@@ -4553,6 +4794,12 @@ function start(filterId)
     }
 
     if (resultStatus == "adead_link")
+    {
+      cLinksDead++;
+      return;
+    }
+    
+    if (resultStatus == "obsolete_link")
     {
       cLinksDead++;
       return;
@@ -4585,7 +4832,6 @@ function start(filterId)
       addObsoleteHost("file-rack\\.com\/files","//a[contains(@href,'file-rack.com')]");
       addObsoleteHost("fast-load\\.net\/(\/)?index","//a[contains(@href,'fast-load.net')]");
       addObsoleteHost("subory\\.sk\/download","//a[contains(@href,'subory.sk')]");
-      addObsoleteHost("bigandfree\\.com\/\\d+","//a[contains(@href,'bigandfree.com')]");
       addObsoleteHost("fileop\\.com\/\\w+","//a[contains(@href,'fileop.com')]");
       addObsoleteHost("mujsoubor\\.cz\/file\/","//a[contains(@href,'mujsoubor.cz')]");
       addObsoleteHost("sendfile\\.to\/\\w+","//a[contains(@href,'sendfile.to')]");
@@ -4612,11 +4858,11 @@ function start(filterId)
       addObsoleteHost("upit\\.to\/file:\\d+","//a[contains(@href,'upit.to/file')]");
       addObsoleteHost("badongo\\.(?:com|net)\/(?:\\w\\w\/|)(?:vid|cfile|file|pt)\/\\w+","//a[contains(@href,'badongo.com') or contains(@href,'badongo.net')]");
       addObsoleteHost("driveway\\.com\/\\w+","//a[contains(@href,'driveway.com')]");
-      addObsoleteHost("eatlime\\.com\/download","//a[contains(@href,'eatlime.com/download')]");
+      addObsoleteHost("eatlime\\.com\/\\w+","//a[contains(@href,'eatlime.com/')]");
       addObsoleteHost("a2zuploads\\.com\/id\\w+","//a[contains(@href,'a2zuploads.com/id')]");
       addObsoleteHost("friendlyfiles\\.net\/download\/\\w+\/","//a[contains(@href,'friendlyfiles.net/download')]");
       addObsoleteHost("flyfile\\.us\/\\w+","//a[contains(@href,'flyfile.us')]");
-      addObsoleteHost("speedyshare\\.com\/\\d+","//a[contains(@href,'speedyshare.com')]");
+      addObsoleteHost("(?:speedy\\.sh|speedyshare\\.com)\/\\w+","//a[contains(@href,'speedyshare.com') or contains(@href,'speedy.sh/')]");
       addObsoleteHost("uploadspace\\.eu\/\\w+","//a[contains(@href,'uploadspace.eu')]");
       addObsoleteHost("fooget\\.com\/\\w+","//a[contains(@href,'fooget.com/')]");
       addObsoleteHost("keepfile\\.com\/\\w+","//a[contains(@href,'keepfile.com')]");
@@ -4690,7 +4936,7 @@ function start(filterId)
       addObsoleteHost("fofly\\.com\/\\w+","//a[contains(@href,'fofly.com')]");
       addObsoleteHost("shareonall\\.com\/\\w+","//a[contains(@href,'shareonall.com')]");
       addObsoleteHost("sexuploader\\.com\/(?:|..\/)\\?[d|v]=\\w{8}","//a[contains(@href,'sexuploader.com')]");
-      addObsoleteHost("mega(upload|video|rotic|porn)\\.com\/(?:|..\/)\\?[d|v|f]=\\w{8}","//a[contains(@href,'megaupload.com') or contains(@href,'megavideo.com') or contains(@href,'megaporn.com') or contains(@href,'megarotic.com')]");
+      addObsoleteHost("mega(upload|video|rotic|porn)\\.com\/(?:|..\/)\\?[d|v|f]=\\w+","//a[contains(@href,'megaupload.com') or contains(@href,'megavideo.com') or contains(@href,'megaporn.com') or contains(@href,'megarotic.com')]");
       addObsoleteHost("uploadhyper\\.com\/file\/","//a[contains(@href,'uploadhyper.com')]");
       addObsoleteHost("filespawn\\.com\/file\/","//a[contains(@href,'filespawn.com')]");
       addObsoleteHost("caizzii\\.com\/(?:download|\\?file=)","//a[contains(@href,'caizzii.com')]");
@@ -4777,7 +5023,7 @@ function start(filterId)
       addObsoleteHost("filedino\\.com\/\\w+","//a[contains(@href,'filedino.com/')]");
       addObsoleteHost("shareupload\\.com\/\\w+","//a[contains(@href,'shareupload.com/')]");
       addObsoleteHost("wolfshare\\.com\/\\w+","//a[contains(@href,'wolfshare.com/')]");
-      addObsoleteHost("(?:http:\/\/|www\\.|download\\.(?:cz\\.|en\\.|sk\\.|))\~\\s?(?:(?:[dD]is|Not\\s)[aA]llowed|Forbidden)\\.?\\s?\~","//a[contains(@href,'~') and contains(@href,'isallowed') or contains(@href,'Allowed') or contains(@href,'Forbidden')]");
+      addObsoleteHost("(?:download\\.(?:cz\\.|en\\.|sk\\.|)|u\\d+\\.|http:\/\/(?:www\\.)?)\~\\s?(?:(?:[dD]is|Not\\s)[aA]llowed|Forbidden)\\.?\\s?\~","//a[contains(@href,'~') and contains(@href,'isallowed') or contains(@href,'Allowed') or contains(@href,'Forbidden')]");
       addObsoleteHost("4bytez\\.com\/\\w+","//a[contains(@href,'4bytez.com/')]");
       addObsoleteHost("anonstream\\.com\/\\w+","//a[contains(@href,'anonstream.com/')]");
       addObsoleteHost("batshare\\.com\/\\w+","//a[contains(@href,'batshare.com/')]");
@@ -4946,7 +5192,7 @@ function start(filterId)
       addObsoleteHost("mykupload\\.freei\\.me\/\\w+","//a[contains(@href,'mykupload.freei.me/')]");
       addObsoleteHost("dl\\.share2u\\.net\/\\w+","//a[contains(@href,'dl.share2u.net/')]");
       addObsoleteHost("appscene\\.org\/\\w+","//a[contains(@href,'appscene.org/')]");
-      addObsoleteHost("(?:download\\.)?filestock\\.(?:net|ru)\/\\w+","//a[contains(@href,'filestock.net/')]");
+      addObsoleteHost("(?:download\\.)?filestock\\.(?:net|ru)\/\\w+","//a[contains(@href,'filestock.net/') or contains (@href,'filestock.ru/')]");
       addObsoleteHost("youmirror\\.biz\/file\/\\w+","//a[contains(@href,'youmirror.biz/file/')]");
       addObsoleteHost("projectcamelot\\.org\/\\w+","//a[contains(@href,'projectcamelot.org/')]");
       addObsoleteHost("gigupload\\.com\/\\w+","//a[contains(@href,'gigupload.com/')]");
@@ -5016,7 +5262,7 @@ function start(filterId)
       addObsoleteHost("useupload\\.com\/\\w+","//a[contains(@href,'useupload.com/')]");
       addObsoleteHost("seedfile\\.com\/\\w+","//a[contains(@href,'seedfile.com/')]");
       addObsoleteHost("hatlimit\\.pl\/\\w+","//a[contains(@href,'hatlimit.pl/')]");
-      addObsoleteHost("fs\\d{1,2}\\.(?:www\\.|)ex\\.ua\/(?:load|get)\/\\d+\/\\w+","//a[contains(@href,'ex.ua/')]");
+      addObsoleteHost("(?:fs\\d{1,2}\\.)?(?:www\\.|)ex\\.ua\/(?:load|get)\/\\d+","//a[contains(@href,'ex.ua/')]");
       addObsoleteHost("filespump\\.com\/\\w+","//a[contains(@href,'filespump.com/')]");
       addObsoleteHost("filezserver\\d{1}\\.byethost12\\.com\/\\w+","//a[contains(@href,'byethost12.com/')]");
       addObsoleteHost("filezzz\\.com\/\\w+","//a[contains(@href,'filezzz.com/')]");
@@ -5056,19 +5302,84 @@ function start(filterId)
       addObsoleteHost("tm\\.gwn\\.ru\/\\w+","//a[contains(@href,'tm.gwn.ru/')]");
       addObsoleteHost("odsiebie\\.pl\/\\w+","//a[contains(@href,'odsiebie.pl/')]");
       addObsoleteHost("fast\\-sharing\\.com\/\\w+","//a[contains(@href,'fast-sharing.com/')]");
+      addObsoleteHost("netfolder\\.in\/\\w+","//a[contains(@href,'netfolder.in/')]");
+      addObsoleteHost("ifilehosting\\.net\/\\w+","//a[contains(@href,'ifilehosting.net/')]");
+      addObsoleteHost("multiupload\\.com\/\\w+","//a[contains(@href,'multiupload.com/')]");
+      addObsoleteHost("filehost\\.ws\/\\w+","//a[contains(@href,'filehost.ws/')]");
+      addObsoleteHost("bubblefiles\\.com\/\\w+","//a[contains(@href,'bubblefiles.com/')]");
+      addObsoleteHost("muchshare\\.net\/\\w+","//a[contains(@href,'muchshare.net/')]");
+      addObsoleteHost("upgrand\\.com\/\\w+","//a[contains(@href,'upgrand.com/')]");
+      addObsoleteHost("filepanda\\.com\/\\w+","//a[contains(@href,'filepanda.com/')]");
+      addObsoleteHost("upshare\\.eu\/\\?d=\\w+","//a[contains(@href,'upshare.eu/')]");
+      addObsoleteHost("fileqube\\.com\/\\w+","//a[contains(@href,'fileqube.com/')]");
+      addObsoleteHost("uploadit\\.ws\/\\w+","//a[contains(@href,'uploadit.ws/')]");
+      addObsoleteHost("turbo\\-share\\.com\/\\w+","//a[contains(@href,'turbo-share.com/')]");
+      addObsoleteHost("downupload\\.com\/\\w+","//a[contains(@href,'downupload.com/')]");
+      addObsoleteHost("downloadng\\.info\/\\w+","//a[contains(@href,'downloadng.info/')]");
+      addObsoleteHost("gups\\.in\/\\w+","//a[contains(@href,'gups.in/')]");
+      addObsoleteHost("alexupload\\.com\/\\w+","//a[contains(@href,'alexupload.com/')]");
+      addObsoleteHost("littleurl\\.net\/\\w+","//a[contains(@href,'littleurl.net/')]");
+      addObsoleteHost("rlslog\\.in\/\\w+","//a[contains(@href,'rlslog.in/')]");
+      addObsoleteHost("(?:dl\\.)?faramovie4\\.com\/\\w+","//a[contains(@href,'faramovie4.com/')]");
+      addObsoleteHost("(?:dude|DUDE)\\.ir\/\\w+","//a[contains(@href,'dude.ir/') or contains(@href,'DUDE.ir/')]");
+      addObsoleteHost("dosyakaydet\\.com\/\\w+","//a[contains(@href,'dosyakaydet.com/')]");
+      addObsoleteHost("(?:share-?rapid|rapids|share-credit|share-central|share\\-ms|share\\-net|srapid)\.(?:com|cz|sk|biz|net|info|eu)\/stahuj\/\\w+","//a[contains(@href,'share-rapid.') or contains(@href,'sharerapid.') or contains(@href,'rapids.') or contains(@href,'share-ms.') or contains(@href,'share-credit.') or contains(@href,'share-central.') or contains(@href,'share-net.') or contains(@href,'srapid.')]");
+      addObsoleteHost("filescube\\.com\/\\w+","//a[contains(@href,'filescube.com/')]");
+      addObsoleteHost("down\\.uc\\.ae\/\\w+","//a[contains(@href,'down.uc.ae/')]");
+      addObsoleteHost("filebrella\\.com\/\\w+","//a[contains(@href,'filebrella.com/')]");
+      addObsoleteHost("filerobo\\.com\/\\w+","//a[contains(@href,'filerobo.com/')]");
+      addObsoleteHost("nnload\\.com\/\\w+","//a[contains(@href,'nnload.com/')]");
+      addObsoleteHost("jamber\\.info\/\\w+","//a[contains(@href,'jamber.info/')]");
+      addObsoleteHost("guizmodl\\.net\/\\w+","//a[contains(@href,'guizmodl.net/')]");
+      addObsoleteHost("(?:interupload|InterUpload)\\.com\/\\w+","//a[contains(@href,'interupload.com/') or contains(@href,'InterUpload.com/')]");
+      addObsoleteHost("peeje(?:share|)\\.com\/\\w+","//a[contains(@href,'peejeshare.com') or contains(@href,'peeje.com')]");
+      addObsoleteHost("speed\\-download\\.com\/\\w+","//a[contains(@href,'speed-download.com/')]");
+      addObsoleteHost("(?:\\w{2}\\.)uploadtornado\\.com\/\\w+","//a[contains(@href,'uploadtornado.com/')]");
+      addObsoleteHost("upshare\\.net\/\\w+","//a[contains(@href,'upshare.net/')]");
+      addObsoleteHost("fastyurl\\.info\/\\w+","//a[contains(@href,'fastyurl.info/')]");
+      addObsoleteHost("ufile\\.eu\/\\w+","//a[contains(@href,'ufile.eu/')]");
+      addObsoleteHost("filevo\\.com\/\\w+","//a[contains(@href,'filevo.com/')]");
+      addObsoleteHost("flameload\\.com\/\\w+","//a[contains(@href,'flameload.com/')]");
+      addObsoleteHost("(?:turbo\\.)?bgdox\\.com\/\\w+","//a[contains(@href,'bgdox.com/')]");
+      addObsoleteHost("grupload\\.com\/\\w+","//a[contains(@href,'grupload.com/')]");
+      addObsoleteHost("vip\\-file\\.com\/\\w+","//a[contains(@href,'vip-file.com/')]");
+      addObsoleteHost("sms4file\\.com\/\\w+","//a[contains(@href,'sms4file.com/')]");
+      addObsoleteHost("solidfile\\.com\/\\w+","//a[contains(@href,'solidfile.com/')]");
+      addObsoleteHost("gator175\\.hostgator\\.com\/","//a[contains(@href,'gator175.hostgator.com/')]");
+      addObsoleteHost("20g\\.info\/\\w+","//a[contains(@href,'20g.info/')]");
+      addObsoleteHost("purples\\.byethost3\\.com\/\\w+","//a[contains(@href,'purples.byethost3.com/')]");
+      addObsoleteHost("tvshack\\.net\/\\w+","//a[contains(@href,'tvshack.net/')]");
+      addObsoleteHost("eufiles\\.net\/\\w+","//a[contains(@href,'eufiles.net/')]");
+      addObsoleteHost("rs\\-layer\\.com\/\\w+","//a[contains(@href,'rs-layer.com/')]");
+      addObsoleteHost("archiv\\.to\/\\?Module=Details&HashID=\\w+","//a[contains(@href,'archiv.to/')]");
+      addObsoleteHost("share\\.gulli\\.com\/\\w+","//a[contains(@href,'share.gulli.com/')]");
     }
     
-    if (GM_getValue("Check_censors"))
+    if (GM_getValue("Check_censors", false))
     {
-      addObsoleteHost("~ Multi hosts disallowed\\. Please post direct links only\\. ~","//a[contains(@href,'disallowed') and contains(@href,'~')]");
-      addObsoleteHost("~ Spam Site ~","//a[contains(@href,'Spam') and contains(@href,'~')]");
-      addObsoleteHost("~~ Censored links, Post Direct Links! ~~","//a[contains(@href,'Censored') and contains(@href,'~~')]");
-      addObsoleteHost("~Folders are not allowed, please post direct links~","//a[contains(@href,'Folders') and contains(@href,'allowed') and contains(@href,'~')]");
+      addObsoleteHost("~ Multi hosts disallowed\\. Please post direct links only\\. ~","//a[contains(@href,'~ Multi hosts')]");
+      addObsoleteHost("~ Spam Site ~","//a[contains(@href,'~ Spam Site ~')]");
+      addObsoleteHost("~~ Censored links, Post Direct Links! ~~","//a[contains(@href,'~~ Censored')]");
+      addObsoleteHost("~[fF]olders are not allowed, please post direct links~","//a[contains(@href,'~Folders') or contains(@href,'~folders')]");
       addObsoleteHost("~ Folder links are not allowed ~","//a[contains(@href,'~ Folder')]");
       addObsoleteHost("~ Due To The Increase In Phishing We Now Disallow Protected URL's ~","//a[contains(@href,'~ Due')]");
       addObsoleteHost("~Not allowed Direct links only~","//a[contains(@href,'~Not allowed')]");
       addObsoleteHost("~ I Am A Porn Site Please Report Me To A Moderator ~","//a[contains(@href,'Report Me To A Moderator ~')]");
       addObsoleteHost("~Report Me- Direct Links Only~","//a[contains(@href,'~Report Me-')]");
+      addObsoleteHost("~ Banned File Host! ~","//a[contains(@href,'~ Banned')]");
+      addObsoleteHost("~ Folders are banned, report me ~","//a[contains(@href,'~ Folders')]");
+      addObsoleteHost("~Direct links only~","//a[contains(@href,'~Direct')]");
+      addObsoleteHost("~forbidden~","//a[contains(@href,'~forbidden~')]");
+      addObsoleteHost("~ CENSORED SITE ~","//a[contains(@href,'~ CENSORED')]");
+      addObsoleteHost("~not allowed, please post direct links~","//a[contains(@href,'~not allowed')]");
+      addObsoleteHost("~ Link folders \\(directories\\) not allowed\\. Direct links only\\. ~","//a[contains(@href,'~ Link folders')]");
+      addObsoleteHost("~ Due to the increase in Phishing, we now disallow protected URLs ~","//a[contains(@href,'~ Due')]");
+      addObsoleteHost("~Spam~:38080","//a[contains(@href,'~Spam~:38080')]");
+      addObsoleteHost("~ Spam ~\/download","//a[contains(@href,'~ Spam ~/download')]");
+      addObsoleteHost("~If you are reading this report this SPAMMER to a moderator~","//a[contains(@href,'to a moderator~')]");
+      addObsoleteHost("~The shorten url or custom links are not allowed for this site\\.~ ","//a[contains(@href,'~The shorten url')]");
+      addObsoleteHost("~3rd Party links are not allowed. Direct Links Only~","//a[contains(@href,'~3rd Party')]");
+      addObsoleteHost("~ If you are reading this report this SPAMMER to a moderator ~","//a[contains(@href,'to a moderator ~')]");
     }
     //obsolete file hosts init end
     
@@ -5097,11 +5408,11 @@ function start(filterId)
     if (GM_getValue("Check_demo_dot_ovh_dot_com_links", false))
     {
       addFileHost(
-      "demo\\.ovh\\.com\/\\w+\/\\w+",
+      "demo\\.ovh\\.(?:com|net)\/\\w+",
       'download\\.gif"',
       'p_point">',
       'optional--',
-      "//a[contains(@href,'demo.ovh.com')]");
+      "//a[contains(@href,'demo.ovh.com') or contains(@href,'demo.ovh.net')]");
     }
 
     if (GM_getValue("Check_safelinking_dot_net_links", false))
@@ -5113,6 +5424,17 @@ function start(filterId)
       'color:(?:grey|orange|brown);"',
       "//a[contains(@href,'safelinking.net/p/')]",
       true);
+    }
+
+    if (GM_getValue("Check_keeplinks_dot_me_links", false))
+    {
+      addFileHost(
+      "keeplinks\\.me\/p\/\\w+",
+      'isAliveRegex', //no way of checking links inside package
+      'link does not exist.<\/h1>',
+      'Protected Links<\/h1>',
+      "//a[contains(@href,'keeplinks.me/p/')]"
+      );
     }
 
     if (GM_getValue("Check_ultramegabit_dot_com_links", false))
@@ -5131,7 +5453,7 @@ function start(filterId)
       addFileHost(
       "fastshare\\.cz\/\\d+\/\\w*",
       'dwntable">',
-      'nebyla nalezena|nebola nájdená|nie została odnaleziona|color:red;font-weight:bold;border\\-style:dashed',
+      'nebyla nalezena|nebola nájdená|nie została odnaleziona|color:red;font-weight:bold;border\\-style:dashed|<b>Requested page not found\\.',
       'optional--',
       "//a[contains(@href,'fastshare.cz')]");
     }
@@ -5179,11 +5501,11 @@ function start(filterId)
     if (GM_getValue("Check_1fichier_dot_com_links", false))
     {
       addFileHost(
-      "\\w{6}\\.(?:1fichier|dl4free)\\.com\/",
+      "\\w+\\.(?:1fichier|dl4free)\\.com\/?",
       'Download tag"|countdown">|class="form-button"',
       'errorDiv"|File not found|Fichier introuvable',
       'optional--',
-      "//a[contains(@href,'1fichier.com/') or contains(@href,'dl4free.com/')]"
+      "//a[contains(@href,'1fichier.com') or contains(@href,'dl4free.com')]"
       );
     }
     
@@ -5248,7 +5570,7 @@ function start(filterId)
       addFileHost(
       "wikiupload\\.com\/\\w+",
       'download-button">',
-      'Sorry, File not found',
+      'Sorry, File not found|theme\\-container">',
       'optional--',
       "//a[contains(@href,'wikiupload.com/')]"
       );
@@ -5269,7 +5591,7 @@ function start(filterId)
     {
       addFileHost(
       "hostuje\\.net\/file\\.php\\?id=\\w+",
-      'file\\.php">',
+      'file\\.php">|Pobierz Plik',
       'Podany plik zosta. skasowany z powodu naruszania praw autorskich...',
       'optional--',
       "//a[contains(@href,'hostuje.net/file')]"
@@ -5306,17 +5628,6 @@ function start(filterId)
       'errorbox">',
       'optional--',
       "//a[contains(@href,'slingfile.com/')]"
-      );
-    }
-    
-    if (GM_getValue("Check_limelinx_dot_com_links", false))
-    {
-      addFileHost(
-      "limelinx\\.com\/files\/\\w+",
-      'FileDetails">',
-      'File Not Found<',
-      'optional--',
-      "//a[contains(@href,'limelinx.com/files')]"
       );
     }
 
@@ -5505,7 +5816,7 @@ function start(filterId)
       addFileHost(
       "sockshare\\.com\/file\/\\w+",
       'choose_speed">',
-      'message t_0\'>',
+      'message t_0\'>|Welcome to SockShare<\/h1>',
       'optional--',
       "//a[contains(@href,'sockshare.com/file')]"
       );
@@ -5547,22 +5858,11 @@ function start(filterId)
     if (GM_getValue("Check_gamefront_dot_com_links", false))
     {
       addFileHost(
-      "(?:files\\.|)(?:file|game)front\\.com\/\\w+",
-      'downloadLink">|class="downloadNow"',
+      "(?:files\\.|\\w+\\.|)(?:file|game)front\\.com\/\\w+",
+      'downloadLink">|class="downloadNow"|<strong>Download',
       'File not found, you|(?:File|Page) Not Found',
       'unavailable at the moment',
       "//a[contains(@href,'filefront.com/') or contains(@href,'gamefront.com/')]"
-      );
-    }
-
-    if (GM_getValue("Check_hyperfileshare_dot_com_links", false))
-    {
-      addFileHost(
-      "(?:download\\.|)hyperfileshare\\.com\/download\\.php\\?code=\\w+",
-      'dnlLnk"',
-      'already been deleted',
-      'optional--',
-      "//a[contains(@href,'hyperfileshare.com/download')]"
       );
     }
     
@@ -5582,7 +5882,7 @@ function start(filterId)
       addFileHost(
       "hellupload\\.com\/\\w+",
       'op" value="download',
-      'class="err">|width:500px;text-align:left;">',
+      'class="err">|width:500px;text-align:left;">|file_error_info">',
       'optional--',
       "//a[contains(@href,'hellupload.com/')]"
       );
@@ -5660,7 +5960,7 @@ function start(filterId)
     if (GM_getValue("Check_filesin_dot_com_links", false))
     {
       addFileHost(
-      "filesin\\.com\/\\w+\/download\\.html",
+      "filesin\\.com\/\\w+",
       'download_area">',
       'error_note">',
       'optional--',
@@ -5718,9 +6018,9 @@ function start(filterId)
     if (GM_getValue("Check_hulkshare_dot_com_links", false))
     {
       addFileHost(
-      "hulkshare\.com\/\\w+",
-      'download\.sam\.png|This is a private file|id="filename',
-      'File does not exist|fingerprint protected copyright',
+      "(?:hulkshare\\.com|hu\\.lk)\/\\w+",
+      'download\.sam\.png|This is a private file',
+      'File does not exist|fingerprint protected copyright|disabled for public access',
       'optional--',
       "//a[contains(@href,'hulkshare.com')]"
       );
@@ -5764,6 +6064,14 @@ function start(filterId)
       'Not Found',
       'optional--',
       "//a[contains(@href,'hotfile.com/file/')]"
+      );
+      
+      addFileHost(
+      "hotfile\\.com\/get\/\\d+\/\\w+",
+      "Download file",
+      "This file is either removed due to copyright claim or is deleted by the uploader.",
+      "optional--",
+      "//a[contains(@href,'hotfile.com/get/')]"
       );
     }
 
@@ -5816,7 +6124,7 @@ function start(filterId)
       addFileHost(
       "hipfile\\.com\/\\w+",
       'op" value="download',
-      'File Not Found<|removed by administrator',
+      'File Not Found<|removed by administrator|>Datei nicht gefunden',
       'optional--',
       "//a[contains(@href,'hipfile.com')]"
       );
@@ -5836,8 +6144,8 @@ function start(filterId)
     if (GM_getValue("Check_stiahni_dot_si_links", false))
     {
       addFileHost(
-      "stiahni\\.si\/download\\.php\\?id=",
-      'downloadfile',
+      "stiahni\\.si\/download\\.php\\?id=\\d+",
+      'downloadbtn',
       'exclamation\\.png',
       'optional--',
       "//a[contains(@href,'stiahni.si/download')]"
@@ -5909,30 +6217,8 @@ function start(filterId)
       "//a[contains(@href,'share-now.net')]"
       );
     }
-
-    if (GM_getValue("Check_sms4file_dot_com_links", false))
-    {
-      addFileHost(
-      "sms4file\\.com\/download(?:vip|)\/\\w+",
-      'file-info">',
-      'Requested file is not found|Запрашиваемый файл не найден',
-      'optional--',
-      "//a[contains(@href,'sms4file.com/download')]"
-      );
-    }
-
-    if (GM_getValue("Check_muchshare_dot_net_links", false))
-    {
-      addFileHost(
-      "muchshare\\.net\/\\w+",
-      'id="btn_download"',
-      'File Not Found|width: 500px; text-align: left;',
-      'optional--',
-      "//a[contains(@href,'muchshare.net')]"
-      );
-    }
     
-    if (GM_getValue("Check_peejeshare_dot_com_links", false))
+    /*if (GM_getValue("Check_peejeshare_dot_com_links", false))
     {
       addFileHost(
       "peejeshare\\.com\/(?:files|storage)\/\\d+",
@@ -5941,7 +6227,7 @@ function start(filterId)
       'red;">This file is password',
       "//a[contains(@href,'peejeshare.com/')]"
       );
-    }
+    }*/
 
     if (GM_getValue("Check_daten_dash_hoster_dot_de_links", false))
     {
@@ -6036,7 +6322,7 @@ function start(filterId)
       addFileHost(
       "(?:yunfile|filemarkets|yfdisk)\\.com\/file\/\\w+",
       'title">.+?&nbsp;&nbsp;.+?<\/h2>',
-      'title">.+?&nbsp;&nbsp;<\/h2>',
+      'title">.+?&nbsp;&nbsp;<\/h2>|Been deleted',
       'optional--',
       "//a[contains(@href,'yunfile.com/file') or contains(@href,'filemarkets.com/file') or contains(@href,'yfdisk.com/file')]"
       );
@@ -6060,8 +6346,8 @@ function start(filterId)
       'class=\'file_name\'>',
       'no such file available',
       'optional--',
-      "//a[contains(@href,'luckyshare.net/')]"
-      );
+      "//a[contains(@href,'luckyshare.net/')]",
+      true);
     }
     
     if (GM_getValue("Check_uploadhero_dot_com_links", false))
@@ -6226,7 +6512,7 @@ function start(filterId)
     {
       addFileHost(
       "(?:www\\d\\.)?warserver\\.cz\/stahnout\/\\d+",
-      'Stáhnout rychle',
+      'Stáhnout rychle|Stáhnout soubor',
       'Soubor nenalezen<',
       'optional--',
       "//a[contains(@href,'warserver.cz/stahnout')]"
@@ -6307,17 +6593,6 @@ function start(filterId)
       );
     }
     
-    if (GM_getValue("Check_usaupload_dot_net_links", false))
-    {
-      addFileHost(
-      'usaupload\\.net\/d\/(?:\w*)',
-      '<strong>File size:</strong>',
-      'is not available',
-      'optional--',
-      "//a[contains(@href,'usaupload.net/d/')]"
-      );
-    }
-
     if (GM_getValue("Check_sendspace_dot_com_links", false))
     {
       addFileHost(
@@ -6381,17 +6656,6 @@ function start(filterId)
       'Featured Videos',
       'optional--',
       "//a[contains(@href,'veehd.com') and contains(@href,'video')]"
-      );
-    }
-
-    if (GM_getValue("Check_vip_dash_file_dot_com_links", false))
-    {
-      addFileHost(
-      '(?:u\\d+\\.)?vip-file\\.com\/download.*?\/(?:.*?)\/(?:.*?)\\.html',
-      'fast_download_form">',
-      '<p style="text-align:center">',
-      'optional--',
-      "//a[contains(@href,'vip-file.com/download')]"
       );
     }
     
@@ -6533,7 +6797,7 @@ function start(filterId)
     {
       addFileHost(
       "speedshare\.org\/.+",
-      'class=\"dbtn\"',
+      'id=\"downloadbtn\"',
       'Error',
       'optional--',
       "//a[contains(@href,'speedshare.org')]"
@@ -6548,17 +6812,6 @@ function start(filterId)
       'error\\.php\\?',
       'set to private|folder_download"',
       "//a[contains(@href,'mediafire.com')]"
-      );
-    }
-
-    if (GM_getValue("Check_uploaded_dot_to_links", false))
-    {
-      addFileHost(
-      '(?:uploaded\\.(?:to|net)\/(?:.id|file|folder|410|404))|(?:ul\\.to\/)',
-      'download" class="center|right:20px" class="file">',
-      'box_red|Error: 404|Error: 410|fileList"><thead><tr><td colspan="2"><\/td><\/tr><\/thead><tbody>\\s*<tr>',
-      'optional--',
-      "//a[contains(@href,'uploaded.to/') or contains(@href,'uploaded.net/') or contains(@href,'ul.to/')]"
       );
     }
 
@@ -6728,54 +6981,21 @@ function start(filterId)
       );
     }
     
-    if (GM_getValue("Check_megaload_dot_it_links", false))
-    {
-      addFileHost(
-      "megaload\\.it\/\\w+",
-      '<input type="submit" name="method_free"',
-      'could not be found|Not Found<\/div>',
-      'optional--',
-      "//a[contains(@href,'megaload.it/')]"
-      );
-    }
-    
-    if (GM_getValue("Check_oteupload_dot_com_links", false))
-    {
-      addFileHost(
-      "oteupload\\.com\/\\w+",
-      'btn_download',
-      '404.png|nofiles_bk',
-      'optional--',
-      "//a[contains(@href,'oteupload.com/')]"
-      );
-    }
-    
     if (GM_getValue("Check_filebulk_dot_com_links", false))
     {
       addFileHost(
       "filebulk\\.com\/\\w+",
       '<span id="countdown_str"',
       'File Not Available',
-      'optional--',
+      'You can download files up to 100 Mb only.',
       "//a[contains(@href,'filebulk.com/')]"
-      );
-    }
-    
-    if (GM_getValue("Check_ifilehosting_dot_net_links", false))
-    {
-      addFileHost(
-      "ifilehosting\\.net\/download\\.php\\?id=\\w+",
-      'File name',
-      'Your requested file is not found',
-      'optional--',
-      "//a[contains(@href,'ifilehosting.net/download.php?id=')]"
       );
     }
     
     if (GM_getValue("Check_fileplaneta_dot_com_links", false))
     {
       addFileHost(
-      "fileplaneta?\\.com(?:\\.ua)?\/\\w+",
+      "(?:fileplanet\\.com\\.ua|fileplaneta\\.com)\/\\w+",
       'name="method_free"',
       'File Not Found',
       'optional--',
@@ -6797,22 +7017,22 @@ function start(filterId)
     if (GM_getValue("Check_box_dot_com_links", false))
     {
       addFileHost(
-      "http(?:s|):\/\/(?:www\\.|)box\\.(?:com|net)\/(?:s|shared)\/\\w+",
+      "https?:\/\/(?:www\\.|)box\\.(?:com|net)\/(?:s|shared)\/\\w+",
       '<div class="gallery"',
-      '<div class="error_message error_message_not_found"',
+      'This shared file or folder link has been removed',
       'optional--',
-      "//a[contains(@href,'/box.') or contains(@href,'www.box.')]"
+      "//a[contains(@href,'box.com') or contains(@href,'box.net')]"
       );
     }
     
     if (GM_getValue("Check_rnbload_dot_com_links", false))
     {
       addFileHost(
-      "rnbload\\.com\/file\/\\d+\/\\w+",
+      "rnbload\\.com\/(file\/\\d+\/|download\\.php\\?id=)\\w+",
       '<div id="cubeDiv"',
       'Your requested file is not found',
       'optional--',
-      "//a[contains(@href,'rnbload.com/file/')]"
+      "//a[contains(@href,'rnbload.com/')]"
       );
     }
     
@@ -6879,17 +7099,6 @@ function start(filterId)
       '<li>File has been removed',
       'optional--',
       "//a[contains(@href,'filesbowl.com/')]"
-      );
-    }
-    
-    if (GM_getValue("Check_bubblefiles_dot_com_links", false))
-    {
-      addFileHost(
-      "bubblefiles\\.com\/download\\.php\\?id\\=\\w+",
-      'download_choice"',
-      'Your requested file is not found',
-      'optional--',
-      "//a[contains(@href,'bubblefiles.com/download.php?id=')]"
       );
     }
     
@@ -7052,7 +7261,7 @@ function start(filterId)
       addFileHost(
       "fliiby\\.com\/file\/\\d+\/\\w+",
       'file_panel">',
-      'Not Found<\/span>',
+      'Not Found<\/span>|error_container">',
       'optional--',
       "//a[contains(@href,'fliiby.com/file/')]"
       );
@@ -7066,17 +7275,6 @@ function start(filterId)
       'File does not exist!',
       'optional--',
       "//a[contains(@href,'datacloud.to/download/')]"
-      );
-    }
-    
-    if (GM_getValue("Check_cloudzer_dot_net_links", false))
-    {
-      addFileHost(
-      "(?:cloudzer\\.net\/(?:file|\\d+)|clz\\.to)\/\\w+",
-      'Download<\/h2>',
-      'message error"',
-      'optional--',
-      "//a[contains(@href,'cloudzer.net/') or contains(@href,'clz.to/')]"
       );
     }
     
@@ -7094,11 +7292,11 @@ function start(filterId)
     if (GM_getValue("Check_jumbofiles_dot_org_links", false))
     {
       addFileHost(
-      "jumbofiles\\.org\/newfile\\?n=\\d+\\&\\|?\\w+",
+      "jumbofiles\\.org\/.+",
       'downloadfree">',
       'div_file"',
       'optional--',
-      "//a[contains(@href,'jumbofiles.org/newfile?n=')]"
+      "//a[contains(@href,'jumbofiles.org/')]"
       );
     }
     
@@ -7149,7 +7347,7 @@ function start(filterId)
     if (GM_getValue("Check_bigupload_dot_com_links", false))
     {
       addFileHost(
-      "bigupload\\.com\/(?:\\?d=\\w+|\\w{1,2}\/file\/\\d+\/)",
+      "bigupload\\.com\/(?:\\?d=|\\w{1,2}\/file\/|files\/)\\w+",
       'paginatediv',
       '<div class="error"><\/div>',
       'optional--',
@@ -7157,36 +7355,14 @@ function start(filterId)
       );
     }
     
-    if (GM_getValue("Check_hugefiles_dot_net_links", false))
-    {
-      addFileHost(
-      "hugefiles\\.net\/\\w+",
-      'download-file-btn">',
-      'File Not [fF]ound|removed by administrator<\/h3>',
-      'optional--',
-      "//a[contains(@href,'hugefiles.net/')]"
-      );
-    }
-    
-    if(GM_getValue("Check_clipshouse_dot_com_links", false))
+    if (GM_getValue("Check_clipshouse_dot_com_links", false))
     {
       addFileHost(
       "clipshouse\\.com\/\\w+",
       'download\-timer"',
-      'fileupload"',
+      'fileupload"|File has been removed.',
       'optional--',
       "//a[contains(@href,'clipshouse.com/')]"
-      );
-    }
-    
-    if (GM_getValue("Check_keeplinks_dot_me_links", false))
-    {
-      addFileHost(
-      "keeplinks\\.me\/p\/\\w+",
-      'isAliveRegex', //no way of checking links inside package
-      'link does not exist.<\/h1>',
-      'Protected Links<\/h1>',
-      "//a[contains(@href,'keeplinks.me/p/')]"
       );
     }
     
@@ -7206,7 +7382,7 @@ function start(filterId)
       addFileHost(
       "catshare\\.net\/\\w+",
       'row\-fluid">',
-      'file not found',
+      'file not found|alert alert\\-error',
       'optional--',
       "//a[contains(@href,'catshare.net/')]"
       );
@@ -7231,39 +7407,6 @@ function start(filterId)
       '<li>File has been removed',
       'optional--',
       "//a[contains(@href,'uploaders.be/')]"
-      );
-    }
-    
-    if (GM_getValue("Check_creafile_dot_net_links", false))
-    {
-      addFileHost(
-      "creafile\\.net\/\\w+",
-      'Download file',
-      'File Not Found',
-      'optional--',
-      "//a[contains(@href,'creafile.net/')]"
-      );
-    }
-    
-    if (GM_getValue("Check_rapidstation_dot_com_links", false))
-    {
-      addFileHost(
-      "rapidstation\\.com\/\\w+",
-      'Filename:<\/b>',
-      'File not found',
-      'optional--',
-      "//a[contains(@href,'rapidstation.com/')]"
-      );
-    }
-    
-    if (GM_getValue("Check_epicshare_dot_net_links", false))
-    {
-      addFileHost(
-      "epicshare\\.net\/\\w+",
-      'btn_download"',
-      'File not found',
-      'optional--',
-      "//a[contains(@href,'epicshare.net/')]"
       );
     }
     
@@ -7448,7 +7591,7 @@ function start(filterId)
       addFileHost(
       "wikifortio\\.com\/\\w+",
       'screenbutton">',
-      'not found on node',
+      "not found on node|doesn't exist or has expired and is no longer available",
       'optional--',
       "//a[contains(@href,'wikifortio.com/')]"
       );
@@ -7612,7 +7755,7 @@ function start(filterId)
     {
       addFileHost(
       "keep2share\\.cc\/file\/\\w+",
-      'Download file',
+      'button\-low\-speed\-limit',
       'deleted<\/h5>',
       'optional--',
       "//a[contains(@href,'keep2share.cc/')]"
@@ -7627,6 +7770,171 @@ function start(filterId)
       'This file does not exist!',
       'optional--',
       "//a[contains(@href,'cloud-up.be/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_karelia_dot_pro_links", false))
+    {
+      addFileHost(
+      "(?:disk|fast)\\.karelia\\.pro\/\\w+",
+      'url_link"',
+      '<div id="center">\n+<\/div>',
+      'optional--',
+      "//a[contains(@href,'karelia.pro/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_1_dash_clickshare_dot_com_links", false))
+    {
+      addFileHost(
+      "1\\-clickshare\\.com\/\\d+",
+      '<div id="dl"',
+      'File not found|Invalid download link',
+      'optional--',
+      "//a[contains(@href,'1-clickshare.com/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_fastupload_dot_ro_links", false))
+    {
+      addFileHost(
+      "fastupload\\.(?:rol\\.)?ro\/\\w+",
+      'isAliveRegex',
+      'Fişierele nu mai sunt active!',
+      'optional--',
+      "//a[contains(@href,'fastupload.ro/') or contains(@href,'fastupload.rol.ro/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_howfile_dot_com_links", false))
+    {
+      addFileHost(
+      "howfile\\.com\/file\/\\w+",
+      'btn1"',
+      'File not found',
+      'optional--',
+      "//a[contains(@href,'howfile.com/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_free_dot_fr_links", false))
+    {
+      addFileHost(
+      "(?:dl\\.)?free\\.fr\/(?:getfile\\.pl\\?file=\/?|)\\w+",
+      'Valider et télécharger le fichier',
+      'Fichier inexistant',
+      'optional--',
+      "//a[contains(@href,'free.fr/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_fileden_dot_com_links", false))
+    {
+      addFileHost(
+      "fileden\\.com\/files\/\\d{4}\/\\d{2}\/\\d{2}\/\\d+\\w+",
+      'Download file',
+      'Oppps\\.\\.\\.The file you requested was not found!',
+      'optional--',
+      "//a[contains(@href,'fileden.com/files/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_file4go_dot_com_links", false))
+    {
+      addFileHost(
+      "file4go\\.com\/d\/\\w+",
+      'gerarlinkdownload"',
+      '<b>DMCA<\/b>',
+      'optional--',
+      "//a[contains(@href,'file4go.com/d/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_filebox_dot_com_links", false)) //checkfiles.html not working
+    {
+      addFileHost(
+      "filebox\\.com\/\\w+",
+      'btn_download',
+      'File Not Found|This file is no longer available',
+      'optional--',
+      "//a[contains(@href,'filebox.com')]"
+      );
+    }
+    
+    if (GM_getValue("Check_hostinoo_dot_com_links", false)) //checkfiles.html not working
+    {
+      addFileHost(
+      "hostinoo\\.com\/\\w+",
+      'btn_download',
+      'File Not Found',
+      'optional--',
+      "//a[contains(@href,'hostinoo.com')]"
+      );
+    }
+    
+    if (GM_getValue("Check_sanshare_dot_com_links", false))
+    {
+      addFileHost(
+      "sanshare\\.com\/\\w+",
+      'method_free"',
+      'File not found',
+      'optional--',
+      "//a[contains(@href,'sanshare.com/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_sendfile_dot_su_links", false))
+    {
+      addFileHost(
+      "sendfile\\.su\/\\w+",
+      'links">',
+      'Файл не найден',
+      'optional--',
+      "//a[contains(@href,'sendfile.su/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_files4up_dot_com_links", false))
+    {
+      addFileHost(
+      "files4up\\.com\/\\w+",
+      'div class="downloadPageTable"',
+      '<li>File has been removed',
+      'optional--',
+      "//a[contains(@href,'files4up.com/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_medofire_dot_com_links", false))
+    {
+      addFileHost(
+      "medofire\\.com\/\\w+",
+      'method_free"',
+      'File not found',
+      'optional--',
+      "//a[contains(@href,'medofire.com/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_usaupload_dot_net_links", false))
+    {
+      addFileHost(
+      "usaupload\\.net\/d\/\\w+",
+      'Download">',
+      'is not available',
+      'In this moment you can`t download this file, please try again in few minutes, we working on this server, SORRY!',
+      "//a[contains(@href,'usaupload.net/d/')]"
+      );
+    }
+    
+    if (GM_getValue("Check_anonfiles_dot_com_links", false))
+    {
+      addFileHost(
+      "anonfiles\\.com\/file\/\\w+",
+      'download_button"',
+      'File not found',
+      'optional--',
+      "//a[contains(@href,'anonfiles.com/file/')]"
       );
     }
   }
@@ -7718,6 +8026,8 @@ function start(filterId)
     }
   }
 }
+
+update.init();
 
 function initClipBoardTools()
 {
