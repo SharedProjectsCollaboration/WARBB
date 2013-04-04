@@ -6,6 +6,17 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.5.1 (4th April 2013)
+
+ 
+Obsolete: Sharebees.com  
+Obsolete: Filedownloads.org  
+Obsolete: Uptorch.com  
+Obsolete: Terabit.to  
+Obsolete: File4sharing.com  
+
+Fixed: Uploaded.net 
+
 ## 1.5.0 (1st April 2013)
 
 Added: Restfile.ws (restfile.ca)  
