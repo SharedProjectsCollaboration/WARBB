@@ -6,6 +6,149 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.6.0 (5th May 2013)
+
+Added: Restfiles.com (Restfile.ca)  
+Added: Cramitin.us, .eu (cramit.in)  
+Added: Upload-novalayer.com  
+Added: Eyesfile.ca  
+Added: Divxstage.eu  
+Added: Flashdrive.uk.com  
+Added: Medafire.net  
+Added: Medoupload.com  
+Added: Fastflv.com  
+Added: Herosh.com  
+Added: Min.us  
+Added: M5zn.com  
+Added: Girlshare.ro  
+Added: Bin.ge  
+Added: Nowvideo.eu  
+Added: Shareplace.com  
+Added: Terafiles.net  
+Added: Uploadmb.com  
+Added: Exfilehost.com  
+Added: Cometfiles.com  
+Added: Cloudnes.com  
+Added: Filetug.com  
+Added: Bunch of censors  
+Added: Mixturevideo.com (mixturecloud.com)  
+Added: Ravishare.com  
+Added: Upload-il.com  
+Added: Fbx.ro (filebox.ro)  
+
+Obsolete: 4shared.com (censored)  
+Obsolete: Cobrashare.sk (censored)  
+Obsolete: Catshare.net (censored)  
+Obsolete: Multishare.cz (censored)  
+Obsolete: Sharecash.org (censored)  
+Obsolete: Share-links.biz (censored)  
+Obsolete: Unibytes.com (censored)  
+Obsolete: Kongsifile.com (censored)  
+Obsolete: Ncrypt.in (censored)  
+Obsolete: Linksave.in (censored)  
+Obsolete: Linkcrypt.ws (censored)  
+Obsolete: Filesector.cc  
+Obsolete: Uload.to  
+Obsolete: Upfile.in  
+Obsolete: Uploadcore.com  
+Obsolete: Share2many.com (disallowed)  
+Obsolete: Kewlfile.com  
+Obsolete: Przeklej.pl  
+Obsolete: Sharebee.com (disallowed)  
+Obsolete: Farmupload.com  
+Obsolete: Exzip.com (disallowed)  
+Obsolete: Exoshare.com (disallowed)  
+Obsolete: Go4up.com (disallowed)  
+Obsolete: Jheberg.net (disallowed)  
+Obsolete: Firerapid.net (disallowed)  
+Obsolete: Multiload.cz (disallowed)  
+Obsolete: Multiupload.nl (disallowed)  
+Obsolete: Multi-up.com (disallowed)  
+Obsolete: Multisiteupload.com (disallowed)  
+Obsolete: Qooy.com (disallowed)  
+Obsolete: Megaupper.com (disallowed)  
+Obsolete: Embedupload.com (disallowed)  
+Obsolete: Splitr.net (disallowed)  
+Obsolete: Uploadmirrors.com (disallowed)  
+Obsolete: Uploadtubes.com (disallowed)  
+Obsolete: Mirrorafile.com (disallowed)  
+Obsolete: Maxmirror.com (disallowed)  
+Obsolete: Uploadonall.com (disallowed)  
+Obsolete: Mirrorupload.net (disallowed)  
+Obsolete: Dl4.ru (disallowed)  
+Obsolete: Mirrorcreator.com (disallowed)  
+Obsolete: Tinypaste.com (disallowed)  
+Obsolete: Loombo.com  
+Obsolete: Xoomshare.com  
+Obsolete: File2011.co.cc  
+Obsolete: Speedoshare.com  
+Obsolete: Superupl.com  
+Obsolete: Unextfiles.com  
+Obsolete: Neoupload.com  
+Obsolete: Adlee.ch  
+Obsolete: Shareupload.net  
+Obsolete: Netkozmos.com  
+Obsolete: Jumbodrop.com  
+Obsolete: Nukeshare.com  
+Obsolete: Tvchaty.com  
+Obsolete: Filemates.com  
+Obsolete: Putbit.com  
+Obsolete: Uploadbear.com  
+Obsolete: Upload.el3lam.com  
+Obsolete: Videoal3rab.com  
+Obsolete: Pigsonic.com  
+Obsolete: Upzetta.com  
+Obsolete: Paid4download.com  
+Obsolete: Mintupload.com  
+Obsolete: Home4file.com  
+Obsolete: Fullshare.net  
+Obsolete: Down.vg  
+Obsolete: Sharehoster.com  
+Obsolete: Wootly.com  
+Obsolete: Spreadmyfiles.com  
+
+Fixed: Tusfiles.net  
+Fixed: Batshare.com  
+Fixed: Cloudzer.net checking more than 50 links  
+Fixed: Badongo.com/audio not picking up  
+Fixed: Restfile.ca  
+Fixed: Hulkshare.com alive links  
+Fixed: Uploading.com new links not detected  
+Fixed: Mediafire.com alive links  
+Fixed: Bulkcheck unavailable checking  
+Fixed: Datei.to/sharebase.to (added api)  
+Fixed: Hostuje.net dead links  
+Fixed: Mediafire.com folders marked as dead  
+Fixed: Akafile.com  
+Fixed: Allmyfiles.ca  
+Fixed: Eyesfile.net  
+Fixed: Flashdrive.it  
+Fixed: Files2upload.net  
+Fixed: Movshare.net alive links  
+Fixed: Fileshare.ro  
+Fixed: Novamov.com  
+Fixed: Remixshare.com dead links  
+Fixed: Dizzcloud.com alive links  
+Fixed: Uploading.com links  
+Fixed: Extabit.com dead links  
+Fixed: Hyperfileshare.com dead links  
+Fixed: Movshare.com  
+Fixed: Putlocker.com  
+Fixed: Sendfile.su  
+Fixed: Ul.to/files/ issues with link count  
+Fixed: Mixturecloud.com DMCA links  
+Fixed: Verzend.be  
+Fixed: VideoBB.com/watch_video links  
+Fixed: Novamov.com dead links marked as alive  
+Fixed: Up-file.com regex (obsolete)  
+Fixed: Some Uploading.com dead links  
+Fixed: Narod.ru dead links  
+Fixed: Filebox.ro alive links  
+Fixed: Free.fr custom servers  
+
+WarBB now ignores image links  
+Extabit.com bulkcheck can automatically log you in on a shared account which is stored in the script.
+
 ## 1.5.1 (4th April 2013)
 
  
