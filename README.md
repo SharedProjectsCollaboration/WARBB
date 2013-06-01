@@ -6,6 +6,103 @@ Official userscript page located [here](http://userscripts.org/scripts/show/1537
 
 ### Changelog
 
+## 1.7.0 (1st June 2013)
+
+Added: Swankshare.com  
+Added: Datafile.com  
+Added: Pir.co.il (Upload-il.com)  
+Added: Filez.bz (Upload-il.com)  
+Added: Directil.com (Upload-il.com)  
+Added: Bayfiles.net (new Bayfiles.com), will keep bayfiles.com as obsolete  
+Added: Dfiles.ru (Depositfiles.com)  
+Added: Ex-load.com  
+Added: Depfile.com  
+Added: Filesavr.com (Filedropper.com)  
+Added: Filedwon.net (filedwon.com)  
+Added: Sprezer.com  
+Added: Minus.com (min.us)  
+
+
+Obsolete: Bayfiles.com  
+Obsolete: Smallfiles.org  
+Obsolete: Premfile.com  
+Obsolete: Mojedata.sk  
+Obsolete: Rapidspread.com  
+Obsolete: Filesforshare.com  
+Obsolete: Servup.co.il  
+Obsolete: Mydownz.com  
+Obsolete: Mozillashare.com  
+Obsolete: Lizshare.net  
+Obsolete: Good.net  
+Obsolete: Xlfile.com  
+Obsolete: Xtraupload.de  
+Obsolete: Primeupload.com  
+Obsolete: Bravoshare.net  
+Obsolete: Onefile.net  
+Obsolete: Freefolder.net  
+Obsolete: Share76.com  
+Obsolete: Allbox4.com  
+Obsolete: File4safe.com  
+Obsolete: Egofiles.com (disallowed)  
+Obsolete: Sharebase.to  
+Obsolete: Maishare.com  
+Obsolete: Fshare.eu  
+Obsolete: Profitupload.com  
+Obsolete: Seedmoon.com  
+Obsolete: Xupad.com  
+Obsolete: Youshare.eu  
+Obsolete: Maskshare.com  
+Obsolete: Wayfile.com  
+Obsolete: Daddyfile.com  
+Obsolete: Filezup.com  
+Obsolete: Uploadhappy.com  
+Obsolete: Mirrorvip.com  
+Obsolete: Live-share.com  
+Obsolete: Mirrorvip.com  
+Obsolete: Freesofty.com  
+Obsolete: Fdcupload.com  
+Obsolete: Zhostia.com  
+Obsolete: Upmega.com  
+Obsolete: Ifpost.com  
+Obsolete: You-love.net  
+Obsolete: Uploo.net  
+Obsolete: 6lqh.com  
+Obsolete: Restfile.ca and all its alternative servers  
+Obsolete: Free-share.ru  
+
+
+Fixed:Extabit.com links with filenames starting with special characters  
+Fixed:Gigabase.com dead links  
+Fixed:Upload-il.com alive links  
+Fixed:Extabit.com on German accounts  
+Fixed:Girlshare.ro dead links  
+Fixed:File4go.com dead links  
+Fixed:Easy-share.com/Crocko.com dead links  
+Fixed:Ultramegabit.com 'File not available' links  
+Fixed:Files.mail.ru dead links  
+Fixed:Upload-il.com dead links in English  
+ixed:Split Demo.ovh.com in two parts: demo.ovh.com/en/ (download page) & demo.ovh.com/download/ (direct link), WarBB will check them both without downloading the file from the direct links  
+Fixed:Daten-hoster.de/Filehosting.org links  
+Fixed:Davvas.com (broken linkchecker)  
+Fixed:Isavelink.com (was obsolete, now back alive)  
+Fixed:Mediafire.com/download/ links  
+Fixed:Fileshare.in.ua dead links marked as alive  
+Fixed:Bitupload.com links  
+Fixed:Fileparadox.in links with special characters in file name  
+Fixed:Mixturecloud.com links  
+Fixed:Bin.ge dead links  
+Fixed:Uploads.ws dead links  
+Fixed:2shared.com invalid links  
+Fixed:Nosupload.com file removed by admin links  
+Fixed:Linkcrypt.ws links (obsolete)  
+Fixed:Depfile.com dead links  
+Fixed:Myvdrive.com links without www.  
+Fixed:Files.to some dead links  
+
+
+Redesigned the obsolete hosts to be added faster and take up less space  
+Also redesigned the generic bulk check hosts (only the first kind so far)  
+
 ## 1.6.0 (5th May 2013)
 
 Added: Restfiles.com (Restfile.ca)  
