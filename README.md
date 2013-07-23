@@ -2,9 +2,140 @@ WARBB
 =====
 
 Warez-BB version of WAR Link checker. 
-Official userscript page located [here](http://userscripts.org/scripts/show/153759 "Official userscript page for WARBB")
+Official home page located [here](http://warbb.pw "Official home page for WarBB")
 
 ### Changelog
+
+## 2.0.0 (23rd July 2013)
+
+##Complete Overhaul - UI, internal code.
+
+##Created new website at [warbb.pw](http://warbb.pw "Official home page for WarBB")
+
+####Added:
+Cepzo.com  
+Videopremium.tv (videopremium.net)  
+Clicktoview.org  
+Ezzfile.co.nz (ezzfile.it)  
+Promptfile.com  
+Zixshare.com  
+Katzfiles.com  
+Filebar.kz  
+Yourfilelink.com  
+Upstore.net (upsto.re)  
+Rusfolder.com/net (ifolder.ru)  
+Fileom.com  
+1file.cc  
+Upkiller.com  
+Backin.net  
+Depositfiles.org/.lt (depositfiles.com)  
+1000shared.com  
+Filewist.com  
+Airupload.com  
+
+####Obsolete:
+
+Okay2upload.com  
+Space4file.com  
+Idup.in  
+Filedefend.com  
+Sharedbit.net  
+Megashareslink.com  
+Filedepot.info  
+Fileuplo.de  
+Gbitfiles.com  
+Tsarfile.com  
+Hsupload.com  
+Videoveeb.com  
+Freeuploads.fr  
+Batshare.com  
+Vidpe.com  
+Uploking.com  
+Upload.th.la  
+Loadhero.net  
+Filesega.com  
+Freakbit.net  
+Netuploaded.com  
+Filecloud.ws  
+W.hulkfile.com  
+Enigmashare.com  
+4share.ws  
+Filedude.com  
+Kupload.com  
+Zooupload.com  
+2download.de  
+Fileshare.in.ua  
+Openfile.ru  
+Hotuploading.com  
+Sprezer.com (disallowed)  
+Wantload.com  
+Qubefiles.com  
+Demo.ovh.net/com/co.uk/nl  
+Fileprohost.me/com  
+Fileopic.com  
+Almmyz.com  
+Putme.org  
+98file.com  
+Filexb.com  
+Fileza.net  
+Fileduct.net  
+Upaj.pl   
+Erofly.cz  
+Filezpro.com  
+Multifilestorage.com  
+Ok2upload.com  
+Uploadorb.com  
+Cobrashare.net  
+Share-now.net  
+Upload.tc  
+Bitbonus.com  
+Fileupup.com  
+Drop.st  
+Maxshare.pl  
+Saarie.com  
+Toucansharing.com  
+Hotfiles.co  
+Westfiles.com  
+Novaup.com  
+Ishare.bz  
+Putshare.com/net  
+Uploadur.com  
+Hostfil.es  
+Aimini.net  
+
+####Fixed:
+
+UploadMB.com dead links  
+Limelinx.com dead links  
+Videopremium.net links  
+Hulkfile.eu dead links  
+Old Uploading.com links (type: uploading.com/{language}/?get={id})  
+Keep2share.cc alive links  
+Asfile.com for German translation  
+Extabit for German translation  
+Stiahni.si dead links marked as alive  
+Ex-load.com dead links  
+Sanshare.com links  
+Bitload.it links  
+Depositfiles.com weird live links  
+Some mixturecloud.com dead and alive links  
+Datacloud.to links  
+Novamov.com  
+Mediafire.com dead links redirecting to homepage  
+Rapidapk.com  
+Dizzcloud.com alive links  
+Fr.packupload.com not being picked up  
+Vidhog.com to live hosts (site resurfaced)  
+Qshare.com (incorrectly marked as obsolete, site resurfaced)  
+File4safe.com (incorrectly marked as obsolete, site resurfaced)  
+Guizmodl.net (incorrectly marked as obsolete, site resurfaced)  
+Gigfiles.net (incorrectly marked as obsolete, site resurfaced)  
+Freakbit.net (incorrectly marked as obsolete, site resurfaced)  
+Useupload.com (incorrectly marked as obsolete, site resurfaced)  
+Ge.tt  
+Keep2share.cc alive links  
+Sfshare.se  
+Depfile.com/{fileid} links  
 
 ## 1.7.0 (1st June 2013)
 
@@ -81,7 +212,7 @@ Fixed:Easy-share.com/Crocko.com dead links
 Fixed:Ultramegabit.com 'File not available' links  
 Fixed:Files.mail.ru dead links  
 Fixed:Upload-il.com dead links in English  
-ixed:Split Demo.ovh.com in two parts: demo.ovh.com/en/ (download page) & demo.ovh.com/download/ (direct link), WarBB will check them both without downloading the file from the direct links  
+Fixed:Split Demo.ovh.com in two parts: demo.ovh.com/en/ (download page) & demo.ovh.com/download/ (direct link), WarBB will check them both without downloading the file from the direct links  
 Fixed:Daten-hoster.de/Filehosting.org links  
 Fixed:Davvas.com (broken linkchecker)  
 Fixed:Isavelink.com (was obsolete, now back alive)  
